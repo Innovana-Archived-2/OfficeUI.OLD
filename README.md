@@ -17,4 +17,3 @@ Currently the following features are enabled:
 - Switching between different tabs.
 - Small icons
 - Large icons
-- Disable icons
