@@ -1,0 +1,19 @@
+#OfficeUI .ribbon { margin-top: 4px }
+#OfficeUI .ribbon .tabs { border-bottom: 1px solid #d4d4d4; height:24px }
+#OfficeUI .ribbon .tabs > ul li[role=tab] { border: 1px solid #FFF; border-bottom: 0; display: inline-block; height: 23px; line-height: 23px; padding-left: 12px; padding-right: 13px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab].active { border: 1px solid #d4d4d4; border-bottom: 1px solid #FFF; color: #0072c6; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .title { text-transform: uppercase; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents { display: none; position: absolute; border-bottom: 1px solid #d4d4d4; height: 93px; width: 100%; color: #444444; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents.active { display: block; left: 0px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group { float: left; height: 92px; margin-left: 4px; margin-top: 4px; position: relative;}
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .legend { text-align: center; position: absolute; width: 100%; bottom: 0px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup { display: inline-block; vertical-align: top; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon { text-align: center; display: inline-block; padding-top: 2px; padding-left: 3px; padding-right: 3px; vertical-align: top; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon { padding-top: 0px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon:hover { background-color: #cde6f7; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon:active { background-color: #92C0E0; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .label { line-height: 16px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon { display: inline-block; padding-right: 5px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon IMG { vertical-align: middle; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon .label { display: inline-block; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .seperator{ width: 1px; background-color: #d4d4d4; float: left; margin-left: 7px; margin-top: 4px; height: 84px}
