@@ -32,10 +32,38 @@ $(document).ready(function() {
 			$('<i class="fa fa-sort-asc arrow"></i>').appendTo($(this).prev());
 
 			// Add a click event to the element that contains a menu.
-			$(this).parent().click(function() {
-				$(element).toggle();
-							$(element).parent().addClass("active");
+			$(this).parent().click(function(e) {
+				$(".menu").hide().parent().removeClass("active");
+
+		        // Reset's the state.
+		        $(document).data("state", 0);
+        
+				e.stopPropagation();
+            	
+            	// Check toggle state
+	            if(!$(document).data("state") || $(document).data("state") == 0) {
+	                // If menu is closed, show it
+	                $(element).show().parent().addClass("active");
+
+	                // Update state
+	                $(document).data("state", 1);
+
+	            } else if ($(document).data("state") == 1) {
+	                // If menu is already open, close it
+	                $(element).hide().parent().removeClass('active');
+
+	                // Update state
+	                $(document).data('state', 0);
+	            }
 			});
 		}
 	});
+
+	// The following code is executed when a click has been done on the document.
+	$(document).click(function() {
+        $(".menu").hide().parent().removeClass("active");
+
+        // Reset's the state.
+        $(document).data("state", 0);
+    });
 });
