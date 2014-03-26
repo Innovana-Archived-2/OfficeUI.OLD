@@ -18,7 +18,7 @@ $(document).ready(function() {
 			var element = $(this);
 
 			// Add the down arrow to indicate that there are some icons underneath it.
-			$('<i class="fa fa-sort-asc arrow"></i>').appendTo($(this).prev());
+			$('<i class="fa fa-sort-asc arrow relative"></i>').appendTo($(this).prev());
 
 			// Add a click event on the element which should show the dropdown.
 			$(this).parent().click(function(e) {

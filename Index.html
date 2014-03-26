@@ -8,11 +8,6 @@
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" />
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" />
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Styles.Default.css" />
-
-	  	<!-- Required scripts for the OfficeUI. -->
-  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-  		<script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
-  		<script src="Resources/Scripts/OfficeUI.Ribbon.js" script="text/javascript"></script>
  	</head>
  	<body class="nopadding nomargin">
  		<!-- Start of the OfficeWebControls. All controls should be placed in here. -->
@@ -25,29 +20,29 @@
  			<div class="ribbon">
  				<div class="tabs">
  					<ul>
- 						<li role="tab">
+ 						<li>
  							<span class="title">File</span>
  						</li>
-	 					<li role="tab">
+	 					<li>
 	 						<span class="title">Home</span>
 	 						<div class="contents">
 	 							<div class="group">
 	 								<div class="icongroup">
 	 									<div class="holder">
-		 									<div class="icon bigicon">
+		 									<div class="bigicon">
 		 										<img src="Resources/Icons/NewMailMessage.png" />
 		 										<div class="label">
 		 											New<br/>Email
 		 										</div>
 		 									</div>
-											<div class="icon bigicon">
+											<div class="bigicon">
 												<img src="Resources/Icons/MailNewItemMenu.png" />
 												<div class="label">
 													New<br/>Items
 												</div>
 												<div class="menu" id="mnuNewItems">
-													<div class="menucontents">
-														<ul class="nopadding nomargin">
+													<div>
+														<ul>
 															<li>
 																<div class="imageHolder">
 																	<img src="Resources/Icons/EmailMessage.png" />
@@ -104,7 +99,7 @@
 	 							<div class="group">
 	 								<div class="icongroup">
 	 									<div class="holder">
-		 									<div class="icon smallicon">
+		 									<div class="smallicon">
 		 										<img src="Resources/Icons/IgnoreConversation.png" />
 		 										<div class="label">
 		 											Ignore
@@ -112,14 +107,14 @@
 		 									</div>
 	 									</div>	
 	 									<div class="holder">
-		 									<div class="icon smallicon">
+		 									<div class="smallicon">
 			 									<img src="Resources/Icons/CleanUpMenu.png" />
 		 										<div class="label">
 			 										Clean Up
 		 										</div>
 		 										<div class="menu" id="mnuCleanUp">
-		 											<div class="menucontents">
-														<ul class="nopadding nomargin">
+		 											<div>
+														<ul>
 															<li>
 																<div class="imageHolder">
 																	<img src="Resources/Icons/CleanUpMenu.png" />
@@ -140,7 +135,7 @@
 		 									</div>
 	 									</div>
 	 									<div class="holder">
-		 									<div class="icon smallicon">
+		 									<div class="smallicon">
 			 									<img src="Resources/Icons/JunkMenu.png" />
 		 										<div class="label">
 			 										Junk
@@ -150,7 +145,7 @@
 	 								</div>
 	 								<div class="icongroup">
 	 									<div class="holder">
-	 										<div class="icon bigicon">
+	 										<div class="bigicon">
 		 										<img src="Resources/Icons/Delete.png" />
 		 										<div class="label">
 		 											Delete
@@ -164,19 +159,19 @@
 	 							<div class="group">
 	 								<div class="icongroup">
 	 									<div class="holder">
-		 									<div class="icon bigicon">
+		 									<div class="bigicon">
 		 										<img src="Resources/Icons/Reply.png" />
 		 										<div class="label">
 		 											Reply
 		 										</div>
 		 									</div>
-		 									<div class="icon bigicon">
+		 									<div class="bigicon">
 			 									<img src="Resources/Icons/ReplyAll.png" />
 		 										<div class="label">
 			 										Reply<br/>All
 		 										</div>
 		 									</div>
-		 									<div class="icon bigicon">
+		 									<div class="bigicon">
 			 									<img src="Resources/Icons/Forward.png" />
 		 										<div class="label">
 			 										Forward
@@ -189,19 +184,19 @@
 	 							<div class="seperator">&nbsp;</div>
 	 						</div>
 	 					</li>
-	      				<li role="tab">
+	      				<li>
 	       					<span class="title">Send / Receive</span>
 	       					<div class="contents">
 	       						
 						    </div>
 						</li>
-						<li role="tab">
+						<li>
 						    <span class="title">Folder</span>
 						    <div class="contents">
 						   	   	
 						    </div>
 						</li>
-	      				<li role="tab">
+	      				<li>
 	       					<span class="title">View</span>
 	       					<div class="contents">
 						       	
@@ -211,5 +206,14 @@
     			</div>
    			</div>
   		</div>
+  		<!-- Required scripts for the OfficeUI. -->
+  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  		<script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
+  		
+  		<script type="text/javascript">
+  			OfficeUICore.Init();
+  		</script>
+
+  		<script src="Resources/Scripts/OfficeUI.Ribbon.js" script="text/javascript"></script>
  	</body>
 </html>
