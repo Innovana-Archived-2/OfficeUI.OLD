@@ -21,4 +21,12 @@ $(document).ready(function() {
 		// Activate the selected tab.
 		OfficeUICore.MakeActive(this);
 	});
+
+	// See if an item is marked as a menuitem.
+	// If that's the case, auto add a down arrow to indicate that this is a menuitem.
+	$("#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon").children().each(function(index) {
+		if ($(this).hasClass("menu")) {
+			$('<i class="menu fa fa-sort-asc arrow"></i>').appendTo($(this).prev());
+		}
+	});
 });
