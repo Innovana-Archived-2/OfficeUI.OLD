@@ -26,7 +26,16 @@ $(document).ready(function() {
 	// If that's the case, auto add a down arrow to indicate that this is a menuitem.
 	$("#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon").children().each(function(index) {
 		if ($(this).hasClass("menu")) {
-			$('<i class="menu fa fa-sort-asc arrow"></i>').appendTo($(this).prev());
+
+			var element = $(this);
+
+			$('<i class="fa fa-sort-asc arrow"></i>').appendTo($(this).prev());
+
+			// Add a click event to the element that contains a menu.
+			$(this).parent().click(function() {
+				$(element).toggle();
+							$(element).parent().addClass("active");
+			});
 		}
 	});
 });
