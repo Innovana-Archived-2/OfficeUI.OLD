@@ -10,7 +10,7 @@ li[role=tab] .title { text-transform: uppercase; }
 .icongroup { vertical-align: top; }
 .icon { padding-top: 2px; padding-left: 3px; padding-right: 3px; vertical-align: top; }
 .bigicon { height: 70px; }
-.smallicon { padding-top: 0; height: 24px; display: inline-block; padding-right: 5px; }
+.smallicon { padding-top: 0; height: 24px; padding-right: 5px; }
 .icon:hover, .menucontents > ul li:hover { background-color: #cde6f7; }
 .icon:active { background-color: #92c0e0; }
 .label { line-height: 16px; padding-right: 3px; }

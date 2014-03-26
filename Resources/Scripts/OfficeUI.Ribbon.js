@@ -1,15 +1,5 @@
 // Make sure the document is loaded and jQuery is available.
 $(document).ready(function() {
-	// Disable the margin and the padding of the "UL" class that displays the tabs.
-	OfficeUICore.DisableMargin($("#OfficeUI .ribbon .tabs > ul"));
-	OfficeUICore.DisablePadding($("#OfficeUI .ribbon .tabs > ul"));
-
-	// Make the first tab the application tab and disable the margins.
-	OfficeUICore.DisableMargin($("#OfficeUI .ribbon .tabs > ul li[role=tab]:first-child").addClass("application"));
-
-	// Mark the first tab (not the application tab) as the active one.
-	OfficeUICore.MakeActive($("#OfficeUI .ribbon .tabs > ul li[role=tab]:not(.application)").first());
-
 	// Check if an item is marked as a "MenuItem". This indicates that there is an invisible dropdown which will be showed when you click on it.
 	$("#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon").children().each(function(index) {
 		if ($(this).hasClass("menu")) {
