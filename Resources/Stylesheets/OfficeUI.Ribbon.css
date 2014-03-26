@@ -20,8 +20,8 @@
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon .label { display: inline-block; }
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .menu { position: absolute; box-shadow: 0px 0px 0px #888888; display: none; }
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .menu .menucontents { padding: 1px; position: relative; z-index: 100; background-color: white; left: -4px; border-top: 1px solid #C6C6C6; border-bottom: 1px solid #C6C6C6; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-size:1px 100%; background-position: 0 0, 100% 0; background-repeat: no-repeat; box-shadow: 1px 1px 2px #E0E0E0; }
-#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .menu .menucontents > ul li { text-align: left; list-style: none; margin-left: 1px; margin-right: 1px; padding-left: 5px; padding-right: 5px; white-space: nowrap; height: 24px; }
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .menu .menucontents > ul li { text-align: left; list-style: none; margin-right: 1px; padding-left: 5px; padding-right: 5px; white-space: nowrap; height: 24px; }
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon .menu .menucontents > ul li:hover { background-color: #cde6f7; }
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .smallicon .menu .menucontents > ul li .imageHolder { display: inline-block; vertical-align: middle; width: 16px; position: relative; top: -4px; }
 #OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .bigicon .menu .menucontents > ul li .imageHolder { display: inline-block; vertical-align: middle; width: 16px; position: relative; top: 2px; }
-#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .seperator { width: 1px; background-color: #d4d4d4; float: left; margin-left: 7px; margin-top: 4px; height: 84px}
+#OfficeUI .ribbon .tabs > ul li[role=tab] .contents > .seperator { width: 1px; background-color: #d4d4d4; float: left; margin-left: 7px; margin-top: 4px; height: 84px}
