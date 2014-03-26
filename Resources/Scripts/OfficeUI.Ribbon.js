@@ -30,8 +30,6 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
-
 
 	// Event handlers for the Ribbon are placed here.
 
