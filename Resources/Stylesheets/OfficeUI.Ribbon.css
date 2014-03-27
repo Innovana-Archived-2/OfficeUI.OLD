@@ -1,10 +1,10 @@
-.ribbon { margin-top: 4px }
+.ribbon { margin-top: 4px; height: 118px; }
 .tabs { border-bottom: 1px solid #d4d4d4; height: 24px }
 li[role=tab] { border: 1px solid #FFF; border-bottom: 0; height: 23px; line-height: 23px; padding-left: 12px; padding-right: 13px; }
 li[role=tab].active { border: 1px solid #d4d4d4; border-bottom: 1px solid #FFF; color: #0072c6; }
 li[role=tab] .title { text-transform: uppercase; }
-.contents { display: none; border-bottom: 1px solid #d4d4d4; height: 93px; width: 100%; color: #444; }
-.contents.active { display: block; left: 0; }
+.ribbon .contents { display: none; border-bottom: 1px solid #d4d4d4; height: 93px; width: 100%; color: #444; }
+.ribbon .contents.active { display: block; left: 0; }
 .group { height: 92px; margin-left: 4px; margin-top: 4px; }
 .legend { width: 100%; bottom: 0; }
 .icongroup { vertical-align: top; }
@@ -25,3 +25,4 @@ li[role=tab] .title { text-transform: uppercase; }
 .smallicon .menu .menucontents > ul li .imageHolder { top: -4px; }
 .bigicon .menu .menucontents > ul li .imageHolder { top: 2px; }
 .seperator { width: 1px; background-color: #d4d4d4; margin-left: 7px; margin-top: 4px; height: 84px; }
+
