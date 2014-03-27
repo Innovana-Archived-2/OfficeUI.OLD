@@ -12,6 +12,11 @@ $(document).ready(function() {
 
 			// Add a click event on the element which should show the dropdown.
 			$(this).parent().click(function(e) {
+				// Make sure that all dropdowns are closed and that the toggle state is updated.
+		        $(".menu").each(function() {
+		            $(this).hide().parent().data("state", 0).removeClass("active");
+		        });
+	        
 				if ($(this).hasClass("disabled")) {
 				} else {
 	                e.stopPropagation();
