@@ -10,12 +10,9 @@ body { background-color: #FFF; font-family: 'Segoe UI' }
 .center { text-align: center; }
 .left { float: left; }
 .inline { display: inline-block; }
+.disabled { opacity: .4; filter: alpha(opacity=40) }
 
 /* General styling for the OfficeWebControls elements. */
 #OfficeUI { color:#444; font-size: 12px; margin-top: 4px }
 #OfficeUI .title { text-align: center; }
-
-/* General color styling. */
-.brd_grey { border: 1px solid #d4d4d4 !important;  }
-.brd_btm_grey { border-bottom: 1px solid #d4d4d4; }
 

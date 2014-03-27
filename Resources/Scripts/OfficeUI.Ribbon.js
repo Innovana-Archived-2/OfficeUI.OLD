@@ -12,21 +12,23 @@ $(document).ready(function() {
 
 			// Add a click event on the element which should show the dropdown.
 			$(this).parent().click(function(e) {
-                e.stopPropagation();
+				if ($(this).hasClass("disabled")) {
+				} else {
+	                e.stopPropagation();
 
-                // Check the "toggle" state.
-                if(!$(this).data("state") || $(this).data("state") == 0) { // Menu is closed, so we should show it.
-                    $(element).show().parent().addClass("active");
-                    
-                    // Update the current state.
-                    $(this).data("state", 1);
-                } else if ($(this).data("state") == 1) { // Menu is visible, so let's close it.
-                    $(element).hide().parent().removeClass("active");
-                    
-                    // Update the state.
-                    $(this).data("state", 0);
-                }
-                
+	                // Check the "toggle" state.
+	                if(!$(this).data("state") || $(this).data("state") == 0) { // Menu is closed, so we should show it.
+	                    $(element).show().parent().addClass("active");
+	                    
+	                    // Update the current state.
+	                    $(this).data("state", 1);
+	                } else if ($(this).data("state") == 1) { // Menu is visible, so let's close it.
+	                    $(element).hide().parent().removeClass("active");
+	                    
+	                    // Update the state.
+	                    $(this).data("state", 0);
+	                }
+            	}    
 			});
 		}
 	});
