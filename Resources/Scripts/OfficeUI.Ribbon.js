@@ -1,7 +1,7 @@
 // Make sure the document is loaded and jQuery is available.
 $(document).ready(function() {
 	// Check if an item is marked as a "MenuItem". This indicates that there is an invisible dropdown which will be showed when you click on it.
-	$("#OfficeUI .ribbon .tabs > ul li[role=tab] .contents .group .icongroup .icon").children().each(function(index) {
+	$(".icon").children().each(function(index) {
 		if ($(this).hasClass("menu")) {
 
 			// Gets the current element.
@@ -36,10 +36,10 @@ $(document).ready(function() {
 	// Event handlers for the Ribbon are placed here.
 
 		// When you click on a tab (not the application tab), make sure that the correct contents are showed.
-		$("#OfficeUI .ribbon .tabs > ul li[role=tab]:not(.application)").click(function() {
+		$("li[role=tab]:not(.application)").click(function() {
 			
 			// Deactivate all the tabs.
-			$("#OfficeUI .ribbon .tabs > ul li[role=tab]").each(function(index) {
+			$("li[role=tab]").each(function(index) {
 				OfficeUICore.MakeInactive(this);
 			});
 
