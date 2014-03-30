@@ -11,7 +11,7 @@ li[role=tab].active { color: #0072C6; border-color: #D4D4D4 #D4D4D4 #FFFFFF; bor
 .group { height: 91px; margin-top: 3px; vertical-align: top; }
 .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
 .icongroup { height: 75px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
-.smallicon { height: 24px; padding-right: 5px; }
+.smallicon { height: 24px; padding-right: 5px; padding-left: 3px;}
 .smallicon > IMG { vertical-align: middle; }
 .bigicon { padding-left: 3px; padding-right: 3px; padding-top: 1px; vertical-align: top; }
 .bigicon > IMG { height: 32px; width: 32px; }
