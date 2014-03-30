@@ -11,19 +11,18 @@ $(document).ready(function() {
 			$('<i class="fa fa-sort-asc arrow relative"></i>').appendTo($(this).prev());
 
 			// Add a click event on the element which should show the dropdown.
-			$(this).parent().click(function(e) {
-				// Make sure that all dropdowns are closed and that the toggle state is updated.
-		        $(".menu").each(function() {
-		            $(this).hide().parent().data("state", 0).removeClass("active");
-		        });
-	        
-				if ($(this).hasClass("disabled")) {
-				} else {
+			$(this).parent().click(function(e) {	        
+				if (!$(this).hasClass("disabled")) {
 	                e.stopPropagation();
 
 	                // Check the "toggle" state.
 	                if(!$(this).data("state") || $(this).data("state") == 0) { // Menu is closed, so we should show it.
-	                    $(element).show().parent().addClass("active");
+	                    $(element).show({
+	                    	duration: 1000,
+	                    	progress: function() {
+	                    		$(element).css('marginTop', '-1px')
+	                    	}
+	                    }).parent().addClass("active");
 	                    
 	                    // Update the current state.
 	                    $(this).data("state", 1);

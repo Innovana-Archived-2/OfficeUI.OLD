@@ -8,209 +8,178 @@
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" />
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" />
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Styles.Default.css" />
- 	</head>
- 	<body class="nopadding nomargin">
- 		<!-- Start of the OfficeWebControls. All controls should be placed in here. -->
- 		<div id="OfficeUI">
- 			<div class="title">
- 				<span>OfficeWebControls - Demo (Version 0.1)</span>
- 			</div>
-
-			<!-- Start of the ribbon. -->
- 			<div class="ribbon">
- 				<div class="tabs">
- 					<ul>
- 						<li>
- 							<span>File</span>
+  </head>
+	<body class="nopadding nomargin">
+		<div id="OfficeUI">
+			<div class="title">
+				<span>OfficeWebControls - Demo (Version 0.1)</span>
+			  </div>
+ 			<div class="ribbon brd_btm_grey">
+ 				<div class="tabs brd_btm_grey">
+ 					<ul class="nopadding nomargin">
+ 						<li role="tab" class="application inline">
+ 							<span class="uppercase">File</span>
  						</li>
-	 					<li>
-	 						<span>Home</span>
-	 						<div>
-	 							<div>
-	 								<div>
-		 								<div class="bigicon">
-		 									<img src="Resources/Icons/NewMailMessage.png" />
-		 									<div>
-		 										New<br/>Email
-		 									</div>
-		 								</div>
-										<div class="bigicon">
-											<img src="Resources/Icons/MailNewItemMenu.png" />
-											<div>
-												New<br/>Items
-											</div>
-											<div class="menu" id="mnuNewItems">
-												<div>
-													<ul>
-														<li>
-															<div>
-																<img src="Resources/Icons/EmailMessage.png" />
-															</div>
-															E-Mail Message
-														</li>
-														<li>
-															<div>
-																<img src="Resources/Icons/Appointment.png" />
-															</div>
-															Appointment
-														</li>
-														<li>
-															<div>
-																<img src="Resources/Icons/Meeting.png" />
-															</div>
-															Meeting
-														</li>
-														<li>
-															<div>
-																<img src="Resources/Icons/Contact.png" />
-															</div>
-															Contact
-														</li>
-														<li>
-															<div>
-																<img src="Resources/Icons/Task.png" />
-															</div>
-															Task
-														</li>
-														<li>
-															<div></div>
-															E-Mail Message Using
-														</li>
-														<li>
-															<div></div>
-															More items
-														</li>
-														<li>
-															<div>
-																<img src="Resources/Icons/Lync.png" />
-															</div>
-															Lync Meeting
-														</li>
-													</ul>
-										 		</div>
-											</div>
-										</div>
-	 								</div>
-	 								<div>New</div>
-	 							</div>
-	 							<div class="seperator">&nbsp;</div>
-	 							<div>
-	 								<div>
-	 									<div>
-			 								<div class="smallicon">
-			 									<img src="Resources/Icons/IgnoreConversation.png" />
-			 									<div>
-			 										Ignore
-			 									</div>
-			 								</div>
-		 								</div>
-		 								<div>
-			 								<div class="smallicon">
-				 								<img src="Resources/Icons/CleanUpMenu.png" />
-			 									<div>
-				 									Clean Up
-			 									</div>
-			 									<div class="menu" id="mnuCleanUp">
-			 										<div>
-														<ul>
-															<li>
-																<div>
-																	<img src="Resources/Icons/CleanUpMenu.png" />
-																</div>
-																Clean Up Conversation
-															</li>
-															<li>
-																<div></div>
-																Clean Up Folder
-															</li>
-															<li class="disabled">
-																<div></div>
-																Clean Up Folder & Subfolders
-															</li>
-														</ul>
-											 		</div>
-			 									</div>
-			 								</div>
-		 								</div>
-		 								<div class="smallicon">
-			 								<img src="Resources/Icons/JunkMenu.png" />
-		 									<div>
-			 									Junk
-		 									</div>
-		 								</div>
-	 								</div>
-	 								<div>
-	 									<div class="bigicon disabled">
-		 									<img src="Resources/Icons/Delete.png" />
-		 									<div>
-		 										Delete
-		 									</div>
-		 								</div>
-	 								</div>
-	 								<div>Delete</div>
-	 							</div>
-	 							<div class="seperator">&nbsp;</div>
-	 							<div>
-	 								<div>
-		 								<div class="bigicon">
-		 									<img src="Resources/Icons/Reply.png" />
-		 									<div>
-		 										Reply
-		 									</div>
-		 								</div>
-		 								<div class="bigicon">
-			 								<img src="Resources/Icons/ReplyAll.png" />
-		 									<div>
-			 									Reply<br/>All
-		 									</div>
-		 								</div>
-		 								<div class="bigicon">
-			 								<img src="Resources/Icons/Forward.png" />
-		 									<div>
-			 									Forward
-		 									</div>
-		 								</div>
-	 								</div>
-	 								<div>Respond</div>
-	 							</div>
-	 							<div class="seperator">&nbsp;</div>
-	 						</div>
-	 					</li>
-	      				<li>
-	       					<span>Send / Receive</span>
-	       					<div>
-	       						
-						    </div>
-						</li>
-						<li>
-						    <span>Folder</span>
-						    <div>
-						   	   	
-						    </div>
-						</li>
-	      				<li>
-	       					<span>View</span>
-	       					<div>
-						       	
-	       					</div>
-	      				</li>
-     				</ul>
-    			</div>
-   			</div>
-   			<div class="web_contents">
-   				<div class="navigation">
-   					Navigation comes here.
-   				</div>
-   			</div>
-  		</div>
-  		<!-- Required scripts for the OfficeUI. -->
-  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-  		<script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
-  		
-  		<script type="text/javascript">
-  			OfficeUICore.Init();
-  		</script>
+ 						<li role="tab" class="active inline">
+ 							<span class="uppercase">Home</span>
+              <div class="contents absolute active">
+                <div class="group relative inline">
+                  <div class="icongroup inline">
+                    <div class="icon bigicon relative inline center">
+                      <img src="Resources/Icons/NewMailMessage.png" />
+                      <div class="iconlegend">New<br />Email</div>
+                    </div>
+                    <div class="icon bigicon relative inline center">
+                      <img src="Resources/Icons/MailNewItemMenu.png" />
+                      <div class="iconlegend">
+                        New<br />Items
+                        <i class="fa fa-sort-asc arrow relative"></i>
+                      </div>
+                      <div class="menu absolute">
+                        <div class="menucontents">
+                          <ul class="nopadding normargin">
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/EmailMessage.png" />
+                              </div>
+                              <div class="menuItem inline">E-Mail Message</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/Appointment.png" />
+                              </div>
+                              <div class="menuItem inline">Appointment</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/Meeting.png" />
+                              </div>
+                              <div class="menuItem inline">Meeting</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/Contact.png" />
+                              </div>
+                              <div class="menuItem inline">Contact</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/Task.png" />
+                              </div>
+                              <div class="menuItem inline">Task</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">&nbsp;</div>
+                              <div class="menuItem inline">E-Mail Message Using</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">&nbsp;</div>
+                              <div class="menuItem inline">More Items</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/Lync.png" />
+                              </div>
+                              <div class="menuItem inline">Lync Meeting</div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="legend absolute">New</div>
+                </div>     
+                <div class="seperator group relative inline">&nbsp;</div>
+                <div class="group relative inline">
+                  <div class="icongroup inline">
+                    <div class="icon smallicon relative">
+                      <img src="Resources/Icons/IgnoreConversation.png" />
+                      <div class="iconlegend inline">Ignore</div>
+                    </div>
+                    <div class="icon smallicon relative">
+                      <img src="Resources/Icons/CleanUpMenu.png" />
+                      <div class="iconlegend inline">Clean Up</div>
+                      <i class="fa fa-sort-asc arrow relative"></i>
+                      <div class="menu absolute">
+                        <div class="menucontents">
+                          <ul class="nopadding normargin">
+                            <li class="nowrap">
+                              <div class="imageHolder inline">
+                                <img src="Resources/Icons/CleanUpMenu.png" />
+                              </div>
+                              <div class="menuItem inline">Clean Up Conversation</div>
+                            </li>
+                            <li class="nowrap">
+                              <div class="imageHolder inline">&nbsp;</div>
+                              <div class="menuItem inline">Clean Up Folder</div>
+                            </li>
+                            <li class="nowrap disabled">
+                              <div class="imageHolder inline">&nbsp;</div>
+                              <div class="menuItem inline">Clean Up Folder & Subfolders</div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="icon smallicon relative">
+                      <img src="Resources/Icons/JunkMenu.png" />
+                      <div class="iconlegend inline">Junk</div>
+                    </div>
+                  </div>
+                  <div class="icongroup inline">
+                    <div class="icon bigicon relative inline center disabled">
+                      <img src="Resources/Icons/Delete.png" />
+                      <div class="iconlegend">Delete</div>
+                    </div>
+                  </div>
+                  <div class="legend absolute">New</div>
+                </div> 
+                <div class="seperator group relative inline">&nbsp;</div>
+                <div class="group relative inline">
+                  <div class="icongroup inline">
+                    <div class="icon bigicon relative inline center">
+                      <img src="Resources/Icons/Reply.png" />
+                      <div class="iconlegend">Reply</div>
+                    </div>
+                    <div class="icon bigicon relative inline center">
+                      <img src="Resources/Icons/ReplyAll.png" />
+                      <div class="iconlegend">Reply<br/>All</div>
+                    </div>
+                    <div class="icon bigicon relative inline center">
+                      <img src="Resources/Icons/Forward.png" />
+                      <div class="iconlegend">Forward</div>
+                    </div>
+                  </div>
+                  <div class="legend absolute">Respond</div>
+                </div> 
+                <div class="seperator group relative inline">&nbsp;</div>
+              </div>
+ 						</li>
+ 						<li role="tab" class="inline">
+ 							<span class="uppercase">Send / Receive</span>
+              <div class="contents absolute">
+                Contents of the the "Send / Receive" tab are showed here.
+              </div>
+ 						</li>
+ 						<li role="tab" class="inline">
+ 							<span class="uppercase">Folder</span>
+              <div class="contents absolute">
+                Contents of the the "Folder" tab are showed here.
+              </div>
+ 						</li>
+ 						<li role="tab" class="inline"  >
+ 							<span class="uppercase">View</span>
+              <div class="contents absolute">
+                Contents of the the "View" tab are showed here.
+              </div>
+ 						</li>
+ 					</ul>
+ 				</div>
+ 			</div>
+		</div>
 
-  		<script src="Resources/Scripts/OfficeUI.Ribbon.js" script="text/javascript"></script>
- 	</body>
+    <!-- Required scripts for the OfficeUI. -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
+  </body>
 </html>

@@ -11,8 +11,15 @@ body { background-color: #FFF; font-family: 'Segoe UI' }
 .left { float: left; }
 .inline { display: inline-block; }
 .disabled { opacity: .4; filter: alpha(opacity=40) }
+.uppercase { text-transform: uppercase; }
+.nowrap { white-space: nowrap; }
 
 /* General styling for the OfficeWebControls elements. */
-#OfficeUI { color:#444; font-size: 12px; margin-top: 4px }
-#OfficeUI .title { text-align: center; }
+#OfficeUI { color:#444; font-size: 12px; }
+#OfficeUI > .title { text-align: center; margin-top: 4px; margin-bottom: 4px; }
 
+/* Commonly used styles. */
+.brd_btm_grey { border-bottom: 1px solid #D4D4D4; }
+.brd_lft_grey { border-left: 1px solid #D4D4D4; }
+.brd_rght_grey { border-right: 1px solid #D4D4D4; }
+.brd_top_grey { border-top: 1px solid #D4D4D4; }

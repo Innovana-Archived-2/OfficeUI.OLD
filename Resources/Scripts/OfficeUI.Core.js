@@ -1,64 +1,60 @@
-// The OfficeUICore namespace. Every function can be called by using "OfficeUICore.{functionName}"
-var OfficeUICore = {
-	// Disable the margin on the requested element.
-	DisableMargin: function(element) {
-		$(element).addClass("nomargin");
-	},
+// Extend the jQuery FN so that new methods can be called.
+jQuery.fn.extend({
+  
+  // Enable the tab contents for a given tab element.
+  EnableTabContents: function() {
+    
+    // Start by deactiving every tab element on the page.
+    $("li[role=tab]").each(function(index) {
+      $(this).removeClass("active");
+      $(".contents", this).removeClass("active");
+    });
 
-	// Disable the padding on the requested element.
-	DisablePadding: function(element) {
-		$(element).addClass("nopadding");
-	},
+    // Activate the tab which is requested.
+    $(this).addClass("active");
+    $(".contents", this).addClass("active");
 
-	// Marks an item as being active.
-	MakeActive: function(element) {
-		$(element).addClass("active");
-		$(".contents", element).addClass("active");
-	},
+    // Return the "tab" element.
+    return $(this);
+  },
 
-	// Marks an item as being inactive.
-	MakeInactive: function(element) {
-		$(element).removeClass("active");
-		$(".contents", element).removeClass("active");
-	},
+  // Enable the menu for a given icon.
+  //  Parameters:
+  //    Timekey: The duration it takes to slide down the element., 
+  EnableMenu: function(time) {
+      $(this).slideDown({
+        duration: time
+      });
+  }
 
-	// Initialize the ribbon.
-	Init: function(element) {
-		// Disable the margin and the padding of the "UL" class that displays the tabs.
-		OfficeUICore.DisableMargin($("#OfficeUI .ribbon .tabs > ul"));
-		OfficeUICore.DisablePadding($("#OfficeUI .ribbon .tabs > ul"));
+});
 
-		$(".tabs > ul > li").attr("role", "tab"); // Make the "li" elements in the "tabs" collection act as a "tab".
+// Make sure the document is loaded and jQuery is available.
+$(document).ready(function() {
 
-		// Make the first tab the application tab and disable the margins.
-		OfficeUICore.DisableMargin($("li[role=tab]:first-child").addClass("application"));
+  // Events handlers are placed here.
 
-		$(".tabs > ul li[role=tab] > DIV:first-of-type").addClass("contents"); // Make the first DIV element in each tab act as the "contents".
+    // When you click anywhere on the document, execute the following code.
+    $(document).click(function() {
+      // Make sure that all dropdowns are closed and that the toggle state is updated.
+        $(".menu").each(function() {
+          $(this).hide();
+        });
+    });
 
-		// Mark the first tab (not the application tab) as the active one.
-		OfficeUICore.MakeActive($("li[role=tab]:not(.application)").first());
+    // When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
+    $("li[role=tab]:not(.application)").click(function() {
+      $(this).EnableTabContents();
+    });
 
-		$(".tabs > ul li[role=tab] > SPAN:first-child").addClass("title"); // Make the first element in each tab if it's a SPAN act as a "title".
-		$(".contents > DIV").addClass("group"); // For every DIV element in the contents, let them act as a group.
-		$(".group > DIV").addClass("icongroup"); // For every DIV element in a group, let them act as an icongroup.
-		$(".group > DIV:last-child").addClass("legend"); // Make the last DIV element in a group act as the "legend".
-		$(".group > DIV:last-child").removeClass("icongroup"); // On the last DIV element in a group, remove the icongroup.
-		$(".menu > DIV ul li DIV:first-child").addClass("imageHolder"); // In a menu dropdown, make sure the first element is always a "ImageHolder".
+    // When you click on an icon execute the code below.
+    $(".icon").click(function(e) {
 
-		// Put some additional classes on the icons.
-		$(".bigicon, .smallicon").addClass("icon").addClass("relative").addClass("inline").addClass("center");
-		
-		$(".icon > DIV:first-of-type").addClass("label"); // Make the first DIV element in an icon act as the "legend".
+      // When the icon holds a menu, show the mnu.
+      if ($(this).children(".menu").length > 0) {
+        e.stopPropagation();
 
-		// Some general styling on different elements.
-		$("li[role=tab]").addClass("inline");
-		$(".group").addClass("relative").addClass("left");
-		$(".icongroup").addClass("inline");
-		$(".menu > DIV:first-child").addClass("menucontents").addClass("relative");
-		$(".menu > DIV:first-child > ul").addClass("nomargin").addClass("nopadding");
-		$(".imageHolder").addClass("relative");
-		$(".seperator").addClass("left");
-		$(".legend").addClass("center").addClass("absolute");
-		$(".contents, .icon .menu").addClass("absolute");
-	}
-};
+        $(".menu", this).EnableMenu(75);
+      }
+    });
+});
