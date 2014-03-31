@@ -82,3 +82,29 @@ $(document).ready(function() {
       }
     });
 });
+
+var OfficeUICore = {
+
+  // Initialize the OfficeUI controls which are on the page.
+  // The initialization is done by placeing classes automatticly on the necessary elements.
+  // That way the HTML is cleaner.
+  Init: function() {
+    $(".ribbon, .tabs").addClass("brd_btm_grey");
+    $(".tabs UL, .menucontents UL").addClass("nopadding nomargin");
+    $(".menucontents UL LI").addClass("nowrap");
+    $("li[role='tab']").addClass("inline");
+
+    // Enable the first tab.
+    $("li[role='tab']:not(.application)").first().EnableTabContents();
+
+    $("li span:first-child").addClass("uppercase");
+    $("li[role='tab'] .contents").addClass("absolute");
+    $(".group, .seperator").addClass("relative inline");
+    $(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("inline");
+    $(".bigicon").addClass("icon relative inline center");
+    $(".smallicon").addClass("icon relative");
+    $(".legend, .menu").addClass("absolute");
+    $(".arrow").addClass("relative");
+  }
+
+}
