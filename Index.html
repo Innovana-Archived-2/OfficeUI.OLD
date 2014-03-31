@@ -21,7 +21,7 @@
  						<li role="tab" class="application inline">
  							<span class="uppercase">File</span>
  						</li>
- 						<li role="tab" class="active inline">
+ 						<li role="tab" class="active inline" id="tabHome">
  							<span class="uppercase">Home</span>
               <div class="contents absolute active">
                 <div class="group relative inline">
@@ -156,19 +156,19 @@
                 <div class="seperator group relative inline">&nbsp;</div>
               </div>
  						</li>
- 						<li role="tab" class="inline">
+ 						<li role="tab" class="inline" id="tabSendReceive">
  							<span class="uppercase">Send / Receive</span>
               <div class="contents absolute">
                 Contents of the the "Send / Receive" tab are showed here.
               </div>
  						</li>
- 						<li role="tab" class="inline">
+ 						<li role="tab" class="inline" id="tabFolder">
  							<span class="uppercase">Folder</span>
               <div class="contents absolute">
                 Contents of the the "Folder" tab are showed here.
               </div>
  						</li>
- 						<li role="tab" class="inline"  >
+ 						<li role="tab" class="inline" id="tabView">
  							<span class="uppercase">View</span>
               <div class="contents absolute">
                 Contents of the the "View" tab are showed here.
@@ -183,5 +183,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
+
+    <!-- Initialize OfficeUI. -->
+    <script type="text/javascript">
+      OfficeUICore.Init();
+    </script>
   </body>
 </html>
