@@ -30,14 +30,23 @@ jQuery.fn.extend({
 
       // Update the current state.
       $(this).data("state", 1);
+
     // Menu is visible, so let's close it.
     } else if ($(this).data("state") == 1) { 
+      $(this).DisableMenu($(element));
+    }
+
+    $(".menu").not(this).each(function() {
+      $(this).DisableMenu($(this).parent());
+    });
+  },
+
+  DisableMenu: function(element) {
       $(this).hide();
       $(element).removeClass("active");
       
       // Update the state.
       $(this).data("state", 0);
-    }
   }
 
 });
@@ -52,6 +61,7 @@ $(document).ready(function() {
       // Make sure that all dropdowns are closed.
        $(".menu").each(function() {
          $(this).hide().parent().removeClass("active");
+         $(this).data("state", 0);
        });
     });
 
@@ -62,19 +72,13 @@ $(document).ready(function() {
 
     // When you click on an icon execute the code below.
     $(".icon").click(function(e) {
-
       // When the icon holds a menu, show the menu.
       if ($(this).children(".menu").length > 0) {
-
-        $(".menu").each(function() {
-          // Hide the element and update the state.
-          $(this).hide().parent().removeClass("active");
-          $(this).data("state", 0);
-        });
 
         e.stopPropagation();
 
         $(".menu", this).EnableMenu(50, $(this));
+
       }
     });
 });
