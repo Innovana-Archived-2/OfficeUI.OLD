@@ -51,37 +51,38 @@ jQuery.fn.extend({
 
 });
 
-// Make sure the document is loaded and jQuery is available.
-$(document).ready(function() {
-
-  // Events handlers are placed here.
-
-    // When you click anywhere on the document, execute the following code.
-    $(document).click(function() {
-      // Make sure that all dropdowns are closed.
-       $(".menu").each(function() {
-         $(this).hide().parent().removeClass("active");
-         $(this).data("state", 0);
-       });
-    });
-
-    // When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
-    $("li[role=tab]:not(.application)").click(function() {
-      $(this).EnableTabContents();
-    });
-
-    // When you click on an icon execute the code below.
-    $(".icon").click(function(e) {
-      // When the icon holds a menu, show the menu.
-      if ($(this).children(".menu").length > 0) {
-
-        e.stopPropagation();
-
-        $(".menu", this).EnableMenu(50, $(this));
-
-      }
-    });
-});
+var OfficeUICoreInternal = {
+  AddHandlers: function() {
+  
+    // Events handlers are placed here.
+  
+      // When you click anywhere on the document, execute the following code.
+      $(document).click(function() {
+        // Make sure that all dropdowns are closed.
+         $(".menu").each(function() {
+           $(this).hide().parent().removeClass("active");
+           $(this).data("state", 0);
+         });
+      });
+  
+      // When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
+      $("li[role=tab]:not(.application)").click(function() {
+        $(this).EnableTabContents();
+      });
+  
+      // When you click on an icon execute the code below.
+      $(".icon").click(function(e) {
+        // When the icon holds a menu, show the menu.
+        if ($(this).children(".menu").length > 0) {
+  
+          e.stopPropagation();
+  
+          $(".menu", this).EnableMenu(50, $(this));
+  
+        }
+      });
+  }
+}
 
 var OfficeUICore = {
 
@@ -105,6 +106,8 @@ var OfficeUICore = {
     $(".smallicon").addClass("icon relative");
     $(".legend, .menu").addClass("absolute");
     $(".arrow").addClass("relative");
+    
+    OfficeUICoreInternal.AddHandlers();
   }
 
 }
