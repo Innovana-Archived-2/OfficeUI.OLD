@@ -1,5 +1,5 @@
 /* General styling for the ribbon. */
-.ribbon { height: 117px; }
+.ribbon { height: 117px; cursor: default; }
 
 /* General styling for the tabs. */
 .tabs, .tabs > UL, .tabs > UL LI { height: 24px; }
