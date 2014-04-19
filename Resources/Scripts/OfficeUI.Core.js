@@ -81,10 +81,13 @@ var OfficeUICore = {
 		for (var i = 0; i < 2; i++) {
 			var fun;
 			
-			if(i == 0)
+			if(i == 0) {
+				// First time, apply "filter" function to catch "element" if it matches the selectors.
 				fun = function(s) { return el.filter(s); };
-			else
+			} else {
+				// Second time, apply "find" to catch descendants that matches the selectors.
 				fun = function(s) { return el.find(s); };
+			}
 			
 			fun(".ribbon, .tabs").addClass("brd_btm_grey");
 			fun(".tabs UL, .menucontents UL").addClass("nopadding nomargin");
