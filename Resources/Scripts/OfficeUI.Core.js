@@ -131,7 +131,7 @@ var OfficeUICore = {
   /** Initialize the OfficeUI controls which are on the page. */
   Init: function() {
 	OfficeUICore.InitElement(document);
-    OfficeUICoreInternal.AddGlobalHandlers();
+	OfficeUICoreInternal.AddGlobalHandlers();
   }
 
 }
