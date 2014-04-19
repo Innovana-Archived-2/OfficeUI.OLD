@@ -13,7 +13,7 @@ li[role=tab] { padding-left: 12px; padding-right: 13px; border: 1px solid transp
 .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
 .icongroup { height: 75px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
 .arrow { bottom: 2px; left: 2px; }
-.seperator { background-color: #D4D4D4; height: 84px; margin-left: 7px; margin-top: 4px; width: 1px; }
+.seperator { background-color: #D4D4D4; height: 84px; margin-left: 5px; margin-right: 5px; margin-top: 4px; width: 1px; }
 
 /* Styling for the icons in the tabs. */
 .icon.active { background-color: #92c0e0; }
