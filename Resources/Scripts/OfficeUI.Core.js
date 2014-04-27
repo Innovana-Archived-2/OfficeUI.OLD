@@ -126,13 +126,11 @@ var OfficeUICore = {
 		    });
 
 		    // Set the remaing height of the contents, acoording to the window size.
-		    fun(".main_area").height($(window).height() - 25 - 118);
-			fun(".nav_inner").height(fun(".main_area").height() - 40);
+		    fun(".main_area").height($(window).height() - 25 - 118 - 25);
 
 		    // Make sure that the contents are resized when the window is resized.
 		    $(window).resize(function() {
-		    	fun(".main_area").height($(window).height() - 25 - 118);
-		    	fun(".nav_inner").height(fun(".main_area").height() - 40);
+		    	fun(".main_area").height($(window).height() - 25 - 118 -25);
 		    });
 		}
 	
