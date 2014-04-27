@@ -72,7 +72,7 @@ var OfficeUICoreInternal = {
 var OfficeUICore = {
 
 	/** Initialize an element and its descendants.
-	 * The initialization is done by placeing classes automatticly on the necessary elements.
+	 * The initialization is done by placing classes automatticly on the necessary elements.
 	 * That way the HTML is cleaner.
 	 */
 	InitElement: function(element) {
@@ -123,6 +123,16 @@ var OfficeUICore = {
 		        $(".menu", this).EnableMenu(50, $(this));
 		
 		      }
+		    });
+
+		    // Set the remaing height of the contents, acoording to the window size.
+		    fun(".main_area").height($(window).height() - 25 - 118);
+			fun(".nav_inner").height(fun(".main_area").height() - 40);
+
+		    // Make sure that the contents are resized when the window is resized.
+		    $(window).resize(function() {
+		    	fun(".main_area").height($(window).height() - 25 - 118);
+		    	fun(".nav_inner").height(fun(".main_area").height() - 40);
 		    });
 		}
 	
