@@ -91,8 +91,9 @@ var OfficeUICore = {
 		$(".smallicon").addClass("icon relative") // Make sure that a smallicon is displayed as an icon, relative.
 		$(".legend, .menu").addClass("absolute"); // Make sure that the legend and the menu's are displayed absolute.
 		$(".arrow").addClass("relative"); // Make sure that an arrow is placed as relative.
-		$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>');
-			
+		$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>'); // Make sure that every item in the breadcrumb there is an arrow, except the last one.
+		$('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>'); // Make sure that in a menuitem, on an li with the class "line" a line is added.
+
 		// When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
 		$("li[role=tab]:not(.application)").click(function() {
 			$(this).EnableTabContents();
