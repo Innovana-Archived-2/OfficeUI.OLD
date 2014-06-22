@@ -56,13 +56,15 @@ var OfficeUICoreInternal = {
 	
 	  // Events handlers are placed here.
 	
-	    // When you click anywhere on the document, execute the following code.
+	    // This event handler is executed when you click on the document.
 	    $(document).click(function() {
-	      // Make sure that all dropdowns are closed.
-	       $(".menu").each(function() {
-	         $(this).hide().parent().removeClass("active");
-	         $(this).data("state", 0);
-	       });
+
+			// The ribbon can contain items that shows a menu when you click on the icon.
+			// This menu should be hidden again when you click anywhere on the document.
+	        $(".menu").each(function() {
+	          $(this).hide().parent().removeClass("active");
+	          $(this).data("state", 0);
+	        });
 	    });
 	
 	}
@@ -75,71 +77,48 @@ var OfficeUICore = {
 	 * The initialization is done by placing classes automatticly on the necessary elements.
 	 * That way the HTML is cleaner.
 	 */
-	InitElement: function(element) {
-		var el = $(element);
+	InitElement: function() {		
+		$(".ribbon, .tabs").addClass("brd_btm_grey"); // Place a gray bottem line under the ribbon and under the tabs.
+		$(".tabs UL, .menucontents UL").addClass("nopadding nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
+		$(".menucontents UL LI").addClass("nowrap"); // Make sure that text is not wrapped in the menucontents.
+		$("li[role='tab']").addClass("inline"); // Make sure that every tab is displayed inline.
+		$("li[role='tab']:not(.application)").first().EnableTabContents(); // Enable the first, non-application tab.
+		$("li[role='tab'] span:first-child").addClass("uppercase"); // Make sure that the text of the tabs is always in uppercase.
+		$("li[role='tab'] .contents").addClass("absolute"); // Make sure that the contents of the tab are displayed absolute.
+		$(".group, .seperator").addClass("relative inline"); // Make sure that the seperator are relative placed and inline.
+		$(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("inline"); // Make sure that iconsgroups, smallicons, iconlegend, imageholder and menuholder are displayed inline.
+		$(".bigicon").addClass("icon relative inline center"); // Make sure that a bigicon is displayed as an icon, relative, inline and centered.
+		$(".smallicon").addClass("icon relative") // Make sure that a smallicon is displayed as an icon, relative.
+		$(".legend, .menu").addClass("absolute"); // Make sure that the legend and the menu's are displayed absolute.
+		$(".arrow").addClass("relative"); // Make sure that an arrow is placed as relative.
+		$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>');
+			
+		// When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
+		$("li[role=tab]:not(.application)").click(function() {
+			$(this).EnableTabContents();
+		});
 		
-		for (var i = 0; i < 2; i++) {
-			var fun;
-			
-			if(i == 0) {
-				// First time, apply "filter" function to catch "element" if it matches the selectors.
-				fun = function(s) { return el.filter(s); };
-			} else {
-				// Second time, apply "find" to catch descendants that matches the selectors.
-				fun = function(s) { return el.find(s); };
-			}
-			
-			fun(".ribbon, .tabs").addClass("brd_btm_grey");
-			fun(".tabs UL, .menucontents UL").addClass("nopadding nomargin");
-			fun(".menucontents UL LI").addClass("nowrap");
-			fun("li[role='tab']").addClass("inline");
-			
-			// Enable the first tab.
-			fun("li[role='tab']:not(.application)").first().EnableTabContents();
-			
-			fun("li span:first-child").addClass("uppercase");
-			fun("li[role='tab'] .contents").addClass("absolute");
-			fun(".group, .seperator").addClass("relative inline");
-			fun(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("inline");
-			fun(".bigicon").addClass("icon relative inline center");
-			fun(".smallicon").addClass("icon relative");
-			fun(".legend, .menu").addClass("absolute");
-			fun(".arrow").addClass("relative");
-			
-			// Attach handlers
-			
-		    // When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
-		    $("li[role=tab]:not(.application)").click(function() {
-		      $(this).EnableTabContents();
-		    });
-		
-		    // When you click on an icon execute the code below.
-		    $(".icon").click(function(e) {
-		      // When the icon holds a menu, show the menu.
-		      if ($(this).children(".menu").length > 0) {
-		
+		// Make sure that when you click on an icon that holds a menu, that the menu is showed.
+		$(".icon").click(function(e) {
+		    // When the icon holds a menu, show the menu.
+		    if ($(this).children(".menu").length > 0) {
 		        e.stopPropagation();
-		
 		        $(".menu", this).EnableMenu(50, $(this));
-		
-		      }
-		    });
+		     }
+		});
 
-		    // Set the remaing height of the contents, acoording to the window size.
-		    fun(".main_area").height($(window).height() - 25 - 118 - 25);
+		// Set the remaing height of the contents, acoording to the window size.
+		$(".main_area").height($(window).height() - 25 - 118 - 25 - 26);
 
-		    // Make sure that the contents are resized when the window is resized.
-		    $(window).resize(function() {
-		    	fun(".main_area").height($(window).height() - 25 - 118 -25);
-		    });
-		}
-	
+		// Make sure that the contents are resized when the window is resized.
+		$(window).resize(function() {
+		  	$(".main_area").height($(window).height() - 25 - 118 - 26);
+		});
 	},
 		
   /** Initialize the OfficeUI controls which are on the page. */
   Init: function() {
-	OfficeUICore.InitElement(document);
+	OfficeUICore.InitElement();
 	OfficeUICoreInternal.AddGlobalHandlers();
   }
-
 }
