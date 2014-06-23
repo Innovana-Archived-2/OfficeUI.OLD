@@ -18,6 +18,28 @@ jQuery.fn.extend({
     return $(this);
   },
 
+  // Enables the next available tab.
+  EnableNextTab: function() {
+  	// Actives the tab that is the next element.
+    var nextTab = $("li[role=tab].active").next();
+    var attribute = $(nextTab).attr('role');
+
+	if (attribute == 'tab') {
+        $(nextTab).EnableTabContents();
+    }
+  },
+
+  // Enables the previous available tab.
+  EnablePreviousTab: function() {
+  	// Actives the tab that is the previous element.
+    var previousTab = $("li[role=tab].active").prev();
+    var attribute = $(previousTab).attr('role');
+
+	if (attribute == 'tab' && !$(previousTab).hasClass('application')) {
+        $(previousTab).EnableTabContents();
+    }
+  },
+
   // Enable the menu for a given icon.
   //  Parameters:
   //    Timekey: The duration it takes to slide down the element., 
@@ -66,7 +88,24 @@ var OfficeUICoreInternal = {
 	          $(this).data("state", 0);
 	        });
 	    });
+
+	    // Bind the event for changing tabs on mouse scroll. (Firefox).
+	    $(".ribbon").bind('DOMMouseScroll', function(e){
+        	if (e.originalEvent.detail > 0) { $(this).EnableNextTab(); }
+        	else { $(this).EnablePreviousTab();	}
+
+        	//prevent page fom scrolling
+        	return false;
+    	}); 
 	
+		// Bind the event for changing tabs on mouse scroll. (Firefox).
+	    $(".ribbon").bind('mousewheel', function(e){
+        	if (e.originalEvent.wheelDelta < 0) { $(this).EnableNextTab(); }
+        	else { $(this).EnablePreviousTab();	}
+
+        	//prevent page fom scrolling
+        	return false;
+    	}); 
 	}
 
 }
