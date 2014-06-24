@@ -90,22 +90,13 @@ var OfficeUICoreInternal = {
 	    });
 
 	    // Bind the event for changing tabs on mouse scroll. (Firefox).
-	    $(".ribbon").bind('DOMMouseScroll', function(e){
-        	if (e.originalEvent.detail > 0) { $(this).EnableNextTab(); }
+	    $(".ribbon").on('DOMMouseScroll mousewheel', function(e){
+        	if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { $(this).EnableNextTab(); }
         	else { $(this).EnablePreviousTab();	}
 
         	//prevent page fom scrolling
         	return false;
-    	}); 
-	
-		// Bind the event for changing tabs on mouse scroll. (Firefox).
-	    $(".ribbon").bind('mousewheel', function(e){
-        	if (e.originalEvent.wheelDelta < 0) { $(this).EnableNextTab(); }
-        	else { $(this).EnablePreviousTab();	}
-
-        	//prevent page fom scrolling
-        	return false;
-    	}); 
+    	});
 	}
 
 }
