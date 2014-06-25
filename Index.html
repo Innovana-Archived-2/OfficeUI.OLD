@@ -28,13 +28,13 @@
                   <div class="icongroup">
                     <a href="#">
                       <div class="bigicon">
-                        <img alt="New email" src="Resources/Icons/NewMailMessage.png" />
+                        <img id="newEmail" alt="New email" src="Resources/Icons/NewMailMessage.png" />
                         <div class="iconlegend">New<br />Email</div>
                       </div>
                     </a>
                     <a href="#">
                       <div class="bigicon">
-                        <img alt="New items" src="Resources/Icons/MailNewItemMenu.png" />
+                        <img id="newItems" alt="New items" src="Resources/Icons/MailNewItemMenu.png" />
                         <div class="iconlegend">
                           New<br />Items
                           <i class="fa fa-caret-down"></i>
@@ -150,13 +150,13 @@
                   <div class="icongroup">
                     <a href="#">
                       <div class="smallicon">
-                        <img alt="Ignore" src="Resources/Icons/IgnoreConversation.png" />
+                        <img id="ignore" alt="Ignore" src="Resources/Icons/IgnoreConversation.png" />
                         <div class="iconlegend">Ignore</div>
                       </div>
                     </a>
                     <a href="#">
                       <div class="smallicon">
-                        <img alt="Clean up" src="Resources/Icons/CleanUpMenu.png" />
+                        <img id="cleanup" alt="Clean up" src="Resources/Icons/CleanUpMenu.png" />
                         <div class="iconlegend">Clean Up</div>
                         <i class="fa fa-caret-down"></i>
                         <div class="menu">
@@ -175,42 +175,6 @@
                                   <div class="imageHolder">&nbsp;</div>
                                   <div class="menuItem">Clean Up Folder</div>
                                 </div>
-
-                                                                  <div class="subMenuArrow">
-                                    <i class="fa fa-caret-right"></i>
-                                    <div class="menu">
-                                      <div class="menucontents">
-                                        <ul>
-                                          <li class="menuEntry line">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">With paper</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                              <div class="imageHolder">&nbsp;</div>
-                                              <div class="menuItem">Text without layout</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Text with layout</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">HTML</div>
-                                            </div>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  </div>
-
-
                               </li>
                               <li>
                                 <div>
@@ -225,15 +189,15 @@
                     </a>
                     <a href="#">
                       <div class="smallicon">
-                        <img alt="Junk" src="Resources/Icons/JunkMenu.png" />
+                        <img id="junk" alt="Junk" src="Resources/Icons/JunkMenu.png" />
                         <div class="iconlegend">Junk</div>
                       </div>
                     </a>
                   </div>
                   <div class="icongroup">
-                    <a href="#">
-                      <div class="bigicon disabled">
-                        <img alt="Delete" src="Resources/Icons/Delete.png" />
+                    <a href="http://www.google.be">
+                      <div class="bigicon">
+                        <img id="delete" alt="Delete" src="Resources/Icons/Delete.png" />
                         <div class="iconlegend">Delete</div>
                       </div>
                     </a>
@@ -326,6 +290,7 @@
     <!-- Required scripts for the OfficeUI. -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="Resources/Scripts/OfficeUI.Core.Api.js" script="text/javascript"></script>
     <script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
 
     <!-- Initialize OfficeUI. -->
