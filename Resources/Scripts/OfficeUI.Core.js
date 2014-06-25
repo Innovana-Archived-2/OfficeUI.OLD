@@ -80,13 +80,12 @@ var OfficeUICoreInternal = {
 	
 	    // This event handler is executed when you click on the document.
 	    $(document).click(function() {
-
-			// The ribbon can contain items that shows a menu when you click on the icon.
-			// This menu should be hidden again when you click anywhere on the document.
-	        $(".menu").each(function() {
-	          $(this).hide().parent().removeClass("active");
-	          $(this).data("state", 0);
-	        });
+  			// The ribbon can contain items that shows a menu when you click on the icon.
+  			// This menu should be hidden again when you click anywhere on the document.
+	      $(".menu").each(function() {
+	        $(this).hide().parent().removeClass("active");
+	        $(this).data("state", 0);
+	      });
 	    });
 
 	    // Bind the event for changing tabs on mouse scroll. (Firefox).
@@ -134,9 +133,31 @@ var OfficeUICore = {
 		    // When the icon holds a menu, show the menu.
 		    if ($(this).children(".menu").length > 0) {
 		        e.stopPropagation();
-		        $(".menu", this).EnableMenu(50, $(this));
+		        $(".menu", this).first().EnableMenu(100, $(this));
 		     }
 		});
+
+    // When you click on a menu that has an subMenu which is active, don't hide the menu.
+    $('.menuEntry').click(function(e) {
+      // If it's a submenu, stop executing the event, which means that the original menu item will not be
+      if ($(".subMenuHolder", this).length > 0) {
+        e.stopPropagation();
+      }
+    });
+
+    $("LI.menuEntry").on("mouseover", function(e) {
+      if ($(this).find(".menu").length > 0) {
+        $(this).addClass("active");
+        if (!$(".menu", this).is(":visible")) {
+          $(".menu", this).show("slide", { direction: "left" }, 100);
+        }
+      } else {
+        if ($(this).parents(".menuEntry.active").length == 0) {
+          $(".subMenuArrow > .menu").hide();
+          console.log("Everything should be hidden right now.");
+        }
+      }
+    });
 
 		// Set the remaing height of the contents, acoording to the window size.
 		$(".main_area").height($(window).height() - 25 - 118 - 25 - 26);
@@ -149,7 +170,7 @@ var OfficeUICore = {
 		
   /** Initialize the OfficeUI controls which are on the page. */
   Init: function() {
-	OfficeUICore.InitElement();
-	OfficeUICoreInternal.AddGlobalHandlers();
+	 OfficeUICore.InitElement();
+	 OfficeUICoreInternal.AddGlobalHandlers();
   }
 }

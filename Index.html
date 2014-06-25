@@ -42,7 +42,7 @@
                         <div class="menu">
                           <div class="menucontents">
                             <ul>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="E-mail message" src="Resources/Icons/EmailMessage.png" />
@@ -50,7 +50,7 @@
                                   <div class="menuItem">E-Mail Message</div>
                                 </div>
                               </li>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Appointment" src="Resources/Icons/Appointment.png" />
@@ -58,7 +58,7 @@
                                   <div class="menuItem">Appointment</div>
                                 </div>
                               </li>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Meeting" src="Resources/Icons/Meeting.png" />
@@ -66,7 +66,7 @@
                                   <div class="menuItem">Meeting</div>
                                 </div>
                               </li>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Contact" src="Resources/Icons/Contact.png" />
@@ -74,7 +74,7 @@
                                   <div class="menuItem">Contact</div>
                                 </div>
                               </li>
-                              <li class="line">
+                              <li class="menuEntry line">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Task" src="Resources/Icons/Task.png" />
@@ -82,66 +82,37 @@
                                   <div class="menuItem">Task</div>
                                 </div>
                               </li>
-                              <li>
-                                <div id="wrap" style="position:relative;">
-                                  <div id="left" style="margin-right:25px;">
+                              <li class="menuEntry">
+                                <div class="subMenuHolder">
+                                  <div>
                                     <div class="imageHolder">&nbsp;</div>
                                     <div class="menuItem">E-Mail Message Using</div>
                                   </div>
-                                  <div id="right" style="position:absolute;width:10px;right:0;top:0;">
+                                  <div class="subMenuArrow">
                                     <i class="fa fa-caret-right"></i>
-                                    <div class="menu" style="top:-1px; left:16px">
+                                    <div class="menu">
                                       <div class="menucontents">
                                         <ul>
-                                          <li class="line">
-                                            <div id="wrap" style="position:relative;">
+                                          <li class="menuEntry line">
+                                            <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">With paper</div>
                                             </div>
                                           </li>
-                                          <li>
-                                            <div id="wrap" style="position:relative;">
-                                              <div id="left" style="margin-right:25px;">
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Text without layout</div>
-                                              </div>
-                                              <div id="right" style="position:absolute;width:10px;right:0;top:0;">
-                                                <i class="fa fa-caret-right"></i>
-                                                <div class="menu" style="top:-1px; left:16px">
-                                                  <div class="menucontents">
-                                                    <ul>
-                                                      <li>
-                                                        <div id="wrap" style="position:relative;">
-                                                            <div class="imageHolder">&nbsp;</div>
-                                                            <div class="menuItem">Known SMTP server</div>
-                                                        </div>
-                                                      </li>
-                                                      <li class="line">
-                                                        <div id="wrap" style="position:relative;">
-                                                            <div class="imageHolder">&nbsp;</div>
-                                                            <div class="menuItem">Unkown SMTP server</div>
-                                                        </div>
-                                                      </li>
-                                                      <li>
-                                                        <div id="wrap" style="position:relative;">
-                                                            <div class="imageHolder">&nbsp;</div>
-                                                            <div class="menuItem">Settings</div>
-                                                        </div>
-                                                      </li>
-                                                    </ul>
-                                                  </div>
-                                                </div>
-                                              </div>
+                                          <li class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Text without layout</div>
                                             </div>
                                           </li>
-                                          <li>
-                                            <div id="wrap" style="position:relative;">
+                                          <li class="menuEntry">
+                                            <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Text with layout</div>
                                             </div>
                                           </li>
-                                          <li>
-                                            <div id="wrap" style="position:relative;">
+                                          <li class="menuEntry">
+                                            <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">HTML</div>
                                             </div>
@@ -152,13 +123,13 @@
                                   </div>
                                 </div>
                               </li>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">&nbsp;</div>
                                   <div class="menuItem">More Items</div>
                                 </div>
                               </li>
-                              <li>
+                              <li class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Lync Meeting" src="Resources/Icons/Lync.png" />
@@ -204,6 +175,42 @@
                                   <div class="imageHolder">&nbsp;</div>
                                   <div class="menuItem">Clean Up Folder</div>
                                 </div>
+
+                                                                  <div class="subMenuArrow">
+                                    <i class="fa fa-caret-right"></i>
+                                    <div class="menu">
+                                      <div class="menucontents">
+                                        <ul>
+                                          <li class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">With paper</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Text without layout</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Text with layout</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">HTML</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
                               </li>
                               <li>
                                 <div>
