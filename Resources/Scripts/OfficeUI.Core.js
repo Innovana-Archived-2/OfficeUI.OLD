@@ -83,7 +83,7 @@ var OfficeUICoreInternal = {
       // Section: Submenu handling. 
 
         // Open up the submenu when you hover on the item that holds the submenu.
-        $("LI.menuEntry").on("click mouseenter", function(e) {
+        $("LI.menuEntry:not(.disabled)").on("mouseenter", function(e) {
           e.stopPropagation();
           // Check if the item holds a submenu.
           if ($(".subMenuHolder", this).length > 0) {
