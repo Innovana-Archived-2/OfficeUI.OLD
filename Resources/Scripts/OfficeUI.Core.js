@@ -1,32 +1,11 @@
 // Extend the jQuery FN so that new methods can be called.
 jQuery.fn.extend({
-  
-  // Enable the tab contents for a given tab element.
-  EnableTabContents: function() {
-    
-    // Start by deactiving every tab element on the page.
-    $("li[role=tab]").each(function(index) {
-      $(this).removeClass("active");
-      $(".contents", this).removeClass("active");
-    });
-
-    // Activate the tab which is requested.
-    $(this).addClass("active");
-    $(".contents", this).addClass("active");
-
-    // Return the "tab" element.
-    return $(this);
-  },
-
   // Enables the next available tab.
   EnableNextTab: function() {
   	// Actives the tab that is the next element.
     var nextTab = $("li[role=tab].active").next();
-    var attribute = $(nextTab).attr('role');
 
-	if (attribute == 'tab') {
-        $(nextTab).EnableTabContents();
-    }
+    OfficeUICoreAPI.EnableTab($(nextTab).Id());
   },
 
   // Enables the previous available tab.
@@ -36,7 +15,7 @@ jQuery.fn.extend({
     var attribute = $(previousTab).attr('role');
 
 	if (attribute == 'tab' && !$(previousTab).hasClass('application')) {
-        $(previousTab).EnableTabContents();
+        OfficeUICoreAPI.EnableTab($(previousTab).Id());
     }
   },
 
@@ -78,6 +57,17 @@ var OfficeUICoreInternal = {
 	
 	  // Events handlers are placed here.
 	
+      // Executed when you click on any icon which is not disabled.
+      $(".icon").on("click", function(e) {
+        if (!$(this).hasClass("disabled")) {
+          // When the icon holds a menu, show the menu.
+          if ($(this).children(".menu").length > 0) {
+              e.stopPropagation();
+              $(".menu", this).first().EnableMenu(100, $(this));
+           }
+         } 
+      });
+
 	    // This event handler is executed when you click on the document.
 	    $(document).click(function() {
   			// The ribbon can contain items that shows a menu when you click on the icon.
@@ -96,9 +86,34 @@ var OfficeUICoreInternal = {
         	//prevent page fom scrolling
         	return false;
     	});
-	}
 
-}
+      // Section: Experimental code.
+
+        // When you click on a menu that has an subMenu which is active, don't hide the menu.
+        $('.menuEntry').click(function(e) {
+          // If it's a submenu, stop executing the event, which means that the original menu item will not be
+          if ($(".subMenuHolder", this).length > 0) {
+            e.stopPropagation();
+          }
+        });
+
+        $("LI.menuEntry").on("mouseover", function(e) {
+          if ($(this).find(".menu").length > 0) {
+            $(this).addClass("active");
+            if (!$(".menu", this).is(":visible")) {
+              $(".menu", this).show("slide", { direction: "left" }, 100);
+            }
+          } else {
+            if ($(this).parents(".menuEntry.active").length == 0) {
+              $(".subMenuArrow > .menu").hide();
+              console.log("Everything should be hidden right now.");
+            }
+          }
+        });
+
+      // End - Section: Experimental code.
+	} 
+} 
 
 var OfficeUICore = {
 
@@ -111,9 +126,10 @@ var OfficeUICore = {
 		$(".tabs UL, .menucontents UL").addClass("nopadding nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
 		$(".menucontents UL LI").addClass("nowrap"); // Make sure that text is not wrapped in the menucontents.
 		$("li[role='tab']").addClass("inline"); // Make sure that every tab is displayed inline.
-		$("li[role='tab']:not(.application)").first().EnableTabContents(); // Enable the first, non-application tab.
+		OfficeUICoreAPI.EnableTab($("li[role='tab']:not(.application)").first().Id()); // Enable the first, non-application tab.
 		$("li[role='tab'] span:first-child").addClass("uppercase"); // Make sure that the text of the tabs is always in uppercase.
 		$("li[role='tab'] .contents").addClass("absolute"); // Make sure that the contents of the tab are displayed absolute.
+    $(".group").after("<div class='seperator'>&nbsp;</div>");
 		$(".group, .seperator").addClass("relative inline"); // Make sure that the seperator are relative placed and inline.
 		$(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("inline"); // Make sure that iconsgroups, smallicons, iconlegend, imageholder and menuholder are displayed inline.
 		$(".bigicon").addClass("icon relative inline center"); // Make sure that a bigicon is displayed as an icon, relative, inline and centered.
@@ -125,39 +141,8 @@ var OfficeUICore = {
 
 		// When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
 		$("li[role=tab]:not(.application)").click(function() {
-			$(this).EnableTabContents();
+			OfficeUICoreAPI.EnableTab($(this).Id());
 		});
-		
-		// Make sure that when you click on an icon that holds a menu, that the menu is showed.
-		$(".icon").click(function(e) {
-		    // When the icon holds a menu, show the menu.
-		    if ($(this).children(".menu").length > 0) {
-		        e.stopPropagation();
-		        $(".menu", this).first().EnableMenu(100, $(this));
-		     }
-		});
-
-    // When you click on a menu that has an subMenu which is active, don't hide the menu.
-    $('.menuEntry').click(function(e) {
-      // If it's a submenu, stop executing the event, which means that the original menu item will not be
-      if ($(".subMenuHolder", this).length > 0) {
-        e.stopPropagation();
-      }
-    });
-
-    $("LI.menuEntry").on("mouseover", function(e) {
-      if ($(this).find(".menu").length > 0) {
-        $(this).addClass("active");
-        if (!$(".menu", this).is(":visible")) {
-          $(".menu", this).show("slide", { direction: "left" }, 100);
-        }
-      } else {
-        if ($(this).parents(".menuEntry.active").length == 0) {
-          $(".subMenuArrow > .menu").hide();
-          console.log("Everything should be hidden right now.");
-        }
-      }
-    });
 
 		// Set the remaing height of the contents, acoording to the window size.
 		$(".main_area").height($(window).height() - 25 - 118 - 25 - 26);

@@ -1,52 +1,15 @@
-// Extend the jQuery FN so that new methods can be called.
-// Those new methods are needed in the API.
-jQuery.fn.extend({
-  
-  // Activates the element on which this function is called by adding the class "active" on it.
-  Activate: function() {
-    $(this).addClass("active");
-  },
+// OffficeWebControls API.
+//    Created by: Kevin De Coninck.
+//    Version: 1.0
+//    Release date: 26/06/2014
+//
+// The OfficeWebControls API contains a set of functions that makes it very easy to work with all the different elements which are included in the OfficeWebControls.
+// The following functions are provided:
+//    - EnableTab:              Enables a given tab by it's id.
+//    - EnableTabIndex:         Enables a given tab by it's index.
+//    - EnableRibbonAction:     Enables a specific action on the ribbon by it's id.
+//    - DisableRibbonAction:    Disables a specific action on the ribbon by it's id.
 
-  // Deactivate the element on which this function is called by removing the class "active" from it.
-  Decativate: function() {
-    $(this).removeClass("active");
-  },
-
-  // Log a message when an element is not found.
-  // Parameters:
-  //    message:    The message to write to the console.
-  // Returns:
-  //    True if the object has been found, otherwise false.
-  LogWhenNotFound: function(message) {
-    if ($(this).length == 0) {
-      console.log(message);
-
-      return false;
-    }
-
-    return true;
-  }
-});
-
-// Provides internal helpers for the OfficeUICoreAPI functions.
-var OfficeUICoreHelpers = {
-
-  // Enables a given tab, based on the id of the tab.
-  // Parameters: 
-  //    tabId:    The id of the tab that should be showed.
-  ActivateTab: function(tabId) {
-    $("#" + tabId).Activate();
-    $(".contents", $("#" + tabId)).Activate();
-  },
-
-  // Deactivates a given tab, based on the id of the tab.
-  // Parameters: 
-  //    tabId:    The id of the tab element that should be deactivated.
-  DeactivateTab: function(tabId) {
-    $("#" + tabId).Decativate();
-    $(".contents", $("#" + tabId)).Decativate();
-  }
-}
 
 // Defines the API that can be used to perform some actions ont he OfficeWebControls.
 var OfficeUICoreAPI = {
@@ -60,9 +23,7 @@ var OfficeUICoreAPI = {
     if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found."))
     {   
       // Start by deactiving every tab element on the page.
-      $("li[role=tab]").each(function(index) {
-        OfficeUICoreHelpers.DeactivateTab($(this).attr("id"))
-      });
+      OfficeUICoreHelpers.DecativateAllTabs();
 
       // Marks the tab as the active one and display the contents for the tab.
       OfficeUICoreHelpers.ActivateTab(tabId);
@@ -79,20 +40,20 @@ var OfficeUICoreAPI = {
     var tabToEnable = $("li[role=tab]:not(.application):eq(" + tabIndex + ")");
 
     // Enables the tab.
-    OfficeUICoreAPI.EnableTab($(tabToEnable));
+    OfficeUICoreAPI.EnableTab($(tabToEnable).attr('id'));
   }, 
 
   // Enables a given icon on the ribbon.
   // Parameters:
   //    ribbonActionId:     The id of the image that holds the action that you want to enable.
   EnableRibbonAction: function(ribbonActionId) {
-    if ($("#" + ribbonActionId).length == 0) { 
-      console.log("Element with id '" + ribbonActionId + "' not found.");
-    } else if ($("#" + ribbonActionId).parent().attr("class").indexOf("icon") > -1) {
-      $("#" + ribbonActionId).parent().removeClass("disabled");
-      $("#" + ribbonActionId).closest("a").unbind("click");
-    } else {
-      console.log("The function 'DisableRibbonIcon' is only supported on icons.");
+    var ribbonElement = $("#" + ribbonActionId);
+    if ($(ribbonElement).LogWhenNotFound("Element with id '" + ribbonActionId + "' not found.")) {
+      if (OfficeUICoreHelpers.IsRibbonActionAnIcon($(ribbonElement))) {
+        OfficeUICoreHelpers.EnableRibbonAction($(ribbonElement));
+      } else {
+        console.log("The function 'EnableRibbonIcon' is only supported on icons.");
+      }
     }
   },
 
@@ -100,16 +61,56 @@ var OfficeUICoreAPI = {
   // Parameters:
   //    ribbonActionId:     The id of the image that holds the action that you want to disable.
   DisableRibbonAction: function(ribbonActionId) {
-    if ($("#" + ribbonActionId).length == 0) { 
-      console.log("Element with id '" + ribbonActionId + "' not found.");
-    } else if ($("#" + ribbonActionId).parent().attr("class").indexOf("icon") > -1) {
-      $("#" + ribbonActionId).parent().addClass("disabled");
-      $("#" + ribbonActionId).closest("a").on("click", function(e) {
-        e.preventDefault();
-        return false;
-      })
-    } else {
-      console.log("The function 'DisableRibbonIcon' is only supported on icons.");
+    var ribbonElement = $("#" + ribbonActionId);
+    if ($(ribbonElement).LogWhenNotFound("Element with id '" + ribbonActionId + "' not found.")) {
+      if (OfficeUICoreHelpers.IsRibbonActionAnIcon($(ribbonElement))) {
+        OfficeUICoreHelpers.DisableRibbonAction($(ribbonElement));
+      } else {
+        console.log("The function 'DisableRibbonIcon' is only supported on icons.");
+      }
     }
-  }
+  },
+
+  // Disable a menu entry.
+  // Parameters:
+  //    menuEntryId:    The id of the menu entry that should be disabled.
+  DisableMenuEntry: function(menuEntryId) {
+    var menuEntryElement = $("#" + menuEntryId);
+    if ($(menuEntryElement).LogWhenNotFound("Element with id '" + menuEntryId + "' not found.")) {
+      $(menuEntryElement).Disable();
+    }
+  },
+
+  // Sends a notification to the user by showing it in the statusbar of the application.
+  // Parameters:
+  //    message:      The message that you want to send to the user.
+  //    options:      The options than can be specified for this function.
+  //                  When not specified, the defaults are used (see NotifyDefault variable).
+  // Remarks:
+  //    The options have various parameters which are listed below:
+  //    - Time: The time that a single animation will take. The notify will have 4 animations (fade-out, fade-in, fade-out and fade-in again).
+  //    - Flash: A boolean that indicates if a flash needs to occur.
+  //             Set to true to get attention of the user.
+  //             Set to false when you just want to change the text, without notifying the user.
+  //    - OnComplete: An event which is executed when the animation is completed.
+  Notify: function(message, options) {
+    // Sets the options to the default ones when not specified.
+    options = $.extend({}, NotifyDefault, options);
+
+    $("#notificationArea").html(message);
+    if (options.Flash) { 
+      $("#notificationArea").Flash(options.Time, options.OnComplete);
+    }
+  },
 }
+
+// Section: Needed variables for the functions in the API.
+
+  // Default options that are used when notifying a user through the 'Notify(message, options)' function.
+  var NotifyDefault = {
+    Time: 150,
+    Flash: true,
+    OnComplete: function() { }
+  }
+
+// End - Section: Needed variables for the functions in the API.

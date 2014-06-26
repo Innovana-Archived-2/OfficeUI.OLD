@@ -13,7 +13,7 @@
 	<body class="nopadding nomargin">
 		<div id="OfficeUI">
 			<div class="title">
-				<span>OfficeWebControls - Demo (Version 1.0.2)</span>
+				<span>OfficeWebControls - Demo (Version 2.0 Pre-release)</span>
 			  </div>
  			<div class="ribbon">
  				<div class="tabs">
@@ -42,7 +42,7 @@
                         <div class="menu">
                           <div class="menucontents">
                             <ul>
-                              <li class="menuEntry">
+                              <li id="menuEmailMessage" class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="E-mail message" src="Resources/Icons/EmailMessage.png" />
@@ -50,7 +50,7 @@
                                   <div class="menuItem">E-Mail Message</div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuAppointment" class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Appointment" src="Resources/Icons/Appointment.png" />
@@ -58,7 +58,7 @@
                                   <div class="menuItem">Appointment</div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuMeeting" class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Meeting" src="Resources/Icons/Meeting.png" />
@@ -66,7 +66,7 @@
                                   <div class="menuItem">Meeting</div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuContact" class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Contact" src="Resources/Icons/Contact.png" />
@@ -74,7 +74,7 @@
                                   <div class="menuItem">Contact</div>
                                 </div>
                               </li>
-                              <li class="menuEntry line">
+                              <li id="menuTask" class="menuEntry line">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Task" src="Resources/Icons/Task.png" />
@@ -82,7 +82,7 @@
                                   <div class="menuItem">Task</div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuEmailMessageUsing" class="menuEntry">
                                 <div class="subMenuHolder">
                                   <div>
                                     <div class="imageHolder">&nbsp;</div>
@@ -93,25 +93,25 @@
                                     <div class="menu">
                                       <div class="menucontents">
                                         <ul>
-                                          <li class="menuEntry line">
+                                          <li id="menuMoreStationary" class="menuEntry line">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">With paper</div>
+                                                <div class="menuItem">More stationary...</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuPlainText" class="menuEntry">
                                             <div>
                                               <div class="imageHolder">&nbsp;</div>
-                                              <div class="menuItem">Text without layout</div>
+                                              <div class="menuItem">Plain Text</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuRichText" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Text with layout</div>
+                                                <div class="menuItem">Richt Text</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuHTML" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">HTML</div>
@@ -124,9 +124,62 @@
                                 </div>
                               </li>
                               <li class="menuEntry">
-                                <div>
-                                  <div class="imageHolder">&nbsp;</div>
-                                  <div class="menuItem">More Items</div>
+                                <div class="subMenuHolder">
+                                  <div>
+                                    <div class="imageHolder">&nbsp;</div>
+                                    <div class="menuItem">More Items</div>
+                                  </div>
+                                  <div class="subMenuArrow">
+                                    <i class="fa fa-caret-right"></i>
+                                    <div class="menu">
+                                      <div class="menucontents">
+                                        <ul>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Post in This Folder</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Contact Group</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Task Request</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Internet Fax</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose Form...</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose InfoPath Form...</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Outlook Data File...</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </li>
                               <li class="menuEntry">
@@ -145,7 +198,7 @@
                   </div>
                   <div class="legend">New</div>
                 </div>     
-                <div class="seperator">&nbsp;</div>
+                
                 <div class="group">
                   <div class="icongroup">
                     <a href="#">
@@ -195,7 +248,7 @@
                     </a>
                   </div>
                   <div class="icongroup">
-                    <a href="http://www.google.be">
+                    <a href="#">
                       <div class="bigicon">
                         <img id="delete" alt="Delete" src="Resources/Icons/Delete.png" />
                         <div class="iconlegend">Delete</div>
@@ -204,7 +257,7 @@
                   </div>
                   <div class="legend">New</div>
                 </div> 
-                <div class="seperator">&nbsp;</div>
+
                 <div class="group">
                   <div class="icongroup">
                     <a href="#">
@@ -228,7 +281,7 @@
                   </div>
                   <div class="legend">Respond</div>
                 </div> 
-                <div class="seperator">&nbsp;</div>
+
               </div>
  						</li>
  						<li role="tab" id="tabSendReceive">
@@ -260,19 +313,39 @@
         <div class="navigation">
           <div class="nav_inner">
             <ul>
-              <a href="#" class="active"><li>Menu item 1</li></a>
+              <li>
+                <a href="#" class="active">
+                  Menu item 1
+                </a>
+              </li>
             </ul>
             <ul>
-              <a href="#"><li>Menu item 2</li></a>
+              <li>
+                <a href="#">
+                  Menu item 2
+                </a>
+              </li>
             </ul>
             <ul>
-              <a href="#"><li>Menu item 3</li></a>
+              <li>
+                <a href="#">
+                  Menu item 3
+                </a>
+              </li>            
             </ul>
             <ul>
-              <a href="#"><li>Menu item 4</li></a>
+              <li>
+                <a href="#">
+                  Menu item 4
+                </a>
+              </li>
             </ul>
             <ul>
-              <a href="#"><li>Menu item 5</li></a>
+              <li>
+                <a href="#">
+                  Menu item 5
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -281,7 +354,7 @@
         </div>
       </div>
       <div class="footer">
-        <div class="message">
+        <div id="notificationArea" class="message">
           Notification area: Any message can come here.
         </div>
       </div>
@@ -290,8 +363,9 @@
     <!-- Required scripts for the OfficeUI. -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script src="Resources/Scripts/OfficeUI.Core.Api.js" script="text/javascript"></script>
-    <script src="Resources/Scripts/OfficeUI.Core.js" script="text/javascript"></script>
+    <script src="Resources/Scripts/OfficeUI.Core.Api.Helpers.js"></script>
+    <script src="Resources/Scripts/OfficeUI.Core.Api.js"></script>
+    <script src="Resources/Scripts/OfficeUI.Core.js"></script>
 
     <!-- Initialize OfficeUI. -->
     <script type="text/javascript">
