@@ -82,6 +82,9 @@ var OfficeUICoreInternal = {
 
       // Section: Submenu handling. 
 
+        // Variables needed for this secion.
+        var waitHandle;
+
         // Open up the submenu when you hover on the item that holds the submenu.
         $("LI.menuEntry:not(.disabled)").on("mouseenter", function(e) {
           e.stopPropagation();
