@@ -1,22 +1,14 @@
-// Extend the jQuery FN so that new methods can be called.
-jQuery.fn.extend({
-  // Enables the next available tab.
+// Provides the core functions for the workings of the OfficeWebControls.
+var OfficeUICoreInternal = {
+  
+  // Enables the next available tab (except the application tab).
   EnableNextTab: function() {
-  	// Actives the tab that is the next element.
-    var nextTab = $("li[role=tab].active").next();
-
-    OfficeUICoreAPI.EnableTab($(nextTab).Id());
+    OfficeUICoreAPI.EnableTab($($("li[role=tab].active").next()).Id());
   },
 
-  // Enables the previous available tab.
+  // Enables the previous available tab (except the application tab).
   EnablePreviousTab: function() {
-  	// Actives the tab that is the previous element.
-    var previousTab = $("li[role=tab].active").prev();
-    var attribute = $(previousTab).attr('role');
-
-	if (attribute == 'tab' && !$(previousTab).hasClass('application')) {
-        OfficeUICoreAPI.EnableTab($(previousTab).Id());
-    }
+    OfficeUICoreAPI.EnableTab($($("li[role=tab]:not([role=application]).active").prev()).Id());
   },
 
   // Enable the menu for a given icon.
@@ -25,91 +17,115 @@ jQuery.fn.extend({
   //    Elementkey: The element on which the "active" class should be set. 
   EnableMenu: function(time, element) {
     // Check if the menu is closed. If that's the case, we should show it.
-    if(!$(this).data("state") || $(this).data("state") == 0) { 
-      $(this).show("slide", { direction: "up" }, time);
-      $(element).addClass("active");
+    if(!$(element).data("state") || $(element).data("state") == 0) { 
+      $(element).show("slide", { direction: "up" }, time).Activate();
 
       // Update the current state.
-      $(this).data("state", 1);
+      $(element).data("state", 1);
 
     // Menu is visible, so let's close it.
-    } else if ($(this).data("state") == 1) { 
-      $(this).DisableMenu($(element));
-    }
+    } else if ($(element).data("state") == 1) {
+      // Disables all the menuitems, so that when you request the menu again, it's initial state is loaded.
+      $(".menu").each(function() {
+          $(this).hide().parent().Deactivate();
+      });
 
-    $(".menu").not(this).each(function() {
-      $(this).DisableMenu($(this).parent());
-    });
+      OfficeUICoreInternal.DisableMenu($(element));
+    }
   },
 
+  // Disables a menu.
+  //  Parameters:
+  //      element:    The element (menu) that should be hidden.
   DisableMenu: function(element) {
-      $(this).hide();
-      $(element).removeClass("active");
+    $(element).hide().Deactivate();
       
-      // Update the state.
-      $(this).data("state", 0);
-  }
+    // Update the state.
+    $(element).data("state", 0);
+  },
 
-});
-
-var OfficeUICoreInternal = {
+  // Add's all the events handlers for the application.
 	AddGlobalHandlers: function() {
 	
 	  // Events handlers are placed here.
 	
+      // This event handler is executed when you click on the document.
+      $(document).click(function() {
+        // The ribbon can contain items that shows a menu when you click on the icon.
+        // This menu should be hidden again when you click anywhere on the document.
+        $(".menu").each(function() {
+          $(this).hide().parent().Deactivate();
+          $(this).data("state", 0);
+        });
+      });
+
       // Executed when you click on any icon which is not disabled.
       $(".icon").on("click", function(e) {
-        if (!$(this).hasClass("disabled")) {
-          // When the icon holds a menu, show the menu.
-          if ($(this).children(".menu").length > 0) {
+        if (!$(this).hasClass("disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
+          if ($(this).HoldsMenu()) { // Check if it's a menu.
               e.stopPropagation();
-              $(".menu", this).first().EnableMenu(100, $(this));
+              $(this).Activate();
+              OfficeUICoreInternal.EnableMenu(100, $(".menu", this).first());
            }
          } 
       });
 
-	    // This event handler is executed when you click on the document.
-	    $(document).click(function() {
-  			// The ribbon can contain items that shows a menu when you click on the icon.
-  			// This menu should be hidden again when you click anywhere on the document.
-	      $(".menu").each(function() {
-	        $(this).hide().parent().removeClass("active");
-	        $(this).data("state", 0);
-	      });
-	    });
-
-	    // Bind the event for changing tabs on mouse scroll. (Firefox).
+	    // Bind the event for changing tabs on mouse scroll. 
+      // We'll notice 2 events here. This is because the one ony work in Firefox, while the others are for all the browsers.
 	    $(".ribbon").on('DOMMouseScroll mousewheel', function(e){
-        	if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { $(this).EnableNextTab(); }
-        	else { $(this).EnablePreviousTab();	}
+        	if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { OfficeUICoreInternal.EnableNextTab($(this)); }
+        	else { OfficeUICoreInternal.EnablePreviousTab($(this));	}
 
         	//prevent page fom scrolling
         	return false;
     	});
 
+      // Section: Submenu handling. 
+
+        // Open up the submenu when you click on the item that holds the submenu.
+        $(".menuEntry").click(function(e) {
+          e.stopPropagation();
+          $(".menu", this).show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a click.
+        });
+
+        // Open up the submenu when you hover on the item that holds the submenu.
+        $("LI.menuEntry").on("mouseenter", function(e) {
+          e.stopPropagation();
+          // Check if the item holds a submenu.
+          if ($(".subMenuHolder", this).length > 0) {
+
+            $(".menu", $(this).parent()).each(function() {
+              $(this).hide().parent().Deactivate();
+            });
+
+            $(".menu", this).show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a hover.
+          } else { // The item is not holding any submenu, so we can hide every open submenu.
+            $(".menu", $(this).parent()).each(function() {
+              $(this).hide().parent().Deactivate();
+            });
+          }
+        });
+
+      // End - Section: Submenu handling.
+
       // Section: Experimental code.
 
         // When you click on a menu that has an subMenu which is active, don't hide the menu.
-        $('.menuEntry').click(function(e) {
-          // If it's a submenu, stop executing the event, which means that the original menu item will not be
-          if ($(".subMenuHolder", this).length > 0) {
-            e.stopPropagation();
-          }
-        });
+        
 
-        $("LI.menuEntry").on("mouseover", function(e) {
-          if ($(this).find(".menu").length > 0) {
-            $(this).addClass("active");
-            if (!$(".menu", this).is(":visible")) {
-              $(".menu", this).show("slide", { direction: "left" }, 100);
-            }
-          } else {
-            if ($(this).parents(".menuEntry.active").length == 0) {
-              $(".subMenuArrow > .menu").hide();
-              console.log("Everything should be hidden right now.");
-            }
-          }
-        });
+        //$("LI.menuEntry").on("mouseover", function(e) {
+        //  if ($(this).find(".menu").length > 0) {
+        //    $(this).addClass("active");
+        //    if (!$(".menu", this).is(":visible")) {
+        //      $(".menu", this).show("slide", { direction: "left" }, 100);
+        //    }
+        //  } else {
+        //    if ($(this).parents(".menuEntry.active").length == 0) {
+        //      $(".subMenuArrow > .menu").hide();
+        //      console.log("Everything should be hidden right now.");
+        //    }
+        //  }
+        //});
 
       // End - Section: Experimental code.
 	} 

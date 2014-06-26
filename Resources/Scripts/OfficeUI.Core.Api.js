@@ -23,7 +23,7 @@ var OfficeUICoreAPI = {
     if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found."))
     {   
       // Start by deactiving every tab element on the page.
-      OfficeUICoreHelpers.DecativateAllTabs();
+      OfficeUICoreHelpers.DeactivateAllTabs();
 
       // Marks the tab as the active one and display the contents for the tab.
       OfficeUICoreHelpers.ActivateTab(tabId);

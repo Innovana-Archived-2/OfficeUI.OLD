@@ -15,7 +15,7 @@ jQuery.fn.extend({
   },
 
   // Deactivate the element on which this function is called by removing the class "active" from it.
-  Decativate: function() {
+  Deactivate: function() {
     $(this).removeClass("active");
   },
 
@@ -39,6 +39,11 @@ jQuery.fn.extend({
       e.preventDefalut();
       return false;
     })
+  },
+
+  // Checks if the element holds a menu.
+  HoldsMenu: function() {
+    return ($(this).children(".menu").length > 0);
   },
 
   // Log a message when an element is not found.
@@ -97,12 +102,12 @@ var OfficeUICoreHelpers = {
   // Parameters: 
   //    tabId:    The id of the tab element that should be deactivated.
   DeactivateTab: function(tabId) {
-    $("#" + tabId).Decativate();
-    $(".contents", $("#" + tabId)).Decativate();
+    $("#" + tabId).Deactivate();
+    $(".contents", $("#" + tabId)).Deactivate();
   },
 
   // Deactivates all the tab elements which are on the page.
-  DecativateAllTabs: function() {
+  DeactivateAllTabs: function() {
     $("li[role=tab]").each(function(index) {
       OfficeUICoreHelpers.DeactivateTab($(this).Id());
     });
