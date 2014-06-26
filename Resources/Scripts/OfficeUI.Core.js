@@ -82,28 +82,31 @@ var OfficeUICoreInternal = {
 
       // Section: Submenu handling. 
 
-        // Open up the submenu when you click on the item that holds the submenu.
-        $(".menuEntry").click(function(e) {
-          e.stopPropagation();
-          $(".menu", this).show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a click.
-        });
-
         // Open up the submenu when you hover on the item that holds the submenu.
-        $("LI.menuEntry").on("mouseenter", function(e) {
+        $("LI.menuEntry").on("click mouseenter", function(e) {
           e.stopPropagation();
           // Check if the item holds a submenu.
           if ($(".subMenuHolder", this).length > 0) {
+            var element = $(this);
+            waitHandle = setTimeout(function() {
+            
+              $(".menu", $(element).parent()).each(function() {
+                $(this).hide().parent().Deactivate();
+              });
 
-            $(".menu", $(this).parent()).each(function() {
-              $(this).hide().parent().Deactivate();
-            });
+              $(".menu", element).first().show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a hover.
 
-            $(".menu", this).show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a hover.
+            }, 500);
           } else { // The item is not holding any submenu, so we can hide every open submenu.
             $(".menu", $(this).parent()).each(function() {
               $(this).hide().parent().Deactivate();
             });
           }
+        });
+
+        // Executed when the menuentry is left.
+        $("LI.menuEntry").on("mouseout", function(e) {
+          clearTimeout(waitHandle);
         });
 
       // End - Section: Submenu handling.
