@@ -8,7 +8,10 @@ var OfficeUICoreInternal = {
 
   // Enables the previous available tab (except the application tab).
   EnablePreviousTab: function() {
-    OfficeUICoreAPI.EnableTab($($("li[role=tab]:not([role=application]).active").prev()).Id());
+    // Check if the previous tab is not the application tab.
+    if (!$($("li[role=tab].active").prev()).hasClass("application")) {
+      OfficeUICoreAPI.EnableTab($($("li[role=tab]:not(.application).active").prev()).Id());
+    } 
   },
 
   // Enable the menu for a given icon.
