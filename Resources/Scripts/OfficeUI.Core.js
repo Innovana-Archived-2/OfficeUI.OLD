@@ -115,27 +115,6 @@ var OfficeUICoreInternal = {
         });
 
       // End - Section: Submenu handling.
-
-      // Section: Experimental code.
-
-        // When you click on a menu that has an subMenu which is active, don't hide the menu.
-        
-
-        //$("LI.menuEntry").on("mouseover", function(e) {
-        //  if ($(this).find(".menu").length > 0) {
-        //    $(this).addClass("active");
-        //    if (!$(".menu", this).is(":visible")) {
-        //      $(".menu", this).show("slide", { direction: "left" }, 100);
-        //    }
-        //  } else {
-        //    if ($(this).parents(".menuEntry.active").length == 0) {
-        //      $(".subMenuArrow > .menu").hide();
-        //      console.log("Everything should be hidden right now.");
-        //    }
-        //  }
-        //});
-
-      // End - Section: Experimental code.
 	} 
 } 
 
@@ -170,10 +149,12 @@ var OfficeUICore = {
 
 		// Set the remaing height of the contents, acoording to the window size.
 		$(".main_area").height($(window).height() - 25 - 118 - 25 - 26);
+    $(".v-scroll").height($(window).height() - 25 - 118 - 25 - 26 - 20);
 
 		// Make sure that the contents are resized when the window is resized.
 		$(window).resize(function() {
 		  	$(".main_area").height($(window).height() - 25 - 118 - 26);
+        $(".v-scroll").height($(window).height() - 25 - 118 - 25 - 26 - 20);
 		});
 	},
 		
