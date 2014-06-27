@@ -18,18 +18,21 @@ var OfficeUICoreInternal = {
   EnableMenu: function(time, element) {
     // Check if the menu is closed. If that's the case, we should show it.
     if(!$(element).data("state") || $(element).data("state") == 0) { 
-      $(element).show("slide", { direction: "up" }, time).Activate();
+
+      // Hide every menutitem which is visible for the moment.
+      $(".menu").each(function() {
+        $(this).hide().parent().Deactivate();
+        $(this).data("state", 0);
+      });
+
+      $(element).parent().Activate();
+      $(element).show("slide", { direction: "up" }, time);
 
       // Update the current state.
       $(element).data("state", 1);
 
     // Menu is visible, so let's close it.
     } else if ($(element).data("state") == 1) {
-      // Disables all the menuitems, so that when you request the menu again, it's initial state is loaded.
-      $(".menu").each(function() {
-          $(this).hide().parent().Deactivate();
-      });
-
       OfficeUICoreInternal.DisableMenu($(element));
     }
   },
@@ -38,7 +41,7 @@ var OfficeUICoreInternal = {
   //  Parameters:
   //      element:    The element (menu) that should be hidden.
   DisableMenu: function(element) {
-    $(element).hide().Deactivate();
+    $(element).hide().parent().Deactivate();
       
     // Update the state.
     $(element).data("state", 0);
@@ -64,7 +67,6 @@ var OfficeUICoreInternal = {
         if (!$(this).hasClass("disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
           if ($(this).HoldsMenu()) { // Check if it's a menu.
               e.stopPropagation();
-              $(this).Activate();
               OfficeUICoreInternal.EnableMenu(100, $(".menu", this).first());
            }
          } 
