@@ -1,14 +1,14 @@
 /* General styling for the input elements. */
-input { border: 1px solid #ABABAB; padding: 2px; }
-input:hover, input:focus {border: 1px solid #92C0E0; padding: 2px; }
+#OfficeUI input { border: 1px solid #ABABAB; padding: 2px; }
+#OfficeUI input:hover, #OfficeUI input:focus {border: 1px solid #92C0E0; padding: 2px; }
 
 /* General styling for error messages. */
-.input-validation-error { border: 1px solid red; }
+#OfficeUI .input-validation-error { border: 1px solid red; }
 
 /* Styling for creating a form. */
-.form { width: 100%; }
-.row { display: table; margin-left: 10px; margin-right: 10px; }
-.fs_legend, .field { padding: 5px; }
-.fs_legend { display: table-cell; min-width: 200px; }
-.field { display: table-cell; width: 100%; }
-.field input { width: 100%; font-family: 'Segoe UI'; font-size: 12px; }
+#OfficeUI .form { width: 100%; }
+#OfficeUI .row { display: table; margin-left: 10px; margin-right: 10px; }
+#OfficeUI .fs_legend, .field { padding: 5px; }
+#OfficeUI .fs_legend { display: table-cell; min-width: 200px; }
+#OfficeUI .field { display: table-cell; width: 100%; }
+#OfficeUI .field input { width: 100%; font-family: 'Segoe UI'; font-size: 12px; }

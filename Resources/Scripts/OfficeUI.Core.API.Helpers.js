@@ -21,12 +21,12 @@ jQuery.fn.extend({
 
   // Enable the element on which this function is called by removing the class "disabled" from it.
   Enable: function() {
-    $(this).removeClass("disabled");
+    $(this).removeClass("OfficeUI_disabled");
   },
 
   // Disable the element on which this function is called by adding the class "disabled" on it.
   Disable: function() {
-    $(this).addClass("disabled");
+    $(this).addClass("OfficeUI_disabled");
   },
 
   // Enables an anchor element by removing the "click" event handler.

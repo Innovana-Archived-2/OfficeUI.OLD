@@ -1,29 +1,33 @@
-/* General body styling elements. */
-body { background-color: #FFF; font-family: 'Segoe UI'; overflow: hidden; }
+/* General styling that can be placed on any element ot ensure correct behaviour. 
+ * Note: 
+ * 		All those classes are prefixed with 'OfficeUI_' to make sure that it doesn't conflict with other classes
+ *		from other sources. By adding the prefix 'OfficeUI_' to the elements, we are pretty sure that all the class names
+ *		will be unique.
+ *
+ */
+.OfficeUI_nopadding { padding: 0 }
+.OfficeUI_nomargin { margin: 0 }
+.OfficeUI_relative { position: relative; }
+.OfficeUI_absolute { position: absolute; }
+.OfficeUI_invisible { display: none; }
+.OfficeUI_center { text-align: center; }
+.OfficeUI_left { float: left; }
+.OfficeUI_inline { display: inline-block; }
+.OfficeUI_disabled { opacity: .4; filter: alpha(opacity=40) }
+.OfficeUI_uppercase { text-transform: uppercase; }
+.OfficeUI_nowrap { white-space: nowrap; }
+.OfficeUI_v-scroll { overflow-y: scroll; }
 
-/* General classes that can be added on every element to position element. */
-.nopadding { padding: 0 }
-.nomargin { margin: 0 }
-.relative { position: relative; }
-.absolute { position: absolute; }
-.invisible { display: none; }
-.center { text-align: center; }
-.left { float: left; }
-.inline { display: inline-block; }
-.disabled { opacity: .4; filter: alpha(opacity=40) }
-.uppercase { text-transform: uppercase; }
-.nowrap { white-space: nowrap; }
-.v-scroll { overflow-y: scroll; }
-
-/* General styling for links. */
-a { color: #444444; cursor: default; text-decoration: none; outline: none; }
-
-/* General styling for the OfficeWebControls elements. */
+/* General OfficeUI styling elements. */
+#OfficeUI { background-color: #FFF; font-family: 'Segoe UI'; overflow: hidden; }
 #OfficeUI { color:#444; font-size: 12px; }
 #OfficeUI > .title { text-align: center; margin-top: 4px; margin-bottom: 4px; }
 
+/* General styling for links. */
+#OfficeUI a { color: #444444; cursor: default; text-decoration: none; outline: none; }
+
 /* Commonly used styles. */
-.brd_btm_grey { border-bottom: 1px solid #D4D4D4; }
-.brd_lft_grey { border-left: 1px solid #D4D4D4; }
-.brd_rght_grey { border-right: 1px solid #D4D4D4; }
-.brd_top_grey { border-top: 1px solid #D4D4D4; }
+#OfficeUI .brd_btm_grey { border-bottom: 1px solid #D4D4D4; }
+#OfficeUI .brd_lft_grey { border-left: 1px solid #D4D4D4; }
+#OfficeUI .brd_rght_grey { border-right: 1px solid #D4D4D4; }
+#OfficeUI .brd_top_grey { border-top: 1px solid #D4D4D4; }
