@@ -37,6 +37,7 @@
 #OfficeUI .imageHolder { text-align: center; padding-top: 4px; width: 16px; height: 16px; }
 #OfficeUI .imageHolder > IMG { width: 16px; height: 16px; }
 #OfficeUI .menuItem { height: 23px; line-height: 23px; vertical-align: top; }
+#OfficeUI .menuEntry { font-size: 12px; }
 #OfficeUI .menuEntry > div:first-of-type { position: relative; }
 #OfficeUI .subMenuHolder > div:first-of-type { margin-right: 25px; }
 #OfficeUI .subMenuArrow { position: absolute; width: 10px; right: 0px; top: 0px; }
@@ -62,3 +63,6 @@
 #OfficeUI .navigation ul { margin: 0; padding: 0; }
 #OfficeUI .navigation ul a { cursor: pointer; }
 #OfficeUI .navigation ul li { border-bottom: 1px solid #D4D4D4; font-size: 20px; height: 40px; line-height: 40px; list-style: none outside none; padding-left: 20px; }
+
+/* Styling for the context menu. */
+#OfficeUI .contextMenuInArea { font-size: 12px; position: absolute; }
