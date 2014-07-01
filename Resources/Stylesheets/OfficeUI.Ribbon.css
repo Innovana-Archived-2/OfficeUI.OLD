@@ -2,46 +2,35 @@
 #OfficeUI .ribbon { height: 117px; cursor: default; }
 
 /* General styling for the tabs. */
-#OfficeUI .tabs > UL { height: 24px; }
-#OfficeUI .tabs > UL LI { height: 23px; line-height: 23px; }
-#OfficeUI li[role=tab] { padding-left: 12px; padding-right: 13px; border: 1px solid transparent; border-bottom: 1px solid #D4D4D4; }
-#OfficeUI li[role=tab]:not(.application):hover { color: #0072C6; }
-#OfficeUI li.active[role=tab] { color: #0072C6; border-color: #D4D4D4 #D4D4D4 #FFFFFF; border-style: solid; border-width: 1px; }
+#OfficeUI ul[role=tablist] { height: 24px; }
+#OfficeUI ul[role=tablist] li[role=tab] { height: 23px; line-height: 23px; padding-left: 12px; padding-right: 13px; border: 1px solid transparent; border-bottom: 1px solid #D4D4D4;}
+#OfficeUI ul[role=tablist] li.active[role=tab] { color: #0072C6; border-color: #D4D4D4 #D4D4D4 #FFFFFF; border-style: solid; border-width: 1px; }
 
-/* Styling for the content of the tabs. */
+/* Styling for the content of the tabs. 
+ * A tab contains various elements which are explained below:
+ *		- contents: 	Contains the entire contents of the tab.
+ *		- group:		Contains a single group of items. (A group has a legend and a seperator on the right).
+ *		- iconGroup:	Contains a set of icons grouped by eachother. Icon groups are needed when you're mixing a big and a small icon inside the same group.
+ *						Each icon group is placed next to eachother.
+ */
 #OfficeUI .contents { left: 0px; color: #444444; height: 93px; width: 100%; display: none; }
 #OfficeUI .contents.active { display: block; }
 #OfficeUI .group { height: 91px; margin-top: 3px; vertical-align: top; }
-#OfficeUI .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
+#OfficeUI .group .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
 #OfficeUI .icongroup { height: 75px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
 #OfficeUI .arrow { bottom: 2px; left: 2px; }
 #OfficeUI .seperator { background-color: #D4D4D4; height: 84px; margin-left: 5px; margin-right: 5px; margin-top: 4px; width: 1px; }
 
-/* Styling for the icons in the tabs. */
-#OfficeUI .icon.active { background-color: #92c0e0; }
+/* Styling for the icons in the tabs.
+ * Two type of icons can be placed on the ribbon.
+ *		- small icon: 	An icon with a resolution of 16 x 16 pixels.
+ *		- big icon:		An icon with a resolution of 32 x 32 pixels.
+ */
 #OfficeUI .smallicon { height: 24px; padding-right: 5px; padding-left: 3px; }
 #OfficeUI .smallicon > IMG { vertical-align: middle; }
 #OfficeUI .bigicon { padding-left: 3px; padding-right: 3px; padding-top: 1px; vertical-align: top; }
 #OfficeUI .bigicon > IMG { height: 32px; width: 32px; }
-
-#OfficeUI .bigicon:not(.disabled):not(.active):hover, 
-#OfficeUI .smallicon:not(.disabled):not(.active):hover { background-color: #CDE6F7; }
-
 #OfficeUI .iconlegend { line-height: 16px; }
-
-/* Styling for the menu behind an item. */
-#OfficeUI .menu { box-shadow: 0 0 0 #888888; left: 0px; z-index: 9999; display: none; }
-#OfficeUI .menucontents {  padding: 1px 2px 1px 2px; background-color: #FFFFFF; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; border-bottom: 1px solid #C6C6C6; border-top: 1px solid #C6C6C6; box-shadow: 3px 3px 3px #E0E0E0; }
-#OfficeUI .menucontents > UL LI { height: 23px; line-height: 23px; list-style: none; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: middle; }
-#OfficeUI .menucontents > UL LI:not(.disabled):hover { background-color: #CDE6F7; }
-#OfficeUI .imageHolder { text-align: center; padding-top: 4px; width: 16px; height: 16px; }
-#OfficeUI .imageHolder > IMG { width: 16px; height: 16px; }
-#OfficeUI .menuItem { height: 23px; line-height: 23px; vertical-align: top; }
-#OfficeUI .menuEntry { font-size: 12px; }
-#OfficeUI .menuEntry > div:first-of-type { position: relative; }
-#OfficeUI .subMenuHolder > div:first-of-type { margin-right: 25px; }
-#OfficeUI .subMenuArrow { position: absolute; width: 10px; right: 0px; top: 0px; }
-#OfficeUI .subMenuArrow .menu { top: -1px; left: 16px; }
 
 /* Styling for the footer at the bottom of the website. */
 #OfficeUI .footer { position: absolute; bottom: 0px; height: 25px; color: white; line-height: 25px; vertical-align: middle; width: 100%; }
@@ -50,13 +39,6 @@
 /* Styling for the contents of the application. */
 #OfficeUI .main_area { display: table; }
 #OfficeUI .main_area_contents { vertical-align: top; display: table-cell; width: 100%; padding: 10px; }
-
-/* Styling for the breadcrumb. */
-#OfficeUI .breadcrumb { border-bottom: 1px solid #D4D4D4; height: 25px; line-height: 25px; padding-left: 10px; text-transform: uppercase; }
-#OfficeUI .breadcrumb .breadcrumbItem { padding-left: 10px; padding-right: 10px; }
-#OfficeUI .breadcrumb a { text-transform: none; }
-#OfficeUI .breadcrumb a::after { content: ; }
-#OfficeUI .breadcrumb a:hover { cursor: pointer; text-decoration: underline; }
 
 /* Styling for the navigation. */
 #OfficeUI .navigation { vertical-align: top; display: table-cell; border-right: 1px solid #D4D4D4; min-width: 200px; background: #ffffff; background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background: -moz-linear-gradient(top,  #ffffff 0%, #f0f0f0 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f0f0f0)); background: -webkit-linear-gradient(top,  #ffffff 0%,#f0f0f0 100%); background: -o-linear-gradient(top,  #ffffff 0%,#f0f0f0 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#f0f0f0 100%); background: linear-gradient(to bottom,  #ffffff 0%,#f0f0f0 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f0f0f0',GradientType=0 );}

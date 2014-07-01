@@ -4,11 +4,12 @@
   		<title>OfficeWebControls - Demo</title>
   		
   		<!-- Required stylesheets for the OfficeUI. -->
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" />
-      <link rel="stylesheet" type="text/css" href="http//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" />
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" />
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Styles.Default.css" />
+  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
+  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
+  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" /> <!-- Provides the styling of the ribbon. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Menu.css" /> <!-- Provides the styling of the menu (either ribbon menu's or context menu's). -->
+  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Styles.Blue.css" /> <!-- Provides the blue styling for all the elements. -->
   </head>
 	<body class="OfficeUI_nopadding OfficeUI_nomargin">
 		<div id="OfficeUI">
@@ -21,7 +22,7 @@
  						<li role="tab" class="application" id="tabFile">
  							<span>File</span>
  						</li>
- 						<li role="tab" id="tabHome">
+ 						<li id="tabHome">
  							<span>Home</span>
               <div class="contents">
                 <div class="group">
@@ -286,19 +287,19 @@
 
               </div>
  						</li>
- 						<li role="tab" id="tabSendReceive">
+ 						<li id="tabSendReceive">
  							<span>Send / Receive</span>
               <div class="contents">
                 Contents of the the "Send / Receive" tab are showed here.
               </div>
  						</li>
- 						<li role="tab" id="tabFolder">
+ 						<li id="tabFolder">
  							<span>Folder</span>
               <div class="contents">
                 Contents of the the "Folder" tab are showed here.
               </div>
  						</li>
- 						<li role="tab" id="tabView">
+ 						<li id="tabView">
  							<span>View</span>
               <div class="contents">
                 Contents of the the "View" tab are showed here.

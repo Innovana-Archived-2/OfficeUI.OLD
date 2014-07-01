@@ -102,13 +102,23 @@ var OfficeUICoreAPI = {
       $("#notificationArea").Flash(options.Time, options.OnComplete);
     }
   },
+
+  NotifyAlert: function(message, options) {
+    // Sets the options to the default ones when not specified.
+    options = $.extend({}, NotifyDefault, options);
+
+    $("#notificationArea").html(message);
+    if (options.Flash) { 
+      $("#notificationArea").FlashAsError(options.Time, options.OnComplete);
+    }
+  }
 }
 
 // Section: Needed variables for the functions in the API.
 
   // Default options that are used when notifying a user through the 'Notify(message, options)' function.
   var NotifyDefault = {
-    Time: 150,
+    Time: 75,
     Flash: true,
     OnComplete: function() { }
   }

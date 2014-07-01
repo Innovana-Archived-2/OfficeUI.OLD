@@ -1,3 +1,9 @@
+// Provides constants that will be used in here.
+var OfficeUIConstants = {
+  menuTransition: 100, // Defines the amount of time (milliseconds) that it takes for a menu (either ribbon menu or context menu) to be completely shown.
+  subMenuTimeout: 500  // Defines the amount of time (milliseconds) that a cursor must be placed over a certain menu entry (either in the ribbon menu or context menu) before it will be opened.
+};
+
 // Provides the core functions for the workings of the OfficeWebControls.
 var OfficeUICoreInternal = {
   
@@ -70,7 +76,7 @@ var OfficeUICoreInternal = {
         if (!$(this).hasClass("OfficeUI_disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
           if ($(this).HoldsMenu()) { // Check if it's a menu.
               e.stopPropagation();
-              OfficeUICoreInternal.EnableMenu(100, $(".menu", this).first());
+              OfficeUICoreInternal.EnableMenu(OfficeUIConstants.menuTransition, $(".menu", this).first());
            }
          } 
       });
@@ -102,9 +108,9 @@ var OfficeUICoreInternal = {
                 $(this).hide().parent().Deactivate();
               });
 
-              $(".menu", element).first().show("slide", { direction: "left" }, 100).Activate(); // Always shows the menu. Never hide it on a hover.
+              $(".menu", element).first().show("slide", { direction: "left" }, OfficeUIConstants.menuTransition).Activate(); // Always shows the menu. Never hide it on a hover.
 
-            }, 500);
+            }, OfficeUIConstants.subMenuTimeout);
           } else { // The item is not holding any submenu, so we can hide every open submenu.
             $(".menu", $(this).parent()).each(function() {
               $(this).hide().parent().Deactivate();
@@ -134,8 +140,7 @@ var OfficeUICoreInternal = {
             topVal = e.pageY - (height / 2) + "px";
             
             //show the popup message and hide with fading effect
-            $("#contextMenuInArea").css({left:leftVal,top:topVal}).show();
-            // $("#contextMenuInArea").show("slide", { direction: "up" }, 100);
+            $("#contextMenuInArea").css({left:leftVal,top:topVal}).show("slide", { direction: "up" }, OfficeUIConstants.menuTransition);
           return false;
         });
 
@@ -150,14 +155,13 @@ var OfficeUICore = {
 	 * That way the HTML is cleaner.
 	 */
 	InitElement: function() {		
+    $("ul[role='tablist'] > li").attr("role", "tab"); // Add a role 'tab' on every direct LI element of the tabslist.
 		$(".ribbon, .tabs").addClass("brd_btm_grey"); // Place a gray bottem line under the ribbon and under the tabs.
-		$(".tabs UL, .menucontents UL").addClass("OfficeUI_nopadding OfficeUI_nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
-		$(".menucontents UL LI").addClass("OfficeUI_nowrap"); // Make sure that text is not wrapped in the menucontents.
+		$(".tabs UL, .menucontents UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
 		$("li[role='tab']").addClass("OfficeUI_inline"); // Make sure that every tab is displayed inline.
-		OfficeUICoreAPI.EnableTab($("li[role='tab']:not(.application)").first().Id()); // Enable the first, non-application tab.
 		$("li[role='tab'] span:first-child").addClass("OfficeUI_uppercase"); // Make sure that the text of the tabs is always in uppercase.
 		$("li[role='tab'] .contents").addClass("OfficeUI_absolute"); // Make sure that the contents of the tab are displayed absolute.
-    $(".group").after("<div class='seperator'>&nbsp;</div>");
+    $(".group").after("<div class='seperator'>&nbsp;</div>"); // Auto add a seperator after each group.
 		$(".group, .seperator").addClass("OfficeUI_relative OfficeUI_inline"); // Make sure that the seperator are relative placed and inline.
 		$(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("OfficeUI_inline"); // Make sure that iconsgroups, smallicons, iconlegend, imageholder and menuholder are displayed inline.
 		$(".bigicon").addClass("icon OfficeUI_relative OfficeUI_inline OfficeUI_center"); // Make sure that a bigicon is displayed as an icon, relative, inline and centered.
@@ -166,6 +170,8 @@ var OfficeUICore = {
 		$(".arrow").addClass("OfficeUI_relative"); // Make sure that an arrow is placed as relative.
 		$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>'); // Make sure that every item in the breadcrumb there is an arrow, except the last one.
 		$('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>'); // Make sure that in a menuitem, on an li with the class "line" a line is added.
+
+    OfficeUICoreAPI.EnableTab($("li[role='tab']:not(.application)").first().Id()); // Enable the first, non-application tab.
 
 		// When you click on a tab element (not the first element, since that's the application), make sure the contents are coming available.
 		$("li[role=tab]:not(.application)").click(function() {

@@ -3,7 +3,6 @@
  * 		All those classes are prefixed with 'OfficeUI_' to make sure that it doesn't conflict with other classes
  *		from other sources. By adding the prefix 'OfficeUI_' to the elements, we are pretty sure that all the class names
  *		will be unique.
- *
  */
 .OfficeUI_nopadding { padding: 0 }
 .OfficeUI_nomargin { margin: 0 }

@@ -67,16 +67,45 @@ jQuery.fn.extend({
   //    Callback: A function that should be called after the flash animation is totally completed (this means after the 4 flashes).
   Flash: function(time, callback)
   {
+    for (var i = 0; i <= 3; i++) {
+      $(this).animate({
+          backgroundColor: "#75B3E0"
+      }, time);
+
+      $(this).animate({
+            backgroundColor: "#0072C6"
+      }, time); 
+    };
+    
     $(this).animate({
           backgroundColor: "#75B3E0"
     }, time);
 
     $(this).animate({
           backgroundColor: "#0072C6"
-    }, time);
+    }, time, function() {
+        callback();
+    });
+  },
+
+  // Flash a section of the page with a given time.
+  // Parameters:
+  //    Time:     The time of a single flash in the application. In total, there are 4 flashes.
+  //    Callback: A function that should be called after the flash animation is totally completed (this means after the 4 flashes).
+  FlashAsError: function(time, callback)
+  {
+    for (var i = 0; i <= 3; i++) {
+      $(this).animate({
+          backgroundColor: "#C60000"
+      }, time);
+
+      $(this).animate({
+            backgroundColor: "#0072C6"
+      }, time); 
+    };
 
     $(this).animate({
-          backgroundColor: "#75B3E0"
+          backgroundColor: "#C60000"
     }, time);
 
     $(this).animate({
