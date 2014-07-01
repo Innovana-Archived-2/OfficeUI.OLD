@@ -4,7 +4,7 @@
 /* General styling for the tabs. */
 #OfficeUI ul[role=tablist] { height: 24px; }
 #OfficeUI ul[role=tablist] li[role=tab] { height: 23px; line-height: 23px; padding-left: 12px; padding-right: 13px; border: 1px solid transparent; border-bottom: 1px solid #D4D4D4;}
-#OfficeUI ul[role=tablist] li.active[role=tab] { color: #0072C6; border-color: #D4D4D4 #D4D4D4 #FFFFFF; border-style: solid; border-width: 1px; }
+#OfficeUI ul[role=tablist] li.active[role=tab] { border-color: #D4D4D4 #D4D4D4 #FFFFFF; border-style: solid; border-width: 1px; }
 
 /* Styling for the content of the tabs. 
  * A tab contains various elements which are explained below:

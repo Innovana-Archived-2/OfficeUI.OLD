@@ -98,9 +98,6 @@ var OfficeUICoreAPI = {
     options = $.extend({}, NotifyDefault, options);
 
     $("#notificationArea").html(message);
-    if (options.Flash) { 
-      $("#notificationArea").Flash(options.Time, options.OnComplete);
-    }
   },
 
   // Sends a notification to the user by showing it in the statusbar of the application.
@@ -115,14 +112,12 @@ var OfficeUICoreAPI = {
   //             Set to true to get attention of the user.
   //             Set to false when you just want to change the text, without notifying the user.
   //    - OnComplete: An event which is executed when the animation is completed.
-  NotifyAlert: function(message, options) {
+  NotifyError: function(message, options) {
     // Sets the options to the default ones when not specified.
     options = $.extend({}, NotifyDefault, options);
 
+    $("#notificationArea").css("backgroundColor", "#C60000");
     $("#notificationArea").html(message);
-    if (options.Flash) { 
-      $("#notificationArea").FlashAsError(options.Time, options.OnComplete);
-    }
   }
 }
 
@@ -130,9 +125,7 @@ var OfficeUICoreAPI = {
 
   // Default options that are used when notifying a user through the 'Notify(message, options)' function.
   var NotifyDefault = {
-    Time: 75,
-    Flash: true,
-    OnComplete: function() { }
+    Time: 75
   }
 
 // End - Section: Needed variables for the functions in the API.
