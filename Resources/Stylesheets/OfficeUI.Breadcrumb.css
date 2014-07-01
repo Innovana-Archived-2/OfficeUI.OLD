@@ -1,0 +1,6 @@
+/* Styling for the breadcrumb. */
+#OfficeUI .breadcrumb { border-bottom: 1px solid #D4D4D4; height: 25px; line-height: 25px; padding-left: 10px; text-transform: uppercase; }
+#OfficeUI .breadcrumb .breadcrumbItem { padding-left: 10px; padding-right: 10px; }
+#OfficeUI .breadcrumb a { text-transform: none; }
+#OfficeUI .breadcrumb a::after { content: ; }
+#OfficeUI .breadcrumb a:hover { cursor: pointer; text-decoration: underline; }

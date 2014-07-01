@@ -103,6 +103,18 @@ var OfficeUICoreAPI = {
     }
   },
 
+  // Sends a notification to the user by showing it in the statusbar of the application.
+  // Parameters:
+  //    message:      The message that you want to send to the user.
+  //    options:      The options than can be specified for this function.
+  //                  When not specified, the defaults are used (see NotifyDefault variable).
+  // Remarks:
+  //    The options have various parameters which are listed below:
+  //    - Time: The time that a single animation will take. The notify will have 4 animations (fade-out, fade-in, fade-out and fade-in again).
+  //    - Flash: A boolean that indicates if a flash needs to occur.
+  //             Set to true to get attention of the user.
+  //             Set to false when you just want to change the text, without notifying the user.
+  //    - OnComplete: An event which is executed when the animation is completed.
   NotifyAlert: function(message, options) {
     // Sets the options to the default ones when not specified.
     options = $.extend({}, NotifyDefault, options);

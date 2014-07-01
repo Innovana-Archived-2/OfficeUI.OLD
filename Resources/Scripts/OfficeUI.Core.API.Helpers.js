@@ -106,10 +106,6 @@ jQuery.fn.extend({
 
     $(this).animate({
           backgroundColor: "#C60000"
-    }, time);
-
-    $(this).animate({
-          backgroundColor: "#0072C6"
     }, time, function() {
         callback();
     });

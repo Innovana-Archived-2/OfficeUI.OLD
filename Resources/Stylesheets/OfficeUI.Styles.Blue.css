@@ -1,0 +1,7 @@
+#OfficeUI li[role=tab].application { background-color: #0072c6; color: #FFF; border: 1px solid #0072c6 !important; }
+#OfficeUI li[role=tab]:not(.application):hover { color: #0072C6; }
+#OfficeUI .icon.active { background-color: #92c0e0; }
+#OfficeUI .bigicon:not(.disabled):not(.active):hover, 
+#OfficeUI .smallicon:not(.disabled):not(.active):hover { background-color: #CDE6F7; }
+.navigation .nav_inner ul a.active { color: #0072C6; }
+.footer { background-color: #0072c6; }
