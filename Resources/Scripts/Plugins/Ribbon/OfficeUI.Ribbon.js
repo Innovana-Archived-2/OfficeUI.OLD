@@ -6,9 +6,10 @@ $.fn.Ribbon = function(options) {
 	// Get the object on which this is called.
     var object = $(this);
 
+    // Initialization logic.
     $("ul[role='tablist'] > li").attr("role", "tab"); // Add a role 'tab' on every direct LI element of the tabslist.
 	$(".ribbon, .tabs").addClass("brd_btm_grey"); // Place a gray bottem line under the ribbon and under the tabs.
-	$(".tabs UL, .menucontents UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
+	$(".tabs UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin"); // Make sure that on the tabs and the menucontents, there is no padding and no margin.
 	$("li[role='tab']").addClass("OfficeUI_inline"); // Make sure that every tab is displayed inline.
 	$("li[role='tab'] span:first-child").addClass("OfficeUI_uppercase"); // Make sure that the text of the tabs is always in uppercase.
 	$("li[role='tab'] .contents").addClass("OfficeUI_absolute"); // Make sure that the contents of the tab are displayed absolute.
@@ -17,7 +18,7 @@ $.fn.Ribbon = function(options) {
 	$(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("OfficeUI_inline"); // Make sure that iconsgroups, smallicons, iconlegend, imageholder and menuholder are displayed inline.
 	$(".bigicon").addClass("icon OfficeUI_relative OfficeUI_inline OfficeUI_center"); // Make sure that a bigicon is displayed as an icon, relative, inline and centered.
 	$(".smallicon").addClass("icon OfficeUI_relative") // Make sure that a smallicon is displayed as an icon, relative.
-	$(".legend, .menu").addClass("OfficeUI_absolute"); // Make sure that the legend and the menu's are displayed absolute.
+	$(".legend").addClass("OfficeUI_absolute"); // Make sure that the legend and the menu's are displayed absolute.
 	$(".arrow").addClass("OfficeUI_relative"); // Make sure that an arrow is placed as relative.
 	$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>'); // Make sure that every item in the breadcrumb there is an arrow, except the last one.
 	$('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>'); // Make sure that in a menuitem, on an li with the class "line" a line is added.

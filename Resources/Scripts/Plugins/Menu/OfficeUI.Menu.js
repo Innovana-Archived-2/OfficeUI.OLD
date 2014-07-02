@@ -29,6 +29,10 @@ $.fn.Menu = function(options) {
     // Get the object on which this is called.
     var object = $(this);
 
+    // Initialization logic.
+    $(".menucontents UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin");
+    $(".menu").addClass("OfficeUI_absolute"); 
+
 	// Initialization logic for the menu is done here.
 	$(this).addClass("menu");
 
