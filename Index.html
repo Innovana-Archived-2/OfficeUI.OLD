@@ -373,8 +373,8 @@
 		</div>
 
     <!-- Required scripts for the OfficeUI. -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Resources/Scripts/jquery-ui.min.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.Api.Helpers.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.Api.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.js"></script>
@@ -387,9 +387,8 @@
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();
 
-      $("#contextMenu").Menu({
-        color: "this is a test"
-      }); // This is plugin that enables the usage of a menu.
+      var myMenu = $("#contextMenu").Menu(); // Transforms the element with id 'contextMenu' into a menu element with the default options.
+      //myMenu.Show();
     </script>
   </body>
 </html>
