@@ -31,6 +31,8 @@ $.fn.Menu = function(options) {
 
 	// Different event handlers are placed here.
 
+        var waitHandle;
+
         // When you hover on a menu entry that's not disabled, open up the menu underneath.
         $("LI.menuEntry:not(.OfficeUI_disabled)").on("mouseenter", function(e) {
             
@@ -61,6 +63,34 @@ $.fn.Menu = function(options) {
           }
         });
 
+// Executed when the menuentry is left.
+        $("LI.menuEntry").on("mouseout", function(e) {
+          clearTimeout(waitHandle);
+        });
+
+
+// Context menu demo.
+
+        //$(".contextMenu").on("contextmenu", function(e) {
+        //    e.preventDefault();
+
+            //getting height and width of the message box
+        //    var height = $(".contextMenuInArea").height();
+        //    var width = $(".contextMenuInArea").width();
+            
+            //calculating offset for displaying popup message
+        //    leftVal = e.pageX - (width / 2) + "px";
+        //    topVal = e.pageY - (height / 2) + "px";
+            
+            //show the popup message and hide with fading effect
+        //    $("#contextMenuInArea").css({left:leftVal,top:topVal}).show("slide", { direction: "up" }, OfficeUIConstants.menuTransition);
+        //  return false;
+        //});
+
+// End of the context menu.
+
+
+
     // Create an API and return that one.
     return CreateMenuAPI();
 
@@ -71,8 +101,12 @@ $.fn.Menu = function(options) {
         }
     }
 
+    var currentMousePos = { x: -1, y: -1 };
+
+
     // Shows the menu entry on which it it called.
     function Show() {
+
         if (options.Animate) {
                     object.show("slide", { direction: options.AnimateDirection }, options.TransitionTime).Activate(); // Always shows the menu. Never hide it on a hover.
                 } else {

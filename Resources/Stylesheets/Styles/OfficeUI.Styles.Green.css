@@ -13,5 +13,3 @@
 /* Provides specific style theming for the footer. */
 .footer { background-color: #217346; }
 
-/* Provides specific styles for the menu (either ribbon or context menu). */
-#OfficeUI .menucontents > UL LI:not(.disabled):hover { background-color: #d3f0e0; }

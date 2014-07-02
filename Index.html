@@ -4,11 +4,15 @@
   		<title>OfficeWebControls - Demo</title>
   		
   		<!-- Required stylesheets for the OfficeUI. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
+
+      <!-- Required stylesheets for the menu plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
+
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" /> <!-- Provides the styling of the ribbon. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Menu.css" /> <!-- Provides the styling of the menu (either ribbon menu's or context menu's). -->
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
   </head>
 	<body class="OfficeUI_nopadding OfficeUI_nomargin">
@@ -359,6 +363,67 @@
                       <div class="menuItem">Clean Up Folder & Subfolders</div>
                     </div>
                   </li>
+                  <li class="menuEntry">
+
+                               <div class="subMenuHolder">
+                                  <div>
+                                    <div class="imageHolder">&nbsp;</div>
+                                    <div class="menuItem">More Items</div>
+                                  </div>
+                                  <div class="subMenuArrow">
+                                    <i class="fa fa-caret-right"></i>
+                                    <div class="menu">
+                                      <div class="menucontents">
+                                        <ul>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Post in This Folder</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Contact Group</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Task Request</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Internet Fax</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose Form...</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose InfoPath Form...</div>
+                                            </div>
+                                          </li>
+                                          <li class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Outlook Data File...</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                  </li>
                 </ul>
               </div>
             </div>
@@ -380,15 +445,17 @@
     <script src="Resources/Scripts/OfficeUI.Core.js"></script>
 
     <!-- All the different plugins are hosted here. -->
-    <script src="Resources/Scripts/Plugins/OfficeUI.Menu.js"></script>
+    <script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
 
     <!-- Initialize OfficeUI. -->
     <script type="text/javascript">
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();
 
-      var myMenu = $("#contextMenu").Menu(); // Transforms the element with id 'contextMenu' into a menu element with the default options.
-      //myMenu.Show();
+      var myMenu = $("#contextMenu").Menu({
+        AnimateDirection: "up"
+      }); // Transforms the element with id 'contextMenu' into a menu element with the default options.
+      myMenu.Show();
     </script>
   </body>
 </html>

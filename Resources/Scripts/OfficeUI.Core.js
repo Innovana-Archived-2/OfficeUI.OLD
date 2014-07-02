@@ -91,40 +91,6 @@ var OfficeUICoreInternal = {
         	return false;
     	});
 
-      // Section: Submenu handling. 
-
-        // Variables needed for this secion.
-        var waitHandle;
-
-        // Open up the submenu when you hover on the item that holds the submenu.
-        $("LI.menuEntry:not(.OfficeUI_disabled)").on("mouseenter", function(e) {
-          e.stopPropagation();
-          // Check if the item holds a submenu.
-          if ($(".subMenuHolder", this).length > 0) {
-            var element = $(this);
-            waitHandle = setTimeout(function() {
-            
-              $(".menu", $(element).parent()).each(function() {
-                $(this).hide().parent().Deactivate();
-              });
-
-              $(".menu", element).first().show("slide", { direction: "left" }, OfficeUIConstants.menuTransition).Activate(); // Always shows the menu. Never hide it on a hover.
-
-            }, OfficeUIConstants.subMenuTimeout);
-          } else { // The item is not holding any submenu, so we can hide every open submenu.
-            $(".menu", $(this).parent()).each(function() {
-              $(this).hide().parent().Deactivate();
-            });
-          }
-        });
-
-        // Executed when the menuentry is left.
-        $("LI.menuEntry").on("mouseout", function(e) {
-          clearTimeout(waitHandle);
-        });
-
-      // End - Section: Submenu handling.
-
       // Experimental section: Contextmenu handling. 
 
         // When you're in an area that can hold a contextmenu, add an event for a right click.
