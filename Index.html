@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-  		<title>OfficeWebControls - Demo</title>
+  		<title>OfficeUI - Demo</title>
   		
   		<!-- Required stylesheets for the OfficeUI. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
@@ -9,6 +9,10 @@
       <!-- Required stylesheets for the menu plugin. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
+
+      <!-- Required stylesheets for the menu ribbon plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" />
 
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" /> <!-- Provides the styling of the ribbon. -->
@@ -18,9 +22,9 @@
 	<body class="OfficeUI_nopadding OfficeUI_nomargin">
 		<div id="OfficeUI">
 			<div class="title">
-				<span>OfficeWebControls - Demo (Version 2.0 Pre-release)</span>
+				<span>OfficeUI Demo (Version 3.0 - Pre-Release)</span>
 			  </div>
- 			<div class="ribbon">
+ 			<div id="mainRibbon" class="ribbon">
  				<div class="tabs">
  					<ul role="tablist">
  						<li role="tab" class="application" id="tabFile">
@@ -442,20 +446,25 @@
     <script src="Resources/Scripts/jquery-ui.min.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.Api.Helpers.js"></script>
     <script src="Resources/Scripts/OfficeUI.Core.Api.js"></script>
-    <script src="Resources/Scripts/OfficeUI.Core.js"></script>
 
-    <!-- All the different plugins are hosted here. -->
+    <!-- Required scripts file for the menu. -->
     <script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
+
+    <!-- Required scripts for the ribbon. -->
+    <script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"></script>
+
+    <!-- Core script comes here # This should be transferred into the Ribbon js later. -->
+    <script src="Resources/Scripts/OfficeUI.Core.js"></script>
 
     <!-- Initialize OfficeUI. -->
     <script type="text/javascript">
+      $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon.
+
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();
 
-      var myMenu = $("#contextMenu").Menu({
-        AnimateDirection: "up"
-      }); // Transforms the element with id 'contextMenu' into a menu element with the default options.
-      myMenu.Show();
+      //var myMenu = $("#contextMenu").Menu(); // Transforms the element with id 'contextMenu' into a menu element with the default options.
+      //myMenu.Show();
     </script>
   </body>
 </html>

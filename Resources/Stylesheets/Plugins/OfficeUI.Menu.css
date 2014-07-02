@@ -1,0 +1,11 @@
+#OfficeUI .menu { box-shadow: 0 0 0 #888888; left: 0px; z-index: 9999; display: none; cursor: context-menu; }
+#OfficeUI .menucontents {  padding: 1px 2px 1px 2px; background-color: #FFFFFF; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; border-bottom: 1px solid #C6C6C6; border-top: 1px solid #C6C6C6; box-shadow: 3px 3px 3px #E0E0E0; }
+#OfficeUI .menucontents > UL LI { height: 23px; line-height: 23px; list-style: none; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: middle; }
+#OfficeUI .imageHolder { text-align: center; padding-top: 4px; width: 16px; height: 16px; }
+#OfficeUI .imageHolder > IMG { width: 16px; height: 16px; }
+#OfficeUI .menuItem { height: 23px; line-height: 23px; vertical-align: top; }
+#OfficeUI .menuEntry { font-size: 12px; }
+#OfficeUI .menuEntry > div:first-of-type { position: relative; }
+#OfficeUI .subMenuHolder > div:first-of-type { margin-right: 25px; }
+#OfficeUI .subMenuArrow { position: absolute; width: 10px; right: 0px; top: 0px; }
+#OfficeUI .subMenuArrow .menu { top: -1px; left: 16px; }

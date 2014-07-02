@@ -14,22 +14,6 @@
 // Defines the API that can be used to perform some actions ont he OfficeWebControls.
 var OfficeUICoreAPI = {
 
-  // Enables a given tab, based on the id of the tab.
-  // Parameters: 
-  //    tabId:    The id of the tab that should be showed.
-  EnableTab: function(tabId) {
-
-    // Chech if the tab with the id can be found and if not, write a message to the log.
-    if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found."))
-    {   
-      // Start by deactiving every tab element on the page.
-      OfficeUICoreHelpers.DeactivateAllTabs();
-
-      // Marks the tab as the active one and display the contents for the tab.
-      OfficeUICoreHelpers.ActivateTab(tabId);
-    }
-  },
-
   // Enables a given tab, based on the index of the tab.
   // Remarks: 
   //      The index starts at 0. The element at position 0 is the first tab which is not the application tab.

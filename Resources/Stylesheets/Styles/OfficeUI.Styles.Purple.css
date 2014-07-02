@@ -1,12 +1,3 @@
-/* Provides specific style theming for the ribbon. */
-#OfficeUI li[role=tab].application { background-color: #80397b; color: #FFF; border: 1px solid #80397b !important; }
-#OfficeUI li[role=tab]:not(.application):hover { color: #80397b; }
-#OfficeUI ul[role=tablist] li.active[role=tab] { color: #80397b; }
-#OfficeUI .icon.active { background-color: #d4a9d1; }
-
-#OfficeUI .bigicon:not(.disabled):not(.active):hover, 
-#OfficeUI .smallicon:not(.disabled):not(.active):hover { background-color: #f0daee; }
-
 /* Provides specific style theming for the navigation. */
 .nav_inner ul li a.active { color: #80397b !important; }
 
