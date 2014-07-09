@@ -8,16 +8,15 @@
 
       <!-- Required stylesheets for the menu plugin. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Purple.css" />
 
       <!-- Required stylesheets for the menu ribbon plugin. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Purple.css" />
 
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Ribbon.css" /> <!-- Provides the styling of the ribbon. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
-  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Purple.css" /> <!-- Provides the styling for all the elements. -->
   </head>
 	<body class="OfficeUI_nopadding OfficeUI_nomargin">
 		<div id="OfficeUI">
@@ -132,7 +131,7 @@
                                   </div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuMoreItems" class="menuEntry">
                                 <div class="subMenuHolder">
                                   <div>
                                     <div class="imageHolder">&nbsp;</div>
@@ -143,43 +142,43 @@
                                     <div class="menu">
                                       <div class="menucontents">
                                         <ul>
-                                          <li class="menuEntry">
+                                          <li id="menuMoreItemsPostInThisFolder" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Post in This Folder</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuMoreItemsContactGroup" class="menuEntry">
                                             <div>
                                               <div class="imageHolder">&nbsp;</div>
                                               <div class="menuItem">Contact Group</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuMoreItemsTaskRequest" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Task Request</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry line">
+                                          <li id="menuMoreItemsInternetFax" class="menuEntry line">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Internet Fax</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuMoreItemsChooseFrom" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Choose Form...</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry line">
+                                          <li id="menuMoreItemsChooseInfoPathForm" class="menuEntry line">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Choose InfoPath Form...</div>
                                             </div>
                                           </li>
-                                          <li class="menuEntry">
+                                          <li id="menuMoreItemsOutlookDataFile" class="menuEntry">
                                             <div>
                                                 <div class="imageHolder">&nbsp;</div>
                                                 <div class="menuItem">Outlook Data File...</div>
@@ -191,7 +190,7 @@
                                   </div>
                                 </div>
                               </li>
-                              <li class="menuEntry">
+                              <li id="menuMailLync" class="menuEntry">
                                 <div>
                                   <div class="imageHolder">
                                     <img alt="Lync Meeting" src="Resources/Icons/Lync.png" />
@@ -444,8 +443,6 @@
     <!-- Required scripts for the OfficeUI. -->
     <script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
     <script src="Resources/Scripts/jquery-ui.min.js"></script>
-    <script src="Resources/Scripts/OfficeUI.Core.Api.Helpers.js"></script>
-    <script src="Resources/Scripts/OfficeUI.Core.Api.js"></script>
 
     <!-- Required scripts file for the menu. -->
     <script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
@@ -458,13 +455,20 @@
 
     <!-- Initialize OfficeUI. -->
     <script type="text/javascript">
-      $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon.
+      // Set the remaing height of the contents, acoording to the window size.
+      $(".main_area").height($(window).height() - 194);
+      $(".OfficeUI_v-scroll").height($(window).height() - 214);
+
+      // Make sure that the contents are resized when the window is resized.
+      $(window).resize(function() {
+          $(".main_area").height($(window).height() - 194);
+          $(".OfficeUI_v-scroll").height($(window).height() - 214);
+      });
+
+      var ribbon = $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon and store it in the variable 'ribbon'. That way, we can use the API on the 'ribbon' object.
 
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();
-
-      //var myMenu = $("#contextMenu").Menu(); // Transforms the element with id 'contextMenu' into a menu element with the default options.
-      //myMenu.Show();
     </script>
   </body>
 </html>
