@@ -92,7 +92,7 @@ $.fn.Ribbon = function(options) {
   		//  Parameters:
   		//      element:    The element (menu) that should be hidden.
   		function DisableMenu(element) {
-    		$(element).hide().parent().Deactivate();
+    		$(element).Menu().Hide();
       
     		// Update the state.
     		$(element).data("state", 0);

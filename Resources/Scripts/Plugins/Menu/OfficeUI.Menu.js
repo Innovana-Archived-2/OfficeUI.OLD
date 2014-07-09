@@ -79,7 +79,7 @@ $.fn.Menu = function(options) {
         });
 
         // When you click anywhere on the document, make sure that all the menu's are hidden.
-        $(document).click(function() {
+        $(document).on("click", function() {
             $(".menu").each(function() {
                 $(this).hide().parent().Deactivate();
                 $(this).data("state", 0);
