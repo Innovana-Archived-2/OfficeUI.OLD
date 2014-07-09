@@ -98,7 +98,8 @@ $.fn.Menu = function(options) {
         function CreateMenuAPI() {
             return {
                 Show: Show,
-                Hide: Hide
+                Hide: Hide,
+                OpenContextMenu : OpenContextMenu
             }
         }
 
@@ -111,6 +112,28 @@ $.fn.Menu = function(options) {
         // Hides the menu on which it is called.
         function Hide() {
             object.hide();
+        }
+
+        // Open a context menu.
+        // Parameters:
+        //      e:      The page event.
+        function OpenContextMenu(e) {
+            // Prevent the page from further execution.
+            e.preventDefault();
+
+            //getting height and width of the message box
+            var height = $(".contextMenuInArea").height();
+            var width = $(".contextMenuInArea").width();
+            
+            //calculating offset for displaying popup message
+            leftVal = e.pageX - (width / 2) + "px";
+            topVal = e.pageY - (height / 2) + "px";
+            
+            //show the popup message and hide with fading effect
+            if (options.Animate) { object.css({left:leftVal,top:topVal}).show("slide", { direction: options.AnimateDirection }, options.TransitionTime).Activate(); } // Always shows the menu. Never hide it on a hover.
+            else { object.css({left:leftVal,top:topVal}).show(); }
+
+            return false;
         }
 
     // End of section: API Creation.

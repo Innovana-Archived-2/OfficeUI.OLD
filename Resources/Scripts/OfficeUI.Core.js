@@ -40,8 +40,6 @@ jQuery.fn.extend({
   }
 });
 
-
-
 // Provides the core functions for the workings of the OfficeWebControls.
 var OfficeUICoreInternal = {
 
@@ -50,26 +48,11 @@ var OfficeUICoreInternal = {
 	
 	  // Events handlers are placed here.
 	
-      
-
-
-
       // Experimental section: Contextmenu handling. 
 
         // When you're in an area that can hold a contextmenu, add an event for a right click.
         $(".contextMenu").on("contextmenu", function(e) {
-            e.preventDefault();
-
-            //getting height and width of the message box
-            var height = $(".contextMenuInArea").height();
-            var width = $(".contextMenuInArea").width();
             
-            //calculating offset for displaying popup message
-            leftVal = e.pageX - (width / 2) + "px";
-            topVal = e.pageY - (height / 2) + "px";
-            
-            //show the popup message and hide with fading effect
-            $("#contextMenuInArea").css({left:leftVal,top:topVal}).show("slide", { direction: "up" }, OfficeUIConstants.menuTransition);
           return false;
         });
 

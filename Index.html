@@ -465,6 +465,12 @@
           $(".OfficeUI_v-scroll").height($(window).height() - 214);
       });
 
+      var contextMenu = $("#contextMenu").Menu();
+      
+      $(".main_area_contents").on("contextmenu", function(e) {
+        contextMenu.OpenContextMenu(e);
+      });
+
       var ribbon = $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon and store it in the variable 'ribbon'. That way, we can use the API on the 'ribbon' object.
 
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
