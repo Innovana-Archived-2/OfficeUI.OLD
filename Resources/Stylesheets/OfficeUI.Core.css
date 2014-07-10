@@ -11,6 +11,7 @@
 .OfficeUI_invisible { display: none; }
 .OfficeUI_center { text-align: center; }
 .OfficeUI_left { float: left; }
+.OfficeUI_right { float: right; }
 .OfficeUI_inline { display: inline-block; }
 .OfficeUI_disabled { opacity: .4; filter: alpha(opacity=40) }
 .OfficeUI_uppercase { text-transform: uppercase; }

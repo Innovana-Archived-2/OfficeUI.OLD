@@ -1,0 +1,10 @@
+.gridHolder { width: 100%; }
+.gridHolder .icon { width: 26px; }
+.gridHolder .header { border-bottom: 1px solid #A5ACB5; border-top: 1px solid #A5ACB5; height: 25px; line-height: 25px; padding-left: 10px; padding-right: 10px; text-transform: uppercase; }
+.gridHolder .header .fixed { width: 150px; }
+.gridHolder .row { border-bottom: 1px solid #d4d4d4; display: block; height: 25px; line-height: 25px; margin: 0px; padding-left: 10px; padding-right: 10px; cursor: default; }
+.gridHolder .row.selected { background-color: #CDE6F7; }
+.gridHolder .row .fixed { width: 150px; }
+.gridHolder .row img { height: 16px; margin-right: 10px; vertical-align: middle; width: 16px; }
+.gridHolder .header .inline:first-child { margin-left: 30px; }
+.gridHolder .row .inline .icon { margin-left: 0px; }

@@ -8,15 +8,19 @@
 
       <!-- Required stylesheets for the menu plugin. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Green.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
 
       <!-- Required stylesheets for the menu ribbon plugin. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Green.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" />
+
+      <!-- Required stylesheets for the grid plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/OfficeUI.Grid.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/Styles/OfficeUI.Grid.Blue.css" />
 
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
-      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Green.css" /> <!-- Provides the styling for all the elements. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
   </head>
 	<body class="OfficeUI_nopadding OfficeUI_nomargin">
 		<div id="OfficeUI">
@@ -332,7 +336,47 @@
           </div>
         </div>
         <div class="main_area_contents" style="font-size: 13px;">
-          <div class="OfficeUI_v-scroll">
+          <div id="myGrid">
+            <div>
+                <div class="icon"></div>
+                <div>Name</div>
+                <div>Updated on</div>
+                <div>Created on</div>
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 1</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 2</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 3</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 4</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+            </div>
+          </div>
+          <!--<div class="OfficeUI_v-scroll">
             <h1 style="margin: 0px;">OfficeWebControls 2.0</h1>
             <br/><br/>
             OfficeWebControls is my attempt to bring the Office Ribbon and other Microsoft items such as input elements, buttons, modals, ... to the web.<br/>
@@ -430,7 +474,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
       <div class="footer">
@@ -449,6 +493,9 @@
 
     <!-- Required scripts for the ribbon. -->
     <script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"></script>
+
+    <!-- Required scripts for the grid. -->
+    <script src="Resources/Scripts/Plugins/Grid/OfficeUI.Grid.js"></script>
 
     <!-- Core script comes here # This should be transferred into the Ribbon js later. -->
     <script src="Resources/Scripts/OfficeUI.Core.js"></script>
@@ -472,6 +519,7 @@
       });
 
       var ribbon = $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon and store it in the variable 'ribbon'. That way, we can use the API on the 'ribbon' object.
+      var grid = $("#myGrid").Grid(); // Initialize the "MainGrid" as a grid and store it in the variable "grid". That way, we can use the API on the 'grid' object.
 
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();
