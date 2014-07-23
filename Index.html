@@ -18,6 +18,9 @@
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/OfficeUI.Grid.css" />
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/Styles/OfficeUI.Grid.Blue.css" />
 
+      <!-- Required stylesheets for the modal plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/OfficeUI.Modal.css" />
+
   		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
       <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
@@ -335,7 +338,8 @@
             </ul>
           </div>
         </div>
-        <div class="main_area_contents" style="font-size: 13px;">
+        <div class="main_area_contents">
+          <input class="OfficeUI_inline" type="hidden" id="hiddenSelectedGridId" />
           <div id="myGrid">
             <div>
                 <div class="icon"></div>
@@ -350,6 +354,7 @@
               <div>Element 1</div>
               <div>01/01/2001 13:13:13</div>
               <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="1" />
             </div>
             <div>
               <div class="icon">
@@ -358,6 +363,7 @@
               <div>Element 2</div>
               <div>01/01/2001 13:13:13</div>
               <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="2" />
             </div>
             <div>
               <div class="icon">
@@ -366,6 +372,7 @@
               <div>Element 3</div>
               <div>01/01/2001 13:13:13</div>
               <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="3" />
             </div>
             <div>
               <div class="icon">
@@ -374,107 +381,23 @@
               <div>Element 4</div>
               <div>01/01/2001 13:13:13</div>
               <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="4" />
             </div>
           </div>
-          <!--<div class="OfficeUI_v-scroll">
-            <h1 style="margin: 0px;">OfficeWebControls 2.0</h1>
-            <br/><br/>
-            OfficeWebControls is my attempt to bring the Office Ribbon and other Microsoft items such as input elements, buttons, modals, ... to the web.<br/>
-            In the near future, projects derived from this one will see the light such as the ASP.NET MVC Office Ribbon Creator, a way to construct an Office Ribbon through a fluent API.<br/><br/>
-            <em>Note: The OfficeWebControls have been tested succesfully on this browsers:<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Google Chrome 35.0.1916.153 m<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Mozilla Firefox 30.0<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Internet Explorer 11.0.9600.17126<br/>
-            </em>
-            <br/>
-            <div class="menu" id="contextMenu">
-              <div class="menucontents">
-                <ul>
-                  <li class="menuEntry">
-                    <div>
-                      <div class="imageHolder">
-                        <img alt="Clean up conversation" src="Resources/Icons/CleanUpMenu.png" />
-                      </div>
-                      <div class="menuItem">Clean Up Conversation</div>
-                    </div>
-                  </li>
-                  <li class="menuEntry">
-                    <div>
-                      <div class="imageHolder">&nbsp;</div>
-                      <div class="menuItem">Clean Up Folder</div>
-                    </div>
-                  </li>
-                  <li class="menuEntry">
-                    <div>
-                      <div class="imageHolder">&nbsp;</div>
-                      <div class="menuItem">Clean Up Folder & Subfolders</div>
-                    </div>
-                  </li>
-                  <li class="menuEntry">
+          <!-- This is a modal popup. -->
 
-                               <div class="subMenuHolder">
-                                  <div>
-                                    <div class="imageHolder">&nbsp;</div>
-                                    <div class="menuItem">More Items</div>
-                                  </div>
-                                  <div class="subMenuArrow">
-                                    <i class="fa fa-caret-right"></i>
-                                    <div class="menu">
-                                      <div class="menucontents">
-                                        <ul>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Post in This Folder</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                              <div class="imageHolder">&nbsp;</div>
-                                              <div class="menuItem">Contact Group</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Task Request</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry line">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Internet Fax</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Choose Form...</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry line">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Choose InfoPath Form...</div>
-                                            </div>
-                                          </li>
-                                          <li class="menuEntry">
-                                            <div>
-                                                <div class="imageHolder">&nbsp;</div>
-                                                <div class="menuItem">Outlook Data File...</div>
-                                            </div>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                  </li>
-                </ul>
-              </div>
+          <div id="modalPopup" style="display: none;">
+            <div>
+                <span class="title">Modal popup</span>
+                <span class="modal_contents">
+                    <p>
+                        Contents of the modal popup are showed here.
+                    </p>
+                </span>
             </div>
-          </div>-->
+          </div>
+
+          <!-- End of the modal popup. -->
         </div>
       </div>
       <div class="footer">
@@ -496,6 +419,9 @@
 
     <!-- Required scripts for the grid. -->
     <script src="Resources/Scripts/Plugins/Grid/OfficeUI.Grid.js"></script>
+
+    <!-- Required scripts for the modal. -->
+    <script src="Resources/Scripts/Plugins/Modal/OfficeUI.Modal.js"></script>
 
     <!-- Core script comes here # This should be transferred into the Ribbon js later. -->
     <script src="Resources/Scripts/OfficeUI.Core.js"></script>
@@ -519,7 +445,15 @@
       });
 
       var ribbon = $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon and store it in the variable 'ribbon'. That way, we can use the API on the 'ribbon' object.
-      var grid = $("#myGrid").Grid(); // Initialize the "MainGrid" as a grid and store it in the variable "grid". That way, we can use the API on the 'grid' object.
+      
+      // Initialize the "MainGrid" as a grid and store it in the variable "grid". That way, we can use the API on the 'grid' object.
+      var grid = $("#myGrid").Grid({
+        OnSelectedRow: function(e) {
+          $("#hiddenSelectedGridId").val(e);
+        }
+      });
+
+      //$("#modalPopup").Modal();
 
       // OfficeUI Core section: Performs all the required initialization logic for the core elements.
       OfficeUICore.Init();

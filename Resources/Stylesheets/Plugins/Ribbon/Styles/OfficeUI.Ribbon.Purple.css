@@ -3,5 +3,5 @@
 #OfficeUI ul[role=tablist] li.active[role=tab] { color: #80397b; }
 #OfficeUI .icon.active { background-color: #d4a9d1; }
 
-#OfficeUI .bigicon:not(.disabled):not(.active):hover, 
-#OfficeUI .smallicon:not(.disabled):not(.active):hover { background-color: #f0daee; }
+#OfficeUI .bigicon:not(.OfficeUI_disabled):not(.active):hover, 
+#OfficeUI .smallicon:not(.OfficeUI_disabled):not(.active):hover { background-color: #f0daee; }

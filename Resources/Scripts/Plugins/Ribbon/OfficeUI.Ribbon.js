@@ -1,9 +1,9 @@
 // Makes a ribbon out of an element.
-$.fn.Ribbon = function(options) { 
-	// Specify the default options for the menu plugin.
-	var options = $.extend({});
+$.fn.Ribbon = function (options) {
+    // Specify the default options for the menu plugin.
+    var options = $.extend({});
 
-	// Get the object on which this is called.
+    // Get the object on which this is called.
     var object = $(this);
 
     // Initialize the ribbon.
@@ -11,156 +11,220 @@ $.fn.Ribbon = function(options) {
 
     // Section: Functions.
 
-    	// Initialize the whole ribbon. This is done by placing classes on the various elements that together form the ribbon.
-    	// This is done to keep the HTML less cluthered.
-    	// Also some basic functions such as selecting the correct tab are executed here.
-	    function Initialize() {
-		    $("ul[role='tablist'] > li").attr("role", "tab");
-			$(".ribbon, .tabs").addClass("brd_btm_grey"); 
-			$(".tabs UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin"); 
-			$("li[role='tab']").addClass("OfficeUI_inline"); 
-			$("li[role='tab'] span:first-child").addClass("OfficeUI_uppercase"); 
-			$("li[role='tab'] .contents").addClass("OfficeUI_absolute"); 
-		    $(".group").after("<div class='seperator'>&nbsp;</div>"); 
-			$(".group, .seperator").addClass("OfficeUI_relative OfficeUI_inline");
-			$(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("OfficeUI_inline"); 
-			$(".bigicon").addClass("icon OfficeUI_relative OfficeUI_inline OfficeUI_center"); 
-			$(".smallicon").addClass("icon OfficeUI_relative");
-			$(".legend").addClass("OfficeUI_absolute"); 
-			$(".arrow").addClass("OfficeUI_relative"); 
-			$(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>'); 
-			$('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>'); 
+    // Initialize the whole ribbon. This is done by placing classes on the various elements that together form the ribbon.
+    // This is done to keep the HTML less cluthered.
+    // Also some basic functions such as selecting the correct tab are executed here.
+    function Initialize() {
+        $("ul[role='tablist'] > li").attr("role", "tab");
+        $(".ribbon, .tabs").addClass("brd_btm_grey");
+        $(".tabs UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin");
+        $("li[role='tab']").addClass("OfficeUI_inline");
+        $("li[role='tab'] span:first-child").addClass("OfficeUI_uppercase");
+        $("li[role='tab'] .contents").addClass("OfficeUI_absolute");
+        $(".group").after("<div class='seperator'>&nbsp;</div>");
+        $(".group, .seperator").addClass("OfficeUI_relative OfficeUI_inline");
+        $(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("OfficeUI_inline");
+        $(".bigicon").addClass("icon OfficeUI_relative OfficeUI_inline OfficeUI_center");
+        $(".smallicon").addClass("icon OfficeUI_relative");
+        $(".legend").addClass("OfficeUI_absolute");
+        $(".arrow").addClass("OfficeUI_relative");
+        $(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>');
+        $('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>');
 
-			// Enable the first tab which is not an application tab.
-			EnableTab($("li[role='tab']:not(.application)").first().Id());
-		}
+        var selectedTabId = OfficeUICoreHelpers.ReadCookie("selectedTab");
 
-		// Enables a given tab, based on the id of the tab.
-	    // Parameters: 
-	    //    tabId:    The id of the tab that should be showed.
-	    function EnableTab(tabId) {
-		    // Chech if the tab with the id can be found and if not, write a message to the log.
-		    if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found."))
-		    {   
-		      // Start by deactiving every tab element on the page.
-		      OfficeUICoreHelpers.DeactivateAllTabs();
+        if (selectedTabId == null) {
+            // Enable the first tab which is not an application tab.
+            EnableTab($("li[role='tab']:not(.application)").first().Id());
+        } else {
+            EnableTab(selectedTabId);
+        }
+    }
 
-		      // Marks the tab as the active one and display the contents for the tab.
-		      OfficeUICoreHelpers.ActivateTab(tabId);
-		    }
-		}
+    // Enables a given tab, based on the id of the tab.
+    // Parameters: 
+    //    tabId:    The id of the tab that should be showed.
+    function EnableTab(tabId) {
+        // Chech if the tab with the id can be found and if not, write a message to the log.
+        if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found.")) {
+            // Start by deactiving every tab element on the page.
+            OfficeUICoreHelpers.DeactivateAllTabs();
 
-		// Enables the next tab if there is any.
-		function EnableNextTab() {
-			EnableTab($($("li[role=tab].active").next()).Id());
-		}
+            // Marks the tab as the active one and display the contents for the tab.
+            OfficeUICoreHelpers.ActivateTab(tabId);
 
-  		// Enables the previous tab, but only if it's not the application tab.
-  		function EnablePreviousTab() {
-    		if (!$($("li[role=tab].active").prev()).hasClass("application")) {
-      			EnableTab($($("li[role=tab]:not(.application).active").prev()).Id());
-    		} 
-  		}
+            OfficeUICoreHelpers.CreateCookie("selectedTab", tabId, 1);
+        } else {
+            EnableTab($("li[role='tab']:not(.application)").first().Id());
+        }
+    }
 
-  		// Enable the menu for a given icon.
-		//  Parameters:
-		//    Timekey: The duration it takes to slide down the element., 
-		//    Elementkey: The element on which the "active" class should be set. 
-		function EnableMenu(time, element) {
-			// Check if the menu is closed. If that's the case, we should show it.
-			if(!$(element).data("state") || $(element).data("state") == 0) { 
-	
-		    // Hide every menutitem which is visible for the moment.
-		    $(".menu").each(function() {
-		        $(this).hide().parent().Deactivate();
-		        $(this).data("state", 0);
-		    });
+    // Enables the next tab if there is any.
+    function EnableNextTab() {
+        EnableTab($($("li[role=tab].active").next()).Id());
+    }
 
-		    $(element).parent().Activate();
-		    $(element).Menu().Show();
+    // Enables the previous tab, but only if it's not the application tab.
+    function EnablePreviousTab() {
+        if (!$($("li[role=tab].active").prev()).hasClass("application")) {
+            EnableTab($($("li[role=tab]:not(.application).active").prev()).Id());
+        }
+    }
 
-		    // Update the current state.
-		    $(element).data("state", 1);
+    // Enable the menu for a given icon.
+    //  Parameters:
+    //    Timekey: The duration it takes to slide down the element., 
+    //    Elementkey: The element on which the "active" class should be set. 
+    function EnableMenu(time, element) {
+        // Check if the menu is closed. If that's the case, we should show it.
+        if (!$(element).data("state") || $(element).data("state") == 0) {
 
-		    // Menu is visible, so let's close it.
-		    } else if ($(element).data("state") == 1) {
-		      DisableMenu($(element));
-		    }
-		}
+            // Hide every menutitem which is visible for the moment.
+            $(".menu").each(function () {
+                $(this).hide().parent().Deactivate();
+                $(this).data("state", 0);
+            });
 
-		// Disables a menu.
-  		//  Parameters:
-  		//      element:    The element (menu) that should be hidden.
-  		function DisableMenu(element) {
-    		$(element).Menu().Hide();
-      
-    		// Update the state.
-    		$(element).data("state", 0);
-  		}
+            $(element).parent().Activate();
+            $(element).Menu().Show();
 
-	// End of section: Functions.
+            // Update the current state.
+            $(element).data("state", 1);
+
+            // Menu is visible, so let's close it.
+        } else if ($(element).data("state") == 1) {
+            DisableMenu($(element));
+        }
+    }
+
+    // Disables a menu.
+    //  Parameters:
+    //      element:    The element (menu) that should be hidden.
+    function DisableMenu(element) {
+        $(element).Menu().Hide();
+
+        // Update the state.
+        $(element).data("state", 0);
+    }
+
+    // End of section: Functions.
 
 
-	// Section: Event Handlers.
+    // Section: Event Handlers.
 
-		// When you click on a tab element (not the application tab), make sure that that tab element becomes active.
-		$("li[role=tab]:not(.application)").click(function() {
-			EnableTab($(this).Id());
-		});
+    // When you click on a tab element (not the application tab), make sure that that tab element becomes active.
+    $("li[role=tab]:not(.application)").click(function () {
+        EnableTab($(this).Id());
+    });
 
-		// When you scroll when you're mousecursor is somewhere in the Ribbon, make sure that either the next or the previous tab is selected,
-		// based on the direction of the scroll.
-		// Note: We're binding 2 events here ('DOMMouseScroll' & 'mousewheel'). This is needed to make it work in Internet Explorer, Google Chrome & Mozilla Firefox.
-		$(".ribbon").on('DOMMouseScroll mousewheel', function(e){
-        	if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { EnableNextTab($(this)); }
-        	else { EnablePreviousTab($(this));	}
+    // When you scroll when you're mousecursor is somewhere in the Ribbon, make sure that either the next or the previous tab is selected,
+    // based on the direction of the scroll.
+    // Note: We're binding 2 events here ('DOMMouseScroll' & 'mousewheel'). This is needed to make it work in Internet Explorer, Google Chrome & Mozilla Firefox.
+    $(".ribbon").on('DOMMouseScroll mousewheel', function (e) {
+        if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { EnableNextTab($(this)); }
+        else { EnablePreviousTab($(this)); }
 
-        	// Prevent the page from scrolling.
-        	return false;
-    	});
+        // Prevent the page from scrolling.
+        return false;
+    });
 
-    	// Executed when you click on any icon which is not disabled.
-      	$(".icon").on("click", function(e) {
-        	if (!$(this).hasClass("OfficeUI_disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
-          		if ($(this).HoldsMenu()) { // Check if it's a menu.
-	              	e.stopPropagation();
-	              	EnableMenu(OfficeUIConstants.menuTransition, $(".menu", this).first());
-	            }
-         	} 
-      	});
+    // Executed when you click on any icon which is not disabled.
+    $(".icon").on("click", function (e) {
+        if (!$(this).hasClass("OfficeUI_disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
+            if ($(this).HoldsMenu()) { // Check if it's a menu.
+                e.stopPropagation();
+                EnableMenu(OfficeUIConstants.menuTransition, $(".menu", this).first());
+            }
+        }
+    });
 
-	// End of section : Event Handlers.
+    // End of section : Event Handlers.
+
+    // Section: API Creation.
+
+    // Create an API and return that one.
+    return CreateRibbonAPI();
+
+    // Creates the ribbon API.
+    function CreateRibbonAPI() {
+        return {
+            ActivateAction: ActivateAction,
+            DeactivateAction: DeactivateAction
+        }
+    }
+
+    // Actviate an action based on the ic.
+    // Parameters:
+    //	actionId: 	The id of the action that should be enabled.
+    function ActivateAction(actionId) {
+        var element = $("div", $("#" + actionId));
+        element.removeClass("OfficeUI_disabled");
+    }
+
+    // Deactivate an action based on the ic.
+    // Parameters:
+    //	actionId: 	The id of the action that should be enabled.
+    function DeactivateAction(actionId) {
+        var element = $("div", $("#" + actionId));
+        element.addClass("OfficeUI_disabled");
+    }
+
+    // End of Section: API Creation.
 }
 
 // Provides constants that will be used in here.
 var OfficeUIConstants = {
-  menuTransition: 100, // Defines the amount of time (milliseconds) that it takes for a menu item in the ribbon to be completely shown.
-  subMenuTimeout: 500  // Defines the amount of time (milliseconds) that a cursor must be placed over a certain menu entry in the ribbon before the submenu will open.
+    menuTransition: 100, // Defines the amount of time (milliseconds) that it takes for a menu item in the ribbon to be completely shown.
+    subMenuTimeout: 500  // Defines the amount of time (milliseconds) that a cursor must be placed over a certain menu entry in the ribbon before the submenu will open.
 };
 
 // Provides internal helpers for the ribbon.
 var OfficeUICoreHelpers = {
 
-  // Enables a given tab, based on the id of the tab.
-  // Parameters: 
-  //    tabId:    The id of the tab that should be showed.
-  ActivateTab: function(tabId) {
-    $("#" + tabId).Activate();
-    $(".contents", $("#" + tabId)).Activate();
-  },
+    // Enables a given tab, based on the id of the tab.
+    // Parameters: 
+    //    tabId:    The id of the tab that should be showed.
+    ActivateTab: function (tabId) {
+        $("#" + tabId).Activate();
+        $(".contents", $("#" + tabId)).Activate();
+    },
 
-  // Deactivates a given tab, based on the id of the tab.
-  // Parameters: 
-  //    tabId:    The id of the tab element that should be deactivated.
-  DeactivateTab: function(tabId) {
-    $("#" + tabId).Deactivate();
-    $(".contents", $("#" + tabId)).Deactivate();
-  },
+    // Deactivates a given tab, based on the id of the tab.
+    // Parameters: 
+    //    tabId:    The id of the tab element that should be deactivated.
+    DeactivateTab: function (tabId) {
+        $("#" + tabId).Deactivate();
+        $(".contents", $("#" + tabId)).Deactivate();
+    },
 
-  // Deactivates all the tab elements which are on the page.
-  DeactivateAllTabs: function() {
-    $("li[role=tab]").each(function(index) {
-      OfficeUICoreHelpers.DeactivateTab($(this).Id());
-    });
-  }
+    // Deactivates all the tab elements which are on the page.
+    DeactivateAllTabs: function () {
+        $("li[role=tab]").each(function (index) {
+            OfficeUICoreHelpers.DeactivateTab($(this).Id());
+        });
+    },
+
+    CreateCookie: function(name, value, days) {
+        var expires;
+
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        document.cookie = escape(name + document.location.href) + "=" + escape(value) + expires + "; path=/";
+    },
+
+    ReadCookie: function(name) {
+        var nameEQ = escape(name + document.location.href) + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return unescape(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+    }
 }
