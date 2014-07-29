@@ -1,46 +1,75 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>OfficeUI - Usage guide</title>
-    <style>
-    	body { margin: 0px; padding: 0px; font-family: 'Segoe UI', 'Arial'; font-size: 11px; line-height: 33px; }
-    	a { text-decoration: none; color: #000; }
-    	a:hover { color: #00bcf2; }
-    	a.active { color: #1e75bb; }
-    	.nav_bar { background-color: #e6e6e6; height: 33px; }
-    	.nav_bar_contents { width: 1024px; margin: 0 auto; }
-    	.nav_bar ul { margin: 0; padding: 0;}
-    	.nav_bar ul li { list-style: none; display: inline-block; padding-right: 30px;}
-
-    	.contents { width: 1024px; margin: 0 auto; margin-top: 30px; vertical-align: top;}
-
-    	#left_nav { width: 227px; display: inline-block; vertical-align: top; padding-top: 15px;}
-    	#article { display: inline-block; color: #454545; line-height: 17px; font-size: 13px; width: 790px;}
-
-    	H1 { color: #454545; font-family: 'Segoe UI Light','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif; font-weight: normal; font-size: 37px; }
-    </style>
+  	<title>OfficeUI Framework</title>
+    <link rel="stylesheet" href="Resources/Stylesheets/site.css" />
   </head>
   <body>
+  <div class="title">OfficeUI - Development Center</div>
     <div class="nav_bar">
-      <div class="nav_bar_contents">
+      <div class="contents center">
 	      <ul>
-	      	<li><a href="#" class="active">Desktop technologies</a></li>
-	      	<li><a href="#">Desktop technologies</a></li>
-	      	<li><a href="#">Desktop technologies</a></li>
-	      	<li><a href="#">Desktop technologies</a></li>
+	      	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
+	      	<li><a href="OfficeUIRibbon/index.html">OfficeUI Ribbon</a></li>
 	      </ul>
       </div>
     </div>
 
-    <div class="wrapper">
-      <div class="contents">
-      	<div id="left_nav">
-      	Navigation
-      	</div>
-      	<div id="article">
-      	  <h1>OfficeUI Ribbon Framework</h1>
-      	  <p>The OfficeUI Ribbon Framework is a rich command presentation systme that provides a modern alternative to the layered menus, toolbars and task panes of traditional Web applications. Similar in functionality and appearance to the Microsoft Office 2013 Fluent User interface, the Ribbon Framework is composed of a ribbon command bar that exposed the major features of an application through a series of tabs at the top of an application window and a context menu system.</p>
-      	</div>
+    <div class="contents center">
+      <div class="navigation_holder">
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="#" class="active">OfficeUI Framework</a>     
+              <ul>
+              	<li>
+              		<a href="OfficeUIFramework/index.html">OfficeUI Framework Overview</a> 
+              	</li>
+              	<li>
+              		<a href="OfficeUIFramework/language.html">Declaring Commands and Controls with OfficeUI Markup</a>
+              	</li>
+              </ul>   
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="article">
+        <h1>OfficeUI Framework</h1>
+        <p>
+        	The OfficeUI Framework is a rich command presentation system that provides a modern alternative to the classic HTML controls of thaditional web applications.
+        	Similar in functionality and appearance to the Microsoft Office 2013 Fluent UI, the framework is composed out of various elements.
+        </p>
+        <h2>In this section</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Topic</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td><a href="OfficeUIFramework/index.html">OfficeUI Framework Overview</a></td>
+              <td>The topics contained in this section explore the fundamentals of the OfficeUI Framework.</td>
+            </tr>
+            <tr>
+              <td><a href="OfficeUIFramework/language.html">Declaring Commands and Controls with OfficeUI Markup</a></td>
+              <td>The OfficeUI framework can be rendered using HTML to declaratively implement the appearance of an OfficeUI application.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>System Requirements</h2>
+        <p>
+        	The OfficeUI suite has been developed for use with the following browsers:
+        </p>
+        <ul>
+          <li>Microsoft Internet Explorer</li>
+          <li>Google Chrome</li>
+          <li>Mozilla Firefox</li>
+        </ul>
+
+        <p class="note">
+        	<strong>Note</strong>&nbsp;&nbsp;It is recommended to always use the latest browsers of the supported ones which are listed above.
+        	It does not mean that the OfficeUI suite does not work with olders versions of the browsers but it is not guaranteed by the development team.
+        </p>
       </div>
     </div>
   </body>

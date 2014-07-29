@@ -1,0 +1,52 @@
+/* Page elements styling. */
+body { margin: 0px; padding: 0px; font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif; font-size: 11px; }
+
+/* General styling of the elements. */
+a { text-decoration: none; color: #1e75bb; }
+a:hover { color: #00bcf2 !important; }
+a.active { color: #1e75bb !important; }
+
+h1, h2, h3 { color: #454545; font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif; font-weight: normal; margin: 0px; padding: 0px; width: 80%; }
+
+h1 a, h2 a, h3 a, h1 a:hover, h2 a:hover, h3 a:hover { color: #454545 !important; text-decoration: none; }
+
+h1 { font-size: 37px; line-height: 40px;width: 80%; }
+h2 { font-size: 19px; margin-bottom: 10px; }
+h3 { font-weight: bold; }
+
+ul { margin: 0px; padding: 0px; }
+
+img { margin-bottom: 10px; }
+
+/* General styling. */
+.contents { width: 1024px;  margin-top: 30px !important; }
+.center { margin: 0 auto; }
+
+/* Provides the style for the title on top of the page. */
+.title { color: #aeaeae; font-size: 25px; width: 1024px; margin: 0 auto; margin-top: 10px; margin-bottom: 40px; }
+
+/* Provides styling for the gray navigation bar on the top of the page. */
+.navigation_holder { display: inline-block; width: 220px; }
+.nav_bar a { color: #000; }
+.nav_bar { background-color: #e6e6e6; height: 33px; line-height: 33px; }
+.nav_bar ul li { list-style: none; display: inline-block; padding-right: 30px; }
+
+/* Specific navigation for the left side of the page. */
+#left_nav a { color: #707070; display: block; margin-bottom: 10px; }
+#left_nav ul { list-style: none; }
+#left_nav ul li ul { list-style: none; margin-left: 30px; }
+
+/* Styling for the article. */
+.article { font-size: 13px; color: #454545; padding-left: 30px; display: inline-block; vertical-align: top; width: 771px; }
+.article p { line-height: 18px; margin-bottom: 25px; }
+.article ul { list-style-position: outside; margin-left: 15px; margin-bottom: 25px; }
+.article ul li { list-style-position: outside; padding-left: 5px; }
+
+/* Styling for the tables. */
+table { margin-bottom: 25px; }
+table a { color: #1e75bb; }
+table tr > td:first-child { width: 200px; }
+table tr > td:last-child { width: 571px; }
+td, th { border-bottom: 1px solid #dbdbdb; margin: 10px; padding: 10px 8px; }
+th { color: #636363; text-align: left; }
+
