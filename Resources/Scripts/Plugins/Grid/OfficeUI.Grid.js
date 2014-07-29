@@ -42,15 +42,29 @@ $.fn.Grid = function(options) {
 
         // If an action is specified to execute when you select a row, that execute the function stored in the 'OnSelectedRow'.
         if (options.OnSelectedRow != null) {
-            $(".row").on("click contextmenu", function(e) {
-                options.OnSelectedRow($(":hidden", this).val());
+            $(".row").on("click contextmenu", function (e) {
+                // Inside a grid, the id of the selected row is always in the first element.
+                // The type of the selected row is always stored in the 2nd hidden field.
+                var selectedRowId = $(":hidden", this).eq(0).val();
+                var selectedType = $(":hidden", this).eq(1).val();
+
+                options.OnSelectedRow(selectedRowId, selectedType);
             });
         }
 
         // If an double click is defined, execute the action.
         if (options.OnDoubleClick != null) {
-            $(".row").on("dblclick", function(e) {
-                options.OnDoubleClick($(":hidden", this).val());
+            $(".row").on("dblclick", function (e) {
+                // Inside a grid, the id of the selected row is always in the first element.
+                // The type of the selected row is always stored in the 2nd hidden field.
+                var selectedRowId = $(":hidden", this).eq(0).val();
+                var selectedType = $(":hidden", this).eq(1).val();
+
+                if (selectedType == "folder") {
+                    options.OnDoubleClick(selectedRowId, selectedType);
+                } else {
+                    options.OnDoubleClick(selectedRowId, selectedType);
+                }
             });
         }
 

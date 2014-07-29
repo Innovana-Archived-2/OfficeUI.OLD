@@ -1,4 +1,4 @@
-#OfficeUI .menu { box-shadow: 0 0 0 #888888; left: 0px; z-index: 9999; display: none; cursor: default; min-width: 80px;}
+#OfficeUI .menu { box-shadow: 0 0 0 #888888; left: 0px; z-index: 9999; display: none; cursor: default;min-width: 80px;}
 #OfficeUI .menucontents {  padding: 1px 2px 1px 2px; background-color: #FFFFFF; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; border-bottom: 1px solid #C6C6C6; border-top: 1px solid #C6C6C6; box-shadow: 3px 3px 3px #E0E0E0; }
 #OfficeUI .menucontents > UL LI { height: 23px; line-height: 23px; list-style: none; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: middle; }
 #OfficeUI .imageHolder { text-align: center; padding-top: 4px; width: 16px; height: 16px; }

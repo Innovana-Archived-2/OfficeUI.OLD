@@ -31,14 +31,8 @@ $.fn.Ribbon = function (options) {
         $(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>');
         $('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>');
 
-        var selectedTabId = OfficeUICoreHelpers.ReadCookie("selectedTab");
-
-        if (selectedTabId == null) {
-            // Enable the first tab which is not an application tab.
-            EnableTab($("li[role='tab']:not(.application)").first().Id());
-        } else {
-            EnableTab(selectedTabId);
-        }
+        // Enable the first tab which is not an application tab.
+        EnableTab($("li[role='tab']:not(.application)").first().Id());
     }
 
     // Enables a given tab, based on the id of the tab.
@@ -52,8 +46,6 @@ $.fn.Ribbon = function (options) {
 
             // Marks the tab as the active one and display the contents for the tab.
             OfficeUICoreHelpers.ActivateTab(tabId);
-
-            OfficeUICoreHelpers.CreateCookie("selectedTab", tabId, 1);
         } else {
             EnableTab($("li[role='tab']:not(.application)").first().Id());
         }
@@ -155,17 +147,17 @@ $.fn.Ribbon = function (options) {
 
     // Actviate an action based on the ic.
     // Parameters:
-    //	actionId: 	The id of the action that should be enabled.
+    //  actionId:   The id of the action that should be enabled.
     function ActivateAction(actionId) {
-        var element = $("div", $("#" + actionId));
+        var element = $("#" + actionId);
         element.removeClass("OfficeUI_disabled");
     }
 
     // Deactivate an action based on the ic.
     // Parameters:
-    //	actionId: 	The id of the action that should be enabled.
+    //  actionId:   The id of the action that should be enabled.
     function DeactivateAction(actionId) {
-        var element = $("div", $("#" + actionId));
+        var element = $("#" + actionId);
         element.addClass("OfficeUI_disabled");
     }
 
@@ -202,29 +194,5 @@ var OfficeUICoreHelpers = {
         $("li[role=tab]").each(function (index) {
             OfficeUICoreHelpers.DeactivateTab($(this).Id());
         });
-    },
-
-    CreateCookie: function(name, value, days) {
-        var expires;
-
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toGMTString();
-        } else {
-            expires = "";
-        }
-        document.cookie = escape(name + document.location.href) + "=" + escape(value) + expires + "; path=/";
-    },
-
-    ReadCookie: function(name) {
-        var nameEQ = escape(name + document.location.href) + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return unescape(c.substring(nameEQ.length, c.length));
-        }
-        return null;
     }
 }

@@ -6,9 +6,9 @@
 //      DelayTime (default - 500):                  When there's a submenu item, this is the delay that it would take before the submenu opens.
 //      TransitionTime (default - 100):             The time it takes before the animation of the menu is completed.
 $.fn.Menu = function(options) {
-	
+    
     // Specify the default options for the menu plugin.
-	var options = $.extend({
+    var options = $.extend({
         Animate: true,
         AnimateDirection: "up",
         AnimateDirectionSubMenu: "left",
@@ -79,7 +79,7 @@ $.fn.Menu = function(options) {
         });
 
         // When you click anywhere on the document, make sure that all the menu's are hidden.
-        $(document).on("click", function() {
+        $(document).on("click", function (e) {
             $(".menu").each(function() {
                 $(this).hide().parent().Deactivate();
                 $(this).data("state", 0);

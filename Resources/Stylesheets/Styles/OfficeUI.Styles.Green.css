@@ -4,3 +4,7 @@
 /* Provides specific style theming for the footer. */
 .footer { background-color: #217346; }
 
+/* Specific styling for the elements. */
+#OfficeUI input[type="submit"]:hover {border: 1px solid #86BFA0;background-color: #E9F5EE;}
+#OfficeUI input[type="submit"]:focus {border: 1px solid #439467;background-color: #86BFA0;}
+
