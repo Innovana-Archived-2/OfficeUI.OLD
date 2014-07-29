@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+  		<title>OfficeUI - Demo</title>
+  		
+  		<!-- Required stylesheets for the OfficeUI. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
+
+      <!-- Required stylesheets for the input elements. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Elements.css" />
+
+      <!-- Required stylesheets for the menu plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Orange.css" />
+
+      <!-- Required stylesheets for the menu ribbon plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Orange.css" />
+
+      <!-- Required stylesheets for the grid plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/OfficeUI.Grid.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/Styles/OfficeUI.Grid.Orange.css" />
+
+      <!-- Required stylesheets for the modal plugin. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/OfficeUI.Modal.css" />
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/Styles/OfficeUI.Modal.Orange.css" />
+
+  		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
+      <link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Orange.css" /> <!-- Provides the styling for all the elements. -->
+  </head>
+	<body class="OfficeUI_nopadding OfficeUI_nomargin">
+		<div id="OfficeUI">
+			<div class="title">
+				<span>OfficeUI Demo (Version 3.0 - Pre-Release)</span>
+			  </div>
+ 			<div id="mainRibbon" class="ribbon">
+ 				<div class="tabs">
+ 					<ul role="tablist">
+ 						<li role="tab" class="application" id="tabFile">
+ 							<span>File</span>
+ 						</li>
+ 						<li id="tabHome">
+ 							<span>Home</span>
+              <div class="contents">
+                <div class="group">
+                  <div class="icongroup">
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="newEmail" alt="New email" src="Resources/Icons/NewMailMessage.png" />
+                        <div class="iconlegend">New<br />Email</div>
+                      </div>
+                    </a>
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="newItems" alt="New items" src="Resources/Icons/MailNewItemMenu.png" />
+                        <div class="iconlegend">
+                          New<br />Items
+                          <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="menu">
+                          <div class="menucontents">
+                            <ul>
+                              <li id="menuEmailMessage" class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="E-mail message" src="Resources/Icons/EmailMessage.png" />
+                                  </div>
+                                  <div class="menuItem">E-Mail Message</div>
+                                </div>
+                              </li>
+                              <li id="menuAppointment" class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Appointment" src="Resources/Icons/Appointment.png" />
+                                  </div>
+                                  <div class="menuItem">Appointment</div>
+                                </div>
+                              </li>
+                              <li id="menuMeeting" class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Meeting" src="Resources/Icons/Meeting.png" />
+                                  </div>
+                                  <div class="menuItem">Meeting</div>
+                                </div>
+                              </li>
+                              <li id="menuContact" class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Contact" src="Resources/Icons/Contact.png" />
+                                  </div>
+                                  <div class="menuItem">Contact</div>
+                                </div>
+                              </li>
+                              <li id="menuTask" class="menuEntry line">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Task" src="Resources/Icons/Task.png" />
+                                  </div>
+                                  <div class="menuItem">Task</div>
+                                </div>
+                              </li>
+                              <li id="menuEmailMessageUsing" class="menuEntry">
+                                <div class="subMenuHolder">
+                                  <div>
+                                    <div class="imageHolder">&nbsp;</div>
+                                    <div class="menuItem">E-Mail Message Using</div>
+                                  </div>
+                                  <div class="subMenuArrow">
+                                    <i class="fa fa-caret-right"></i>
+                                    <div class="menu">
+                                      <div class="menucontents">
+                                        <ul>
+                                          <li id="menuMoreStationary" class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">More stationary...</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuPlainText" class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Plain Text</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuRichText" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Richt Text</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuHTML" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">HTML</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li id="menuMoreItems" class="menuEntry">
+                                <div class="subMenuHolder">
+                                  <div>
+                                    <div class="imageHolder">&nbsp;</div>
+                                    <div class="menuItem">More Items</div>
+                                  </div>
+                                  <div class="subMenuArrow">
+                                    <i class="fa fa-caret-right"></i>
+                                    <div class="menu">
+                                      <div class="menucontents">
+                                        <ul>
+                                          <li id="menuMoreItemsPostInThisFolder" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Post in This Folder</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsContactGroup" class="menuEntry">
+                                            <div>
+                                              <div class="imageHolder">&nbsp;</div>
+                                              <div class="menuItem">Contact Group</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsTaskRequest" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Task Request</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsInternetFax" class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Internet Fax</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsChooseFrom" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose Form...</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsChooseInfoPathForm" class="menuEntry line">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Choose InfoPath Form...</div>
+                                            </div>
+                                          </li>
+                                          <li id="menuMoreItemsOutlookDataFile" class="menuEntry">
+                                            <div>
+                                                <div class="imageHolder">&nbsp;</div>
+                                                <div class="menuItem">Outlook Data File...</div>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li id="menuMailLync" class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Lync Meeting" src="Resources/Icons/Lync.png" />
+                                  </div>
+                                  <div class="menuItem">Lync Meeting</div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="legend">New</div>
+                </div>     
+                
+                <div class="group">
+                  <div class="icongroup">
+                    <a href="#">
+                      <div class="smallicon">
+                        <img id="ignore" alt="Ignore" src="Resources/Icons/IgnoreConversation.png" />
+                        <div class="iconlegend">Ignore</div>
+                      </div>
+                    </a>
+                    <a href="#">
+                      <div class="smallicon">
+                        <img id="cleanup" alt="Clean up" src="Resources/Icons/CleanUpMenu.png" />
+                        <div class="iconlegend">
+                          Clean Up
+                          <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="menu">
+                          <div class="menucontents">
+                            <ul>
+                              <li class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">
+                                    <img alt="Clean up conversation" src="Resources/Icons/CleanUpMenu.png" />
+                                  </div>
+                                  <div class="menuItem">Clean Up Conversation</div>
+                                </div>
+                              </li>
+                              <li class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">&nbsp;</div>
+                                  <div class="menuItem">Clean Up Folder</div>
+                                </div>
+                              </li>
+                              <li class="menuEntry">
+                                <div>
+                                  <div class="imageHolder">&nbsp;</div>
+                                  <div class="menuItem">Clean Up Folder & Subfolders</div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#">
+                      <div class="smallicon">
+                        <img id="junk" alt="Junk" src="Resources/Icons/JunkMenu.png" />
+                        <div class="iconlegend">Junk</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="icongroup">
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="delete" alt="Delete" src="Resources/Icons/Delete.png" />
+                        <div class="iconlegend">Delete</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="legend">Delete</div>
+                </div> 
+
+                <div class="group">
+                  <div class="icongroup">
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="reply" alt="Reply" src="Resources/Icons/Reply.png" />
+                        <div class="iconlegend">Reply</div>
+                      </div>
+                    </a>
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="replyAll" alt="Reply all" src="Resources/Icons/ReplyAll.png" />
+                        <div class="iconlegend">Reply<br/>All</div>
+                      </div>
+                    </a>
+                    <a href="#">
+                      <div class="bigicon">
+                        <img id="forward" alt="Forward" src="Resources/Icons/Forward.png" />
+                        <div class="iconlegend">Forward</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="legend">Respond</div>
+                </div> 
+
+              </div>
+ 						</li>
+ 						<li id="tabSendReceive">
+ 							<span>Send / Receive</span>
+              <div class="contents">
+                Contents of the the "Send / Receive" tab are showed here.
+              </div>
+ 						</li>
+ 						<li id="tabFolder">
+ 							<span>Folder</span>
+              <div class="contents">
+                Contents of the the "Folder" tab are showed here.
+              </div>
+ 						</li>
+ 						<li id="tabView">
+ 							<span>View</span>
+              <div class="contents">
+                Contents of the the "View" tab are showed here.
+              </div>
+ 						</li>
+ 					</ul>
+ 				</div>
+ 			</div>
+      <div class="breadcrumb">
+        <a href="#" class="breadcrumbItem">Item</a>
+        <a href="#" class="breadcrumbItem">Sub item</a>
+      </div>
+      <div class="main_area">
+        <div class="navigation">
+          <div class="nav_inner">
+            <ul>
+              <li>
+                <a href="index-blue.html">
+                  Blue
+                </a>
+              </li>
+              <li>
+                <a href="index-green.html">
+                  Green
+                </a>
+              </li>
+              <li>
+                <a href="index-orange.html" class="active">
+                  Orange
+                </a>
+              </li>
+              <li>
+                <a href="index-purple.html">
+                  Purple
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="main_area_contents">
+          <input class="OfficeUI_inline" type="hidden" id="hiddenSelectedGridId" />
+          <div id="myGrid">
+            <div>
+                <div class="icon"></div>
+                <div>Name</div>
+                <div>Updated on</div>
+                <div>Created on</div>
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 1</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="1" />
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 2</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="2" />
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 3</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="3" />
+            </div>
+            <div>
+              <div class="icon">
+                <img src="Resources/Icons/Grid/General/Folder.png" />
+              </div>
+              <div>Element 4</div>
+              <div>01/01/2001 13:13:13</div>
+              <div>01/01/2001 13:13:13</div>
+              <input type="hidden" value="4" />
+            </div>
+          </div>
+
+          <!-- Some general information. -->
+          <br/>
+          <div>
+            Here's some general information about the OfficeUI release.<br/>
+            The OfficeUI contains various elements:
+            <br/>
+            <h1>Ribbon</h1>
+            The ribbon can be viewed on this page, and no additional page is dedicated to the ribbon.<br/>
+
+            <h1>Menu</h1>
+            The menu is included in the Ribbon and can be opened by clicking on icon that's marked with an arrow.<br/>
+
+            <h1>Context menu</h1>
+            Right click anywhere in this area (main_contents_area) in order to open the context menu.<br/>
+
+            <h1>Breadcrumb</h1>
+            The breadcrumbs are on this page visible just under the ribbon.<br/>
+
+            <h1>Modal popup</h1>
+            The modal popup is a hidden element on this page. Open the context menu and select the last item to load it up.<br/>
+
+            <h1>Input elements</h1>
+            They are a work in progress. The button is already visible in the modal popup.
+
+          </div>
+          <!-- This is a modal popup. -->
+
+          <div id="modalPopup" style="display: none;">
+            <div>
+                <span class="title">Modal popup</span>
+                <span class="modal_contents">
+                    <p>
+                        Contents of the modal popup are showed here.
+                    </p>
+                </span>
+                <div class="buttons">
+                  <input type="submit" value="Ok" onclick="$('#modalPopup').Unmodal();" />
+              </div>
+            </div>
+          </div>
+
+          <!-- End of the modal popup. -->
+
+          <!-- Context Menu - Demo. -->
+
+          <div class="menu" id="contextMenu">
+            <div class="menucontents">
+              <ul>
+                <li id="menuMoreItemsPostInThisFolder" class="menuEntry">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Post in This Folder</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsContactGroup" class="menuEntry">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Contact Group</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsTaskRequest" class="menuEntry">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Task Request</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsInternetFax" class="menuEntry line">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Internet Fax</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsChooseFrom" class="menuEntry">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Choose Form...</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsChooseInfoPathForm" class="menuEntry line">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Choose InfoPath Form...</div>
+                  </div>
+                </li>
+                <li id="menuMoreItemsOutlookDataFile" class="menuEntry">
+                  <div>
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Outlook Data File...</div>
+                  </div>
+                </li>
+                <li id="menuOpenModalPopup" class="menuEntry">
+                  <div onclick="$('#modalPopup').Modal();">
+                    <div class="imageHolder">&nbsp;</div>
+                    <div class="menuItem">Open demo modal</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- End of the Context Menu. -->
+
+        </div>
+      </div>
+      <div class="footer">
+        <div id="notificationArea" class="message">
+          OfficeUI: Version 3.0 Pre-Alpha release.
+        </div>
+      </div>
+		</div>
+
+    <!-- Required scripts for the OfficeUI. -->
+    <script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Resources/Scripts/jquery-ui.min.js"></script>
+
+    <!-- Required scripts file for the menu. -->
+    <script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
+
+    <!-- Required scripts for the ribbon. -->
+    <script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"></script>
+
+    <!-- Required scripts for the grid. -->
+    <script src="Resources/Scripts/Plugins/Grid/OfficeUI.Grid.js"></script>
+
+    <!-- Required scripts for the modal. -->
+    <script src="Resources/Scripts/Plugins/Modal/OfficeUI.Modal.js"></script>
+
+    <!-- Core script comes here # This should be transferred into the Ribbon js later. -->
+    <script src="Resources/Scripts/OfficeUI.Core.js"></script>
+
+    <!-- Initialize OfficeUI. -->
+    <script type="text/javascript">
+      // Set the remaing height of the contents, acoording to the window size.
+      $(".main_area").height($(window).height() - 194);
+      $(".OfficeUI_v-scroll").height($(window).height() - 214);
+
+      // Make sure that the contents are resized when the window is resized.
+      $(window).resize(function() {
+          $(".main_area").height($(window).height() - 194);
+          $(".OfficeUI_v-scroll").height($(window).height() - 214);
+      });
+
+      var contextMenu = $("#contextMenu").Menu();
+
+      $(".main_area_contents").on("contextmenu", function(e) {
+        contextMenu.OpenContextMenu(e);
+      });
+
+      var ribbon = $("#mainRibbon").Ribbon(); // Initialize the "MainRibbon" as a ribbon and store it in the variable 'ribbon'. That way, we can use the API on the 'ribbon' object.
+      
+      // Initialize the "MainGrid" as a grid and store it in the variable "grid". That way, we can use the API on the 'grid' object.
+      var grid = $("#myGrid").Grid({
+        OnSelectedRow: function(e) {
+          $("#hiddenSelectedGridId").val(e);
+        }
+      });
+
+      // OfficeUI Core section: Performs all the required initialization logic for the core elements.
+      OfficeUICore.Init();
+    </script>
+  </body>
+</html>

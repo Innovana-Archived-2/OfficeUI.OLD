@@ -3,4 +3,4 @@
 .modalDialog .modal_contents; { display: block; font-size: 12px; height: auto; margin-bottom: 15px; margin-top: 15px; font-size: 11px; }
 .buttons { text-align: right; }
 .modalDialog:target { opacity: 1; pointer-events: auto; }
-.modalDialog > div { background: #FFFFFF; border: 1px solid #2B579A; box-shadow: 0 0 10px 1px #A3BDE3; margin: 10% auto; padding: 10px; position: relative; width: 400px; }
+.modalDialog > div { background: #FFFFFF; box-shadow: 0 0 10px 1px #A3BDE3; margin: 10% auto; padding: 10px; position: relative; width: 400px; }
