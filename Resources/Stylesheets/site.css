@@ -19,14 +19,14 @@ ul { margin: 0px; padding: 0px; }
 img { margin-bottom: 10px; }
 
 /* General styling. */
-.contents { width: 1024px;  margin-top: 30px !important; }
+.contents { width: 1024px;  margin-top: 30px !important; display: table; }
 .center { margin: 0 auto; }
 
 /* Provides the style for the title on top of the page. */
 .title { color: #aeaeae; font-size: 25px; width: 1024px; margin: 0 auto; margin-top: 10px; margin-bottom: 40px; }
 
 /* Provides styling for the gray navigation bar on the top of the page. */
-.navigation_holder { display: inline-block; width: 220px; }
+.navigation_holder { display: inline-block; display: table-cell; }
 .nav_bar a { color: #000; }
 .nav_bar { background-color: #e6e6e6; height: 33px; line-height: 33px; }
 .nav_bar ul li { list-style: none; display: inline-block; padding-right: 30px; }
@@ -34,10 +34,10 @@ img { margin-bottom: 10px; }
 /* Specific navigation for the left side of the page. */
 #left_nav a { color: #707070; display: block; margin-bottom: 10px; }
 #left_nav ul { list-style: none; }
-#left_nav ul li ul { list-style: none; margin-left: 30px; }
+#left_nav ul li ul { list-style: none; margin-left: 15px; }
 
 /* Styling for the article. */
-.article { font-size: 13px; color: #454545; padding-left: 30px; display: inline-block; vertical-align: top; width: 771px; }
+.article { font-size: 13px; color: #454545; padding-left: 30px; display: inline-block; vertical-align: top; width: 849px; display: table-cell; }
 .article p { line-height: 18px; margin-bottom: 25px; }
 .article ul { list-style-position: outside; margin-left: 15px; margin-bottom: 25px; }
 .article ul li { list-style-position: outside; padding-left: 5px; }

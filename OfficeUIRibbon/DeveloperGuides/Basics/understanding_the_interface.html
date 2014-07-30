@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>Understanding the interface</title>
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/site.css" />
+  </head>
+  <body>
+  <div class="title">OfficeUI - Development Center</div>
+    <div class="nav_bar">
+      <div class="contents center">
+	      <ul>
+	      	<li>
+            <a href="../../../index.html">OfficeUI Framework</a>
+            <li><a href="../../index.html" class="active">OfficeUI Ribbon</a></li>
+          </li>
+	      </ul>
+      </div>
+    </div>
+
+    <div class="contents center">
+      <div class="navigation_holder">
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="../../index.html">OfficeUI Ribbon Framework</a>     
+              <ul>
+                <li>
+                  <a href="../index.html">Ribbon Framework Developer Guides</a>
+                  <ul>
+  	                <li>
+  	                  <a href="understanding_the_interface.html" class="active">Understanding the interface</a>
+  	                </li>
+                    <li>
+                      <a href="creating_ribbon_application.html">Creating your first Ribbon application</a>
+                    </li>
+                    <li>
+                      <a href="#">Understanding the various Ribbon actions</a>
+                    </li>
+  	              </ul> 
+                </li>
+              </ul> 
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="article">
+        <h1>Understanding the interface</h1>
+        <p>
+          The Ribbon is splitted in several parts (tabs, groups, action groups and actions). In this guide, you'll learn what those different aspects are and where they come into play.
+        </p>
+
+        <p>
+          When you take a look at the Ribbon in the first place, you might notice that everything in the Ribbon has it's own dedicated place. The following elements are standard on a ribbon:
+          <ul>
+            <li>Tabs</li>
+            <li>Groups</li>
+            <li>Action Groups</li>
+            <li>Actions</li>
+          </ul>
+        </p>
+
+        <h2><a name="Tab">Tabs</a></h2>
+        <p>
+          The tabs on the Ribbon is a way to group different actions into a menu item.<br/>
+          In the image below, the tabs are identified by a red border. In this particular case, we have 5 tabs defined (File, Home, Send / Receive, Folder and View).
+        </p>
+
+        <p class="note">
+          <strong>Note:</strong>&nbsp;&nbsp;The first tab (File) is colored in blue. This is because this tab is an application tab, but we'll see more about this in Understanding Ribbon Controls
+        </p>
+        <img src="../../../Resources/Images/Ribbon/ribbon_tabs.png" alt="Ribbon Tabs" />
+
+        <h2><a name="Group">Groups</a></h2>
+        <p>
+          Each <a href="#Tab">Tab</a> element can have another separation for the controls that are displayed on the Ribbon. This is called a group. <br/>
+          A group can be identified by the seperator (vertical line) which appears on the right side of it, or at the legend that's on the bottom of the group.
+          <br/>
+          In the image below, the groups are identified by a red border, in this particular case, we have 3 groups (New, Delete and Respond).
+        </p>
+        <img src="../../../Resources/Images/Ribbon/ribbon_groups.png" alt="Ribbon Groups" />
+
+        <h2>Action groups</h2>
+        <p>
+          Inside a <a href="#Group">group</a>, we can have different action groups. An icon group is a mechanism that allows us to place some actions in the same area.
+          An action group contains a set of actions. All the action groups are displayed horizontally in the Ribbon.
+          <br/>
+          In the image below, the icon groups are identified by a red border.
+        </p>
+        <img src="../../../Resources/Images/Ribbon/ribbon_action_groups.png" alt="Ribbon Tabs" />
+
+        <h2>Actions</h2>
+        <p>
+          An action on the ribbon can represent various controls that allow's the user to execute something on the website.<br/>
+          The following actions are supported:
+
+          <ul>
+            <li>Small icon (with menu)</li>
+            <li>Big icon (with menu)</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

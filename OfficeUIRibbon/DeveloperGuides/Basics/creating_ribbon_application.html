@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>Creating your first Ribbon application</title>
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/site.css" />
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/sunlight.default.css" />
+    
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.csharp-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.css-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.xml-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.javascript-min.js"></script>
+  </head>
+  <body>
+  <div class="title">OfficeUI - Development Center</div>
+    <div class="nav_bar">
+      <div class="contents center">
+	      <ul>
+	      	<li>
+            <a href="../../../index.html">OfficeUI Framework</a>
+            <li><a href="../../index.html" class="active">OfficeUI Ribbon</a></li>
+          </li>
+	      </ul>
+      </div>
+    </div>
+
+    <div class="contents center">
+      <div class="navigation_holder">
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="../../index.html">OfficeUI Ribbon Framework</a>     
+              <ul>
+                <li>
+                  <a href="../index.html">Ribbon Framework Developer Guides</a>
+                  <ul>
+  	                <li>
+  	                  <a href="understanding_the_interface.html">Understanding the interface</a>
+  	                </li>
+                    <li>
+                      <a href="creating_ribbon_application.html" class="active">Creating your first Ribbon application</a>
+                    </li>
+                    <li>
+                      <a href="#">Understanding the various Ribbon actions</a>
+                    </li>
+  	              </ul> 
+                </li>
+              </ul> 
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="article">
+        <h1>Creating your first Ribbon application</h1>
+        <p>
+          In this guide, you'll learn how to create a website which supports the OfficeUI Ribbon. Not all the features will be used in this demo, but after you've completed this guide, you'll be able to create a website on which a Ribbon is visible with some elements on it. 
+        </p>
+
+        <h2>Requirements</h2>
+        <p>
+          In order to sucessfully complete this guide, you should be familiar with the following technologies:
+          <ul>
+            <li>HTML</li>
+            <li>Css</li>
+            <li>jQuery</li>
+          </ul>
+          Also, there are some dependencies that are required for the OfficeUI Ribbon to work:
+          <ul>
+            <li><a href="http://jquery.com/">jQuery</a></li>
+          </ul>
+        </p>
+        <p>
+          Make sure that you have a copy of the OfficeUI library and all the dependencies ready on your disk before proceeding.
+        </p>
+
+        <h3>Step 1: Settings up your website</h3>
+        <p>
+          Create a basic HTML document and include the following stylesheets:
+
+<pre class="sunlight-highlight-xml">
+&lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" 
+href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" /&gt;
+</pre>
+
+        Also, the following scripts must be included (this can be done, right before the closing <i>body</i> tag.)
+<pre class="sunlight-highlight-xml">
+&lt;script src="Resources/Scripts/jquery-2.1.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="Resources/Scripts/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"&gt;&lt;/script&gt;
+&lt;script src="Resources/Scripts/OfficeUI.Core.js"&gt;&lt;/script&gt;  
+</pre>
+
+        <p class="note">
+          <strong>Note:</strong>&nbsp;&nbsp;Change to path to the Css and Javascript files to point to the required files on the filesystem.
+        </p>
+
+        </p>
+
+        <h3>Step 2: Create the area of the Ribbon</h3>
+        <p>
+          When you want to use the Ribbon, it's adviseable to have no padding or margin on the body tag, because this will make the ribbon feel incorrect.<br/>
+          When you create the ribbon, you need to define an area in which the ribbon will be placed. This should be an area of which the id is set to "OfficeUI".
+
+<pre class="sunlight-highlight-xml">
+&lt;div id="OfficeUI"&gt;
+&lt;!-- Area to render the OfficeUI controls. --&gt;
+&lt;/div&gt;
+</pre>
+        </p>
+
+        <h3>Step 3: Define a title for your application.</h3>
+        <p>
+          On your application, you might want to include some branding by specifying a title in the Ribbon. This can be done with the following tags right under the <i>OfficeUI</i> node.
+
+<pre class="sunlight-highlight-xml">
+&lt;div class="title"&gt;
+  &lt;span>OfficeUI Developer Guide&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+        </p>
+
+        <h3>Step 4: Define the Ribbon area and add some tabs.</h3>  
+        <p>
+          Now we're ready to start building a ribbon, but before we create a <a href="#">ribbon area</a> itself, let's define an area in which the Ribbon should be rendered:
+
+<pre class="sunlight-highlight-xml">
+&lt;div id="mainRibbon" class="ribbon"&gt;
+&lt;!-- Area to render the OfficeUI controls. --&gt;
+&lt;/div&gt;
+</pre>
+        
+        <p class="note">
+          <strong>Note:</strong>&nbsp;&nbsp;You'll notice that are Ribbon does have an id here. Choose any id you would like, but keep it in mind since we need it to initialize the Ribbon.
+        </p>
+
+          Now that the Ribbon area has been defined, we're ready to create some tabs. Creating tabs is done with the following HTML snippet:
+
+<pre class="sunlight-highlight-xml">
+&lt;div class="tabs"&gt;
+  &lt;ul role="tablist"&gt;
+    &lt;li role="tab" class="application" id="tabFile"&gt;
+      &lt;span&gt;File&lt;/span&gt;
+      &lt;!-- An application tab cannot contain any contents. --&gt;
+    &lt;/li&gt;
+    &lt;li id="tabHome"&gt;
+      &lt;span>Home&lt;/span&gt;
+      &lt;!-- Contents of the tab are rendered here. --&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+        </p>
+
+        <p class="note">
+          <strong>Note:</strong>&nbsp;&nbsp;You'll notice that all the Ribbon tabs have an id here. This is required for the OfficeUI Ribbon Framework.
+        </p>
+
+        Inside every tab, right under the <i>&lt;span&gt;</i> tags, you can place the contents of the ribbon.
+
+        <h3>Step 5: Defining the contents, groups and action groups</h3>
+        <p>
+          After we have the tabs, it's needed to create the contents inside the tab.
+          <br/>The contents area is defined with the following snippet:
+
+<pre class="sunlight-highlight-xml">
+&lt;div class="contents"&gt;
+&lt;/div&gt;
+</pre>
+          <p class="note">
+            <strong>Note:</strong>&nbsp;&nbsp;You should only have 1 single content section per tab.
+          </p>
+
+          inside the contents, we can add the different groups for this tab, together with a legend. <br/>
+          To add a new group in a tab with a legend, the following snippet it used:
+
+<pre class="sunlight-highlight-xml">
+&lt;div class="group"&gt;
+  &lt;!-- action groups are rendered here. --&gt;
+  &lt;div class="legend">New&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+        Within the group, you can define multiple action groups, which isn't anything more that an area in which actions will be placed.
+
+<pre class="sunlight-highlight-xml">
+&lt;div class="icongroup"&gt;
+&lt;!-- Actions should be rendered here. --&gt;
+&lt;/div&gt;
+</pre>  
+
+        </p>
+
+        <h3>Step 6: Adding some actions</h3>
+        <p>
+          Now that we already a ribbon defined, we can render some actions:
+          <br/>
+          You can render various actions, but in this example, we'll be rendering a big icon.
+
+<pre class="sunlight-highlight-xml">
+&lt;a href="#"&gt;
+  &lt;div class="bigicon"&gt;
+    &lt;img id="replyAll" alt="Reply all" src="Resources/Icons/ReplyAll.png" /&gt;
+    &lt;div class="iconlegend">Reply&lt;br/&gt;All&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+</pre> 
+
+        </p>
+
+        <h3>Step 7: Rendering the Ribbon</h3>
+
+        <p>Once your HTML is completely formatted, you need to call the following javacsript on the bottom of your page in order to make it work.</p>
+
+<pre class="sunlight-highlight-javascript">
+&lt;script type="text/javascript"&gt;
+  var ribbon = $("#mainRibbon").Ribbon(); 
+  OfficeUICore.Init();
+&lt;/script&gt;
+</pre>
+
+        <p class="note">
+          <strong>Note:</strong>&nbsp;&nbsp;Replace <i>mainRibbon</i> with the id of your ribbon.
+        </p>
+
+        <h3>Step 8: The final result</h3>
+
+        <p>When you've completed everything above, your HTML should now look like:</p>
+
+<pre class="sunlight-highlight-xml">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /&gt;
+    &lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" /&gt;
+    &lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="OfficeUI"&gt;
+      &lt;div class="title"&gt;
+        &lt;span>OfficeUI Developer Guide&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div id="mainRibbon" class="ribbon"&gt;
+        &lt;div class="tabs"&gt;
+          &lt;ul role="tablist"&gt;
+            &lt;li role="tab" class="application" id="tabFile"&gt;
+              &lt;span>File&lt;/span&gt;
+            &lt;/li&gt;
+            &lt;li id="tabHome"&gt;
+              &lt;span>Home&lt;/span&gt;
+              &lt;div class="contents"&gt;
+                &lt;div class="group"&gt;
+                  &lt;div class="icongroup"&gt;
+                    &lt;a href="#"&gt;
+                        &lt;div class="bigicon"&gt;
+                        &lt;img id="replyAll" alt="Reply all" src="Resources/Icons/ReplyAll.png" /&gt;
+                        &lt;div class="iconlegend"&gt;Reply&lt;br&gt;>All&lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class="legend"&gt;New&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="Resources/Scripts/jquery-2.1.1.min.js"&gt;&lt;/script&gt;
+    &lt;script src="Resources/Scripts/jquery-ui.min.js"&gt;&lt;/script&gt;
+    &lt;script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"&gt;&lt;/script&gt;
+    &lt;script src="Resources/Scripts/OfficeUI.Core.js"&gt;&lt;/script&gt;
+
+    <code class="sunlight-highlight-javascript">
+    &lt;script type="text/javascript"&gt;
+      var ribbon = $("#mainRibbon").Ribbon(); 
+      OfficeUICore.Init();
+    &lt;/script&gt;
+</code>
+
+  &lt;/body>
+</pre> 
+
+      <p>When you run your website right now, you should see the following result.</p>
+      <img src="../../../Resources/Images/Ribbon/basic_implementation_demo.png" alt="Basic Ribbon Implementation Demo" />
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      Sunlight.highlightAll();
+    </script>
+  </body>
+</html>
