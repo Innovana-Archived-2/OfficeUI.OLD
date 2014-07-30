@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>Creating your first Ribbon application</title>
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/site.css" />
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/sunlight.default.css" />
+    
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.csharp-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.css-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.xml-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.javascript-min.js"></script>
+  </head>
+  <body>
+  <div class="title">OfficeUI - Development Center</div>
+    <div class="nav_bar">
+      <div class="contents center">
+	      <ul>
+	      	<li>
+            <a href="../../../index.html">OfficeUI Framework</a>
+            <li><a href="../../index.html" class="active">OfficeUI Ribbon</a></li>
+          </li>
+	      </ul>
+      </div>
+    </div>
+
+    <div class="contents center">
+      <div class="navigation_holder">
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="../../index.html">OfficeUI Ribbon Framework</a>     
+              <ul>
+                <li>
+                  <a href="../index.html">Ribbon Framework Developer Guides</a>
+                  <ul>
+  	                <li>
+  	                  <a href="understanding_the_interface.html">Understanding the interface</a>
+  	                </li>
+                    <li>
+                      <a href="creating_ribbon_application.html">Creating your first Ribbon application</a>
+                    </li>
+                    <li>
+                      <a href="understanding_ribbon_actions.html" class="active">Understanding the various Ribbon actions</a>
+                    </li>
+  	              </ul> 
+                </li>
+              </ul> 
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="article">
+        <h1>Understanding the various ribbon actions</h1>
+        <p>
+          The ribbon has a variaty of actions that can be placed on a ribbon. In this section you'll learn about all the different actions that can be placed on a ribbon. 
+        </p>
+        <p>
+          The available actions of a Ribbon are the following:
+          <ul>
+            <li>Big icon</li>
+            <li>Small icon</li>
+            <li>Icon with menu items</li>
+          </ul>
+        </p>
+
+        <h3>Big icon</h3>
+        <p>
+          A big icon on the Ribbon represents an icon that takes almost the full vertical space of the Ribbon.<br/>
+          When you want to render a Big icon, you can use the following HTML snippet:
+
+<pre class="sunlight-highlight-xml">
+&lt;a href="#"&gt;
+  &lt;div class="bigicon"&gt;
+    &lt;img id="newEmail" alt="New email" src="Resources/Icons/NewMailMessage.png" /&gt;
+    &lt;div class="iconlegend">New&lt;br /&gt;Email&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+</pre>
+        </p>
+        <p>
+          Now, what are all those elements which we can find in a Big icon:
+
+          <table>
+            <tbody>
+              <tr>
+                <th>Element</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>A href element</td>
+                <td>Provides a way to link a url, or bind an action to the ribbon.</td>
+              </tr>
+              <tr>
+                <td>Div wrapper - class bigicon</td>
+                <td>Provides a way to identify this icon as a big icon.</td>
+              </tr>
+              <tr>
+                <td>Img element</td>
+                <td>Provides the image to display for this icon.</td>
+              </tr>
+              <tr>
+                <td>Icon legend</td>
+                <td>Provides the text that will be showed under this image.</td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+
+        <h3>Small icon</h3>
+        <p>
+          A small icon on the Ribbon represents an icon that takes about a third of the vertical space on the ribbon.<br/>
+          At most, 3 small icons can be placed under eachother.
+
+<pre class="sunlight-highlight-xml">
+&lt;a href="#"&gt;
+  &lt;div class="smallIcon"&gt;
+    &lt;img id="newEmail" alt="New email" src="Resources/Icons/NewMailMessage.png" /&gt;
+    &lt;div class="iconlegend">New&lt;br /&gt;Email&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+</pre>
+        </p>
+        <p>
+          Now, what are all those elements which we can find in a Small icon:
+
+          <table>
+            <tbody>
+              <tr>
+                <th>Element</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>A href element</td>
+                <td>Provides a way to link a url, or bind an action to the ribbon.</td>
+              </tr>
+              <tr>
+                <td>Div wrapper - class bigicon</td>
+                <td>Provides a way to identify this icon as a small icon.</td>
+              </tr>
+              <tr>
+                <td>Img element</td>
+                <td>Provides the image to display for this icon.</td>
+              </tr>
+              <tr>
+                <td>Icon legend</td>
+                <td>Provides the text that will be showed to the right of this image.</td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+
+        <h3>Icon with menu items</h3>
+        <p>
+          Both a small and a big icon can be decorated with a menu. This menu will be showed when we click on the element itself.
+
+          <p class="note">
+            <strong>Note:</strong>&nbsp;&nbsp;In order to be able to use the icon with the menu items, you should include a reference to font-awesome and jQuery UI.<br/>
+            See the <a href="#">Menu</a> section for more information about this topic.
+          </p>
+
+          When you want to render a menu on either a big or a small icon, you should adapt your icon so that inside the legend, there is an <i>i</i> element.
+
+<pre class="sunlight-highlight-xml">
+&lt;a href="#"&gt;
+  &lt;div class="smallIcon"&gt;
+    &lt;img id="newEmail" alt="New email" src="Resources/Icons/NewMailMessage.png" /&gt;
+    &lt;div class="iconlegend">
+      New&lt;br /&gt;Email
+      &lt;i class="fa fa-caret-down"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;!-- Menu placed here. --&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+</pre>
+        </p>
+      </div>
+
+    <script type="text/javascript">
+      Sunlight.highlightAll();
+    </script>
+  </body>
+</html>
