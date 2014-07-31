@@ -21,6 +21,11 @@
 #OfficeUI .arrow { bottom: 2px; left: 2px; }
 #OfficeUI .seperator { background-color: #D4D4D4; height: 84px; margin-left: 5px; margin-right: 5px; margin-top: 4px; width: 1px; }
 
+/* Styling for the Tooltips. */
+#OfficeUI .icongroup a { position: relative; }
+#OfficeUI .tooltip { white-space: normal; box-shadow: 3px 3px 3px #E0E0E0; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; display: none; background-color: #ffffff; position: absolute; border: 1px solid #d4d4d4; top: 86px; left: 0px; padding: 10px; padding-top: 5px; padding-bottom: 5px; text-align: left; width: 180px; }
+#OfficeUI .tooltip p { line-height: 14px; }
+
 /* Styling for the icons in the tabs.
  * Two type of icons can be placed on the ribbon.
  *		- small icon: 	An icon with a resolution of 16 x 16 pixels.

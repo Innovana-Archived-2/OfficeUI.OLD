@@ -1,0 +1,29 @@
+{
+    "Tabs": [
+        {
+            "Name": "File",
+            "Id": "tabFile",
+            "Type": "Application"
+        },
+        {
+            "Name": "Home",
+            "Id": "tabFile",
+            "Type": "Normal"
+        },
+        {
+            "Name": "Send / Receive",
+            "Id": "tabFile",
+            "Type": "Normal"
+        },
+        {
+            "Name": "Folder",
+            "Id": "tabFile",
+            "Type": "Normal"
+        },
+        {
+            "Name": "View",
+            "Id": "tabFile",
+            "Type": "Normal"
+        }
+    ]
+}
