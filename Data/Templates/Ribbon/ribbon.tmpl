@@ -1,5 +1,7 @@
 <!-- Defines the template for the ribbon. -->
-{{TMPL:Import=tabs.tmpl; Name=Tabs}}
-<div id="mainRibbon" class="ribbon">
-	{{Render:Tabs}}
+{{TMPL:Import=../../../../Data/Templates/Ribbon/tabs.tmpl; Name=Tabs}}
+<div id="{{ribbonId}}" class="ribbon">
+
+	<!-- All the different tabs are being rendered here. -->
+	{{Render:Tabs; Value="tabs"}}
 </div>

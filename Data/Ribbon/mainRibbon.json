@@ -1,29 +1,55 @@
 {
+    "Id": "mainRibbon",
     "Tabs": [
         {
             "Name": "File",
             "Id": "tabFile",
-            "Type": "Application"
+            "Type": "Application",
+            "Groups": [
+                {
+                    "Name": "Demo"
+                }
+            ]
         },
         {
             "Name": "Home",
-            "Id": "tabFile",
-            "Type": "Normal"
+            "Id": "tabHome",
+            "Type": "Normal",
+            "Groups": [
+                {
+                    "Name": "Demo"
+                }
+            ]
         },
         {
             "Name": "Send / Receive",
-            "Id": "tabFile",
-            "Type": "Normal"
+            "Id": "tabSendReceive",
+            "Type": "Normal",
+            "Groups": [
+                {
+                    "Name": "Demo"
+                }
+            ]
         },
         {
             "Name": "Folder",
-            "Id": "tabFile",
-            "Type": "Normal"
+            "Id": "tabFolder",
+            "Type": "Normal",
+            "Groups": [
+                {
+                    "Name": "Demo"
+                }
+            ]
         },
         {
             "Name": "View",
-            "Id": "tabFile",
-            "Type": "Normal"
+            "Id": "tabView",
+            "Type": "Normal",
+            "Groups": [
+                {
+                    "Name": "Demo"
+                }
+            ]
         }
     ]
 }

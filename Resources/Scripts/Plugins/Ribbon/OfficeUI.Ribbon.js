@@ -9,7 +9,7 @@ var settings; // Holds the settings for the construction of the ribbon.
 //      jsonUrl:            The url where the Json data string can be found.
 //      options:            The options for the rendering of the ribbon.
 $.fn.RibbonFromJson = function (jsonUrl, options) {
-    
+  
     // Specify the default options for the Ribbon plugin.
     settings = $.extend({
         AutoGenerateTabId: false,
@@ -20,6 +20,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
     var applicationTabs = 0; // Holds the amount of application tabs that are defined.
     var renderable = true; // Holds a boolean that indicates if the ribbon can be rendered.
+    var ribbonHolder = this; // Holds the area where the ribbon should be rendered.
+    var ribbonConstructor = { ribbonId: "" }; // Holds the object that will be passed to the templating engine for rendering the templates.
 
     // End of section: Common variables.
 
@@ -54,7 +56,43 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             if (!renderable) {
                 console.log("%c The ribbon cannot be rendered since it's configuration is invalid.", "color: red;");
             } else {
-                ConstructRibbon();
+                // Build the ribbon constructor object.
+                if (ribbon.Id != null) {
+                    ribbonConstructor.ribbonId = ribbon.Id
+                }
+
+                ribbonConstructor.tabs = [] // Set the tabs for the ribbon.
+
+                // Loop over all the tabs which are defined in the Json and built the ribbon constructor
+                $(ribbon.Tabs).each(function(index, tab) {
+                    var ribbonTabConstructor = { tabType: "", tabId: "", tabName: "", groups: [] };
+
+                    if (tab.Type == "Application") {
+                        ribbonTabConstructor.tabType = "application";
+                    } else {
+                        ribbonTabConstructor.tabType = "normal";
+                    }
+
+                    ribbonTabConstructor.tabId = tab.Id;
+                    ribbonTabConstructor.tabName = tab.Name;
+
+                    // Loop over all the groups that are defined for each tab in the Json.
+                    $(tab.Groups).each(function(index, group) {
+                        var ribbonGroupConstructor = { name: "demo" };
+
+                        // ToDo: Make sure the groups are being addedd correctly.
+
+                        ribbonTabConstructor.groups.push(ribbonGroupConstructor);
+                    }); 
+
+                    ribbonConstructor.tabs.push(ribbonTabConstructor);
+                })
+
+                // Construct the ribbon, by given an area where to render the ribbon and the constructor which contains all the required properties to render the ribbon.
+                ConstructRibbon(ribbonConstructor, ribbonHolder);
+
+                // Initialize the ribbon.
+                Initialize();
             }
         },
 
@@ -84,7 +122,9 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
                 console.log("%c Every tab must have an id element.", "color: red;");
             }
         } else { // Tabs should be auto generated, so assign id's to every tab element.
-            tab.Id = CreateUniqueId().toUpperCase();
+            if (tab.Id == null) {
+                tab.Id = CreateUniqueId().toUpperCase();
+            }
         }
 
         if (tab.Type == "Application") {
@@ -107,18 +147,24 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     // End of section: Validation.
 
     // Construct the ribbon by using the OfficeUI templates.
-    function ConstructRibbon() {
-        
+    // Parameters:
+    //      ribbon:             The ribbon object itself which is going to be rendered.
+    //      ribbonHolder:       Defines the area in which the ribbon should be rendered.
+    function ConstructRibbon(ribbon, ribbonHolder) {
         // Get the ribbon template.
         var ribbonTemplateUrl = settings.RibbonTemplateFile;
 
         // Get the template to build the ribbon.
         $.ajax({
+            async: false,    
             dataType: "text",
             url: ribbonTemplateUrl,
-            success: function(data) {
+            success: function(template) {
                 
                 // I need to pass this data to the templating engine at first.
+                var templated = OfficeUITemplating.LoadTemplate(template, ribbon);
+
+                $(ribbonHolder).append(templated);
 
             },
 
@@ -136,6 +182,65 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
             return v.toString(16);
         });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Experimental section for rendering the ribbon.
+
+    // Section: Functions.
+
+    // Initialize the whole ribbon. This is done by placing classes on the various elements that together form the ribbon.
+    // This is done to keep the HTML less cluthered.
+    // Also some basic functions such as selecting the correct tab are executed here.
+    function Initialize() {
+        $("ul[role='tablist'] > li").attr("role", "tab");
+        $(".ribbon, .tabs").addClass("brd_btm_grey");
+        $(".tabs UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin");
+        $("li[role='tab']").addClass("OfficeUI_inline");
+        $("li[role='tab'] span:first-child").addClass("OfficeUI_uppercase");
+        $("li[role='tab'] .contents").addClass("OfficeUI_absolute");
+        $(".group").after("<div class='seperator'>&nbsp;</div>");
+        $(".group, .seperator").addClass("OfficeUI_relative OfficeUI_inline");
+        $(".icongroup, .smallicon .iconlegend, .imageHolder, .menuItem").addClass("OfficeUI_inline");
+        $(".bigicon").addClass("icon OfficeUI_relative OfficeUI_inline OfficeUI_center");
+        $(".smallicon").addClass("icon OfficeUI_relative");
+        $(".legend").addClass("OfficeUI_absolute");
+        $(".arrow").addClass("OfficeUI_relative");
+        $(".breadcrumbItem:not(:last-child)").after('<i class="fa fa-caret-right"></i>');
+        $('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>');
+
+        // Enable the first tab which is not an application tab.
+        EnableTab($("li[role='tab']:not(.application)").first().Id());
+    }
+
+    // Enables a given tab, based on the id of the tab.
+    // Parameters: 
+    //    tabId:    The id of the tab that should be showed.
+    function EnableTab(tabId) {
+        // Chech if the tab with the id can be found and if not, write a message to the log.
+        if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found.")) {
+            // Start by deactiving every tab element on the page.
+            OfficeUICoreHelpers.DeactivateAllTabs();
+
+            // Marks the tab as the active one and display the contents for the tab.
+            OfficeUICoreHelpers.ActivateTab(tabId);
+        } else {
+            EnableTab($("li[role='tab']:not(.application)").first().Id());
+        }
     }
 },
 

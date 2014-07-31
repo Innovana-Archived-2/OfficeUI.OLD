@@ -34,6 +34,9 @@
 <div class="title">
 <span>OfficeUI Demo (Version 3.0 - Pre-Release)</span>
 </div>
+<div id="ribbonHolder">
+
+</div>
 </div>
 <!-- Required scripts for the OfficeUI. -->
 <script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
@@ -59,7 +62,7 @@
 
 <script type="text/javascript">
 	
-	var ribbon = $(this).RibbonFromJson("Data/Ribbon/mainRibbon.json", {
+	var ribbon = $("#ribbonHolder").RibbonFromJson("Data/Ribbon/mainRibbon.json", {
 		AutoGenerateTabId: true,
 		RibbonTemplateFile: "Data/Templates/Ribbon/ribbon.tmpl"
 	});

@@ -1,10 +1,14 @@
-<!-- Defines the template for the tabs. -->
+<!-- Defines the template for the ribbon. -->
+{{TMPL:Import=../../../../Data/Templates/Ribbon/groups.tmpl; Name=Groups}}
 <div class="tabs">
 	<ul role="tablist">
 		{{BOS:Sequence}}
-		<li role="tab" class="{{TabType}}" id="{{tabId}}">
-			<span>{{TabFile}}</span>
-		</li>
+			<li role="tab" class="{{tabType}}" id="{{tabId}}">
+				<span>{{tabName}}</span>
+
+				<!-- All the different groups are being rendered here. -->
+				{{Render:Groups; Value="groups"}}
+			</li>
 		{{EOS:Sequence}}
 	</ul>
 </div>
