@@ -64,32 +64,16 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
                 ribbonConstructor.tabs = [] // Set the tabs for the ribbon.
 
                 // Loop over all the tabs which are defined in the Json and built the ribbon constructor
-                $(ribbon.Tabs).each(function(index, tab) {
-                    var ribbonTabConstructor = { tabType: "", tabId: "", tabName: "", groups: [] };
-
+                $(ribbon.Tabs).each(function(index, tab) {                    
                     if (tab.Type == "Application") {
-                        ribbonTabConstructor.tabType = "application";
+                        tab.TabType = "application";
                     } else {
-                        ribbonTabConstructor.tabType = "normal";
+                        tab.TabType = "normal";
                     }
-
-                    ribbonTabConstructor.tabId = tab.Id;
-                    ribbonTabConstructor.tabName = tab.Name;
-
-                    // Loop over all the groups that are defined for each tab in the Json.
-                    $(tab.Groups).each(function(index, group) {
-                        var ribbonGroupConstructor = { name: "demo" };
-
-                        // ToDo: Make sure the groups are being addedd correctly.
-
-                        ribbonTabConstructor.groups.push(ribbonGroupConstructor);
-                    }); 
-
-                    ribbonConstructor.tabs.push(ribbonTabConstructor);
-                })
+                });
 
                 // Construct the ribbon, by given an area where to render the ribbon and the constructor which contains all the required properties to render the ribbon.
-                ConstructRibbon(ribbonConstructor, ribbonHolder);
+                ConstructRibbon(ribbon, ribbonHolder);
 
                 // Initialize the ribbon.
                 Initialize();

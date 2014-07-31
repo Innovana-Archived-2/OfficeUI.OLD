@@ -4,12 +4,7 @@
         {
             "Name": "File",
             "Id": "tabFile",
-            "Type": "Application",
-            "Groups": [
-                {
-                    "Name": "Demo"
-                }
-            ]
+            "Type": "Application"
         },
         {
             "Name": "Home",
@@ -17,7 +12,13 @@
             "Type": "Normal",
             "Groups": [
                 {
-                    "Name": "Demo"
+                    "Legend": "New"
+                },
+                {
+                    "Legend": "Delete"
+                },
+                {
+                    "Legend": "Respond"
                 }
             ]
         },
