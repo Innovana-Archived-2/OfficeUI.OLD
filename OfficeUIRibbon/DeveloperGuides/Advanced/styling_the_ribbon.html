@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>Creating your first Ribbon application</title>
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/site.css" />
+    <link rel="stylesheet" href="../../../Resources/Stylesheets/sunlight.default.css" />
+    
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.csharp-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.css-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.xml-min.js"></script>
+    <script type="text/javascript" src="../../../Resources/Scripts/sunlight.javascript-min.js"></script>
+  </head>
+  <body>
+  <div class="title">OfficeUI - Development Center</div>
+    <div class="nav_bar">
+      <div class="contents center">
+	      <ul>
+	      	<li>
+            <a href="../../../index.html">OfficeUI Framework</a>
+            <li><a href="../../index.html" class="active">OfficeUI Ribbon</a></li>
+          </li>
+	      </ul>
+      </div>
+    </div>
+
+    <div class="contents center">
+      <div class="navigation_holder">
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="../../index.html">OfficeUI Ribbon Framework</a>     
+              <ul>
+                <li>
+                  <a href="../index.html">Ribbon Framework Developer Guides</a>
+                  <ul>
+  	                <li>
+  	                  <a href="../Basics/understanding_the_interface.html">Understanding the interface</a>
+  	                </li>
+                    <li>
+                      <a href="../Basics/creating_ribbon_application.html">Creating your first Ribbon application</a>
+                    </li>
+                    <li>
+                      <a href="../User Interface/understanding_ribbon_actions.html">Understanding the various Ribbon actions</a>
+                    </li>
+                    <li>
+                    <a href="styling_the_ribbon.html" class="active">Styling the ribbon</a>
+                  </li>
+  	              </ul> 
+                </li>
+              </ul> 
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="article">
+        <h1>Styling the ribbon</h1>
+        <p>
+          The ribbon has a couple of themes that can be used which are Blue, Green, Orange or Purple.<br/>
+          In this section you'll learn how to apply them or how to create your own.
+        </p>
+        
+        <h2>Using one of the built-in themes</h2>
+
+        <p>
+          As described in the section <a href="../Basics/creating_ribbon_application.html">Creating your first Ribbon application</a>, you have a couple of stylesheets that you need to include in your application.
+
+<pre class="sunlight-highlight-xml">
+&lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" 
+href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" /&gt;
+</pre> 
+
+          The entire theming of the Ribbon is hidden in the styles, you might notice that the last css that is included is <i>Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css</i> <br/><br/>
+          This means that the Ribbon will be rendered in Blue. The supported stylesheets for the Ribbon are:<br/><br/>
+
+          <ul>
+            <li>OfficeUI.Ribbon.Blue.css</li>
+            <li>OfficeUI.Ribbon.Green.css</li>
+            <li>OfficeUI.Ribbon.Orange.css</li>
+            <li>OfficeUI.Ribbon.Purple.css</li>
+          </ul>
+
+        </p>
+
+        <h2>Creating your own themes</h2>
+        <p>
+          When you not satisfied with one of the built-in themes, you can always create your own one in a few simple steps:
+
+          <h3>Step 1: Create a new stylesheet for your theme</h3>
+          <p>
+            When you want to create a new theme, you need to create a new stylesheet. In order to maintain the readability and the locations of the file, the best-practice is to name the file "OfficeUI.Ribbon.{Theme}.css" and save it in the directory where the other themes for the Ribbon are being placed. <br/><br/> The default is: <i>Resources/Stylesheets/Plugins/Ribbon/Styles/</i>
+          </p>
+
+          <h3>Step 3: Provide all the necessary elements in the css file</h3>
+          <p>
+            When you create a new theme, you can either choose to start from an existing one of a new one. It is recommended to start from an existing one, so inside your newly created file, place the following contents:
+
+<pre class="sunlight-highlight-css">
+#OfficeUI li[role=tab].application { background-color: #2b579a; color: #FFF; border: 1px solid #2b579a !important; }
+#OfficeUI li[role=tab]:not(.application):hover { color: #2b579a; }
+#OfficeUI ul[role=tablist] li.active[role=tab] { color: #2b579a; }
+#OfficeUI .icon.active { background-color: #a3bde3; }
+
+#OfficeUI a:not(.OfficeUI_disabled) .bigicon:not(.active):hover, 
+#OfficeUI a:not(.OfficeUI_disabled) .smallicon:not(.active):hover { background-color: #d5e1f2; }
+</pre> 
+          </p>
+          <p>
+            Inside this stylesheet you'll find some classes and properties. The table below gives an explanation of all those.
+
+            <table>
+              <tbody>
+                <tr>
+                  <th>Class</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>#OfficeUI li[role=tab].application</td>
+                  <td>Provides the class that styles an application tab. This is normally the tab on the left side.</td>
+                </tr>
+                <tr>
+                  <td>#OfficeUI li[role=tab]:not(.application):hover</td>
+                  <td>Defines the text color of tab when hovering on it (not the application tab).</td>
+                </tr>
+                <tr>
+                  <td>#OfficeUI ul[role=tablist] li.active[role=tab]</td>
+                  <td>Provides the text color of an active tab element.</td>
+                </tr>
+                <tr>
+                  <td>#OfficeUI .icon.active</td>
+                  <td>Provides the background color of icon when it's active (when the mouse button is pressed on an icon).</td>
+                </tr>
+                <tr>
+                  <td>#OfficeUI a:not(.OfficeUI_disabled) .bigicon:not(.active):hover <br/><br/>#OfficeUI a:not(.OfficeUI_disabled) .smallicon:not(.active):hover</td>
+                  <td>Provides the background color of an icon when hovering on it.</td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+        </p>
+
+      </div>
+    <script type="text/javascript">
+      Sunlight.highlightAll();
+    </script>
+  </body>
+</html>
