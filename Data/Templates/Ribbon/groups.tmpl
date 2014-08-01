@@ -1,6 +1,10 @@
+{{TMPL:Import=../../../../Data/Templates/Ribbon/icongroups.tmpl; Name=IconGroups}}
 <div class="contents">
 	{{BOS:Sequence}}
     	<div class="group">
+    		<!-- All the different icon groups are being rendered here. -->
+			{{Render:IconGroups; Value="IconGroups"}}	
+
     		<div class="legend">{{Legend}}</div>
     	</div>
     {{EOS:Sequence}}

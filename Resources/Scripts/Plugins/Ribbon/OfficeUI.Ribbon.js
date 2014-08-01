@@ -70,6 +70,23 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
                     } else {
                         tab.TabType = "normal";
                     }
+
+                    // Loop over all the groups.
+                    $(tab.Groups).each(function(index, group) {
+                        
+                        // Loop over all the icon groups.
+                        $(group.IconGroups).each(function(index, iconGroup) {
+                        
+                            // Loop over all the icons.
+                            $(iconGroup.Icons).each(function(index, icon) {
+                                if (icon.Type == "Big") {
+                                    icon.IconType = "bigicon";
+                                } else {
+                                    icon.IconType = "smallicon";
+                                }
+                            });
+                        });
+                    });
                 });
 
                 // Construct the ribbon, by given an area where to render the ribbon and the constructor which contains all the required properties to render the ribbon.
@@ -209,6 +226,11 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
         // Enable the first tab which is not an application tab.
         EnableTab($("li[role='tab']:not(.application)").first().Id());
+
+        // When you click on a tab element (not the application tab), make sure that that tab element becomes active.
+        $("li[role=tab]:not(.application)").click(function () {
+            EnableTab($(this).Id());
+        }); 
     }
 
     // Enables a given tab, based on the id of the tab.
@@ -226,6 +248,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             EnableTab($("li[role='tab']:not(.application)").first().Id());
         }
     }
+
+
 },
 
 

@@ -12,13 +12,81 @@
             "Type": "Normal",
             "Groups": [
                 {
-                    "Legend": "New"
+                    "Legend": "New",
+                    "IconGroups": [
+                        {
+                            "Icons": [
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/NewMailMessage.png",
+                                    "Legend": "New<br/>Email"
+                                },
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/MailNewItemMenu.png",
+                                    "Legend": "New<br/>Items"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "Legend": "Delete"
+                    "Legend": "Delete",
+                    "IconGroups": [
+                        {
+                            "Icons": [
+                                {
+                                    "Type" : "Small",
+                                    "Image": "../../Resources/Icons/IgnoreConversation.png",
+                                    "Legend": "Ignore"
+                                },
+                                {
+                                    "Type" : "Small",
+                                    "Image": "../../Resources/Icons/CleanUpMenu.png",
+                                    "Legend": "Clean Up"
+                                },
+                                {
+                                    "Type" : "Small",
+                                    "Image": "../../Resources/Icons/JunkMenu.png",
+                                    "Legend": "Junk"
+                                }
+                            ]
+                        },
+                        {
+                            "Icons": [
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/Delete.png",
+                                    "Legend": "Delete"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "Legend": "Respond"
+                    "Legend": "Respond",
+                    "IconGroups": [
+                        {
+                            "Icons": [
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/Reply.png",
+                                    "Legend": "Reply"
+                                },
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/ReplyAll.png",
+                                    "Legend": "Reply<br/>All"
+                                }
+                                ,
+                                {
+                                    "Type" : "Big",
+                                    "Image": "../../Resources/Icons/Forward.png",
+                                    "Legend": "Forward"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
