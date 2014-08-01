@@ -28,6 +28,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     // Validate if the 'RibbonTemplateFile' is provided.
     if (settings.RibbonTemplateFile == "") {
         console.log("%c [OfficeUI Ribbon]: The 'RibbonTemplateFile' specified in the options is a required field.", "color: red;");
+
+        return; // Return the function since it's configuration is considered invalid.
     }
 
     // Load the Json data file, of which the location is specified in the 'jsonUrl' parameter.
@@ -41,6 +43,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             // Step 1: Verify that there are tabs elements defined.
             if (ribbon.Tabs == null) {
                 console.log("%c [OfficeUI Ribbon]: A ribbon must be equipped with at least a single tab element.", "color: red;");
+                
+                return; // Return the function since it's configuration is considered invalid.
 
                 renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
             }
@@ -55,6 +59,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             // If we reach this point, the validation has been done for the ribbon and we can continue with the rendering of the Ribbon.
             if (!renderable) {
                 console.log("%c [OfficeUI Ribbon]: The ribbon cannot be rendered since it's configuration is invalid.", "color: red;");
+
+                return; // Return the function since it's configuration is considered invalid.
             } else {
                 // Build the ribbon constructor object.
                 if (ribbon.Id != null) {
@@ -121,6 +127,10 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         if (settings.AutoGenerateTabId == false) {
             if (tab.Id == null) {
                 console.log("%c [OfficeUI Ribbon]: Every tab must have an id element.", "color: red;");
+
+                renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
+                
+                return; // Return the function since it's configuration is considered invalid.
             }
         } else { // Tabs should be auto generated, so assign id's to every tab element.
             if (tab.Id == null) {
@@ -135,11 +145,15 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             if (applicationTabs > 1) {
                 console.log("%c [OfficeUI Ribbon]: A maximum of 1 application tab is allowed.", "color: red;");
 
+                return; // Return the function since it's configuration is considered invalid.
+
                 renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
             }
 
         } else if (tab.Type != "Normal") {
             console.log("%c [OfficeUI Ribbon]: The tab type '" + tab.Type + "' is not supported by the Ribbon framework.", "color: red;");
+
+            return; // Return the function since it's configuration is considered invalid.
 
             renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
         }

@@ -130,9 +130,9 @@ var OfficeUITemplating = {
 								// Remove the first occurence, since we're capturing this.
 								tempRenderedData = tempRenderedData.replace(/({{If)[.]*?[\s\S]*?({{EndIf}})/ ,"");
 							} else {
-								console.log("[OfficeUI Templating]: The condition did match. Rendering the condition.");
+								console.log("[OfficeUI Templating]: The condition '" + condition + "' did match. Rendering the condition.");
 
-								tempRenderedData = tempRenderedData.replace(/({{If ).*(}})/g, "").replace(/({{EndIf}})/, "");
+								tempRenderedData = tempRenderedData.replace(/({{If ).*(}})/, "").replace(/({{EndIf}})/, "");
 							}
 						})
 

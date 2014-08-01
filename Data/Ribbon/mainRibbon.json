@@ -3,6 +3,7 @@
     "Tabs": [
         {
             "Name": "File",
+            "Id": "tabFile",
             "Type": "Application"
         },
         {
