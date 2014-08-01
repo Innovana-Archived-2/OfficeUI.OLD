@@ -12,6 +12,12 @@
 
 			- 	The templates are loaded through an AJAX call and saved in memory, but only on the first request.
 				After that, the templates are loaded from the memory.
+
+	Features:
+
+			- 	Variables: 			Include some variables in your template (with a specific syntax) and they are automatticly replaced at runtime.
+			-	Linked templates:	Links various files to one big template.
+			-	Sequences: 			Create a self-repeating sequence in the template.
 */
 
 // Section: Common Regex variables. 
@@ -28,7 +34,7 @@ var renderObjectRegex = /(=).*(}})/g // Provides a way to find the object to pas
 
 var sequenceRegex = /({{BOS:Sequence}})[.]*?[\s\S]*?({{EOS:Sequence}})/g // Provides a way to detect sequences within a template.
 
-var replaceWithObjectRegex = /({{)(?!TMPL|[BE]OS|Render).*?(}})/g // Provides a way to find an area where a replacement should be done.
+var replaceWithObjectRegex = /({{)(?!TMPL|If|EndIf|[BE]OS|Render).*?(}})/g // Provides a way to find an area where a replacement should be done.
 
 var loadedTemplates = []; // A variables that holds all the templates which has been loaded by the template engine.
 						  // That way, we can load templates out of this variable, instead of doing posts all the time to render it.
@@ -103,6 +109,34 @@ var OfficeUITemplating = {
 					$(replacesStatements).each(function(index, replace) {
 						tempRenderedData = OfficeUITemplating.ReplacePlaceholdersWithObject(replace, sequenceData, tempRenderedData);
 					});
+
+					// Experimental section: Execution of the IF statements.
+
+						// Get the code which is stored between the If statements.
+						var ifStatementRegex = /({{If ).*(}})/g; // Defines the regex that can get the conditional expression out of a template.
+						var completeConditionRegex = /({{If)[.]*?[\s\S]*?({{EndIf}})/g; // Defines the regex that can get a complete regular expression out of a template.
+
+						var allTemplateConditions = tempRenderedData.match(completeConditionRegex);
+
+						$(allTemplateConditions).each(function(index, completeCondition) {
+							// Get the condition itself.
+							var ifStatementCondition = completeCondition.match(ifStatementRegex)[0];
+							var condition = ifStatementCondition.replace(/({{If )/g, "").replace(/(}})/g, "");
+
+							// If the condition does not match, remove the entire section about the condition.
+							if (!eval(condition)) {
+								console.log("[OfficeUI Templating]: The if statement '" + condition + "' does not match. Skipping this.");
+
+								// Remove the first occurence, since we're capturing this.
+								tempRenderedData = tempRenderedData.replace(/({{If)[.]*?[\s\S]*?({{EndIf}})/ ,"");
+							} else {
+								console.log("[OfficeUI Templating]: The condition did match. Rendering the condition.");
+
+								tempRenderedData = tempRenderedData.replace(/({{If ).*(}})/g, "").replace(/({{EndIf}})/, "");
+							}
+						})
+
+					// End of experimental section: Execution of the IF statements.
 
 					// Here we need to render the render actions for the sequence.
 					$(renderStatements).each(function(index, render) {
@@ -199,7 +233,7 @@ var OfficeUITemplating = {
 
 		// When no import statement has been found for a render section, write an error message to the log.
 		if (foundTemplate == ""){
-			console.log("%c The render section with name '" + render + "' does not correspond with a given import statement. Are you missing an import statement?", "color: red;");
+			console.log("%c [OfficeUI Templating]: The render section with name '" + render + "' does not correspond with a given import statement. Are you missing an import statement?", "color: red;");
 		}
 	},
 
@@ -233,8 +267,30 @@ var OfficeUITemplating = {
 	//		data: 				The current output.
 	ReplacePlaceholdersWithObject: function(replace, templateData, data) {
 		var replaceAttribute = replace.replace(/({{)/g, "").replace(/(}})/g, "");
+		var attributeRequired = false; // A boolean that indicates wether or not this attribute is required.
 
-		return data.replace(replace, templateData[replaceAttribute]);
+		// Check if the attribute is required.
+		if (replaceAttribute.indexOf(":") != -1) {
+			attributeRequired = true;
+			replaceAttribute = replaceAttribute.replace(/Required:/g, "");
+		}
+
+		// Only try to do a replace when the object is defined, in all the other cases, write a warning to the log console and 
+		// strip outs the replace from the data.
+		if (templateData[replaceAttribute] != null	) {
+			return data.replace(replace, templateData[replaceAttribute]);
+		} else {
+			// If the attribute was required, write an entry in the log and return the function.
+			if (attributeRequired) {
+				console.log("%c [OfficeUI Templating]: The attribute '" + replaceAttribute + "' is a required attribute.", "color: red;");
+
+				return;
+			} else {
+				console.log("%c [OfficeUI Templating]: The attribute '" + replaceAttribute + "' could not found.", "color: #AD8500");
+			}
+		}
+
+		return data.replace(replace, "");
 	},
 
 	// Load a template by specifying it's location.
@@ -284,7 +340,7 @@ var OfficeUITemplating = {
 
 	            // When there's an error while consuming the Json, render it here.
 	            error: function(XMLHttpRequest, textStatus, errorThrown) {
-	                console.log(errorThrown);
+	                console.log("%c [OfficeUI Templating]: " + errorThrown, "color: red;");
 	            }
 	        });
     	}

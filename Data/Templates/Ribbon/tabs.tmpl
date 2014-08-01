@@ -2,12 +2,21 @@
 <div class="tabs">
 	<ul role="tablist">
 		{{BOS:Sequence}}
-			<li role="tab" class="{{TabType}}" id="{{Id}}">
-				<span>{{Name}}</span>
+			{{If "{{Id}}" == ""}}
+				<li role="tab" class="{{TabType}}">
+			{{EndIf}}
 
-				<!-- All the different groups are being rendered here. -->
-				{{Render:Groups; Value="Groups"}}
-			</li>
+			{{If "{{Id}}" != ""}}
+				<li role="tab" class="{{TabType}}" id="{{Id}}">
+			{{EndIf}}
+
+
+					<span>{{Name}}</span>
+
+					<!-- All the different groups are being rendered here. -->
+					{{Render:Groups; Value="Groups"}}
+				</li>
+
 		{{EOS:Sequence}}
 	</ul>
 </div>

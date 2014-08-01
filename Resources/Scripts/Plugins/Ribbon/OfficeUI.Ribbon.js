@@ -27,7 +27,7 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
     // Validate if the 'RibbonTemplateFile' is provided.
     if (settings.RibbonTemplateFile == "") {
-        console.log("%c The 'RibbonTemplateFile' specified in the options is a required field.", "color: red;");
+        console.log("%c [OfficeUI Ribbon]: The 'RibbonTemplateFile' specified in the options is a required field.", "color: red;");
     }
 
     // Load the Json data file, of which the location is specified in the 'jsonUrl' parameter.
@@ -40,7 +40,7 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
             // Step 1: Verify that there are tabs elements defined.
             if (ribbon.Tabs == null) {
-                console.log("%c A ribbon must be equipped with at least a single tab element.", "color: red;");
+                console.log("%c [OfficeUI Ribbon]: A ribbon must be equipped with at least a single tab element.", "color: red;");
 
                 renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
             }
@@ -54,7 +54,7 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
             // If we reach this point, the validation has been done for the ribbon and we can continue with the rendering of the Ribbon.
             if (!renderable) {
-                console.log("%c The ribbon cannot be rendered since it's configuration is invalid.", "color: red;");
+                console.log("%c [OfficeUI Ribbon]: The ribbon cannot be rendered since it's configuration is invalid.", "color: red;");
             } else {
                 // Build the ribbon constructor object.
                 if (ribbon.Id != null) {
@@ -120,7 +120,7 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         // If the tabs should not have an auto-generated id, make sure that every tab has an id.
         if (settings.AutoGenerateTabId == false) {
             if (tab.Id == null) {
-                console.log("%c Every tab must have an id element.", "color: red;");
+                console.log("%c [OfficeUI Ribbon]: Every tab must have an id element.", "color: red;");
             }
         } else { // Tabs should be auto generated, so assign id's to every tab element.
             if (tab.Id == null) {
@@ -133,19 +133,21 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
             // More than 1 application tab has been found.
             if (applicationTabs > 1) {
-                console.log("%c A maximum of 1 application tab is allowed.", "color: red;");
+                console.log("%c [OfficeUI Ribbon]: A maximum of 1 application tab is allowed.", "color: red;");
 
                 renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
             }
 
         } else if (tab.Type != "Normal") {
-            console.log("%c The tab type '" + tab.Type + "' is not supported by the Ribbon framework.", "color: red;");
+            console.log("%c [OfficeUI Ribbon]: The tab type '" + tab.Type + "' is not supported by the Ribbon framework.", "color: red;");
 
             renderable = false; // Change the 'renderable' value to make sure that the ribbon will not be rendered.
         }
     }
 
     // End of section: Validation.
+
+    // Section: Functions.
 
     // Construct the ribbon by using the OfficeUI templates.
     // Parameters:
@@ -185,25 +187,6 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Experimental section for rendering the ribbon.
-
-    // Section: Functions.
-
     // Initialize the whole ribbon. This is done by placing classes on the various elements that together form the ribbon.
     // This is done to keep the HTML less cluthered.
     // Also some basic functions such as selecting the correct tab are executed here.
@@ -231,6 +214,17 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         $("li[role=tab]:not(.application)").click(function () {
             EnableTab($(this).Id());
         }); 
+
+        // When you scroll when you're mousecursor is somewhere in the Ribbon, make sure that either the next or the previous tab is selected,
+        // based on the direction of the scroll.
+        // Note: We're binding 2 events here ('DOMMouseScroll' & 'mousewheel'). This is needed to make it work in Internet Explorer, Google Chrome & Mozilla Firefox.
+        $(".ribbon").on('DOMMouseScroll mousewheel', function (e) {
+            if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { EnableNextTab($(this)); }
+            else { EnablePreviousTab($(this)); }
+
+            // Prevent the page from scrolling.
+            return false;
+        });
     }
 
     // Enables a given tab, based on the id of the tab.
@@ -238,18 +232,29 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     //    tabId:    The id of the tab that should be showed.
     function EnableTab(tabId) {
         // Chech if the tab with the id can be found and if not, write a message to the log.
-        if ($("#" + tabId).LogWhenNotFound("Tab with id '" + tabId + "' not found.")) {
+        if ($("#" + tabId).LogWhenNotFound("[OfficeUI Ribbon]: Tab with id '" + tabId + "' not found.")) {
             // Start by deactiving every tab element on the page.
             OfficeUICoreHelpers.DeactivateAllTabs();
 
             // Marks the tab as the active one and display the contents for the tab.
             OfficeUICoreHelpers.ActivateTab(tabId);
-        } else {
-            EnableTab($("li[role='tab']:not(.application)").first().Id());
+        } 
+    }
+
+    // Enables the next tab if there is any.
+    function EnableNextTab() {
+        // If there's a next tab (if the tab has an id, select it, otherwise, do nothing).
+        if ($("li[role=tab].active").next().Id() != null) {
+            EnableTab($($("li[role=tab].active").next()).Id());
         }
     }
 
-
+    // Enables the previous tab, but only if it's not the application tab.
+    function EnablePreviousTab() {
+        if (!$($("li[role=tab].active").prev()).hasClass("application")) {
+            EnableTab($($("li[role=tab]:not(.application).active").prev()).Id());
+        }
+    }
 },
 
 

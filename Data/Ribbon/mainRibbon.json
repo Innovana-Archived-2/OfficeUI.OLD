@@ -3,7 +3,6 @@
     "Tabs": [
         {
             "Name": "File",
-            "Id": "tabFile",
             "Type": "Application"
         },
         {
@@ -96,7 +95,7 @@
             "Type": "Normal",
             "Groups": [
                 {
-                    "Name": "Demo"
+                    "Legend": "Demo"
                 }
             ]
         },
@@ -106,7 +105,7 @@
             "Type": "Normal",
             "Groups": [
                 {
-                    "Name": "Demo"
+                    "Legend": "Demo"
                 }
             ]
         },
@@ -116,7 +115,7 @@
             "Type": "Normal",
             "Groups": [
                 {
-                    "Name": "Demo"
+                    "Legend": "Demo"
                 }
             ]
         }

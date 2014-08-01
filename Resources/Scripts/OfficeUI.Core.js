@@ -39,7 +39,7 @@ jQuery.fn.extend({
     //    True if the object has been found, otherwise false.
     LogWhenNotFound: function (message) {
         if ($(this).length == 0) {
-            console.log(message);
+            console.log('%c' + message, 'color: red;');
 
             return false;
         }
