@@ -5,36 +5,53 @@
     <link rel="stylesheet" href="Resources/Stylesheets/site.css" />
   </head>
   <body>
-  <div class="title">OfficeUI - Development Center</div>
+    <div class="title">OfficeUI - Development Center</div>
+    
+    <!-- Section: Top Navigation. -->
     <div class="nav_bar">
       <div class="contents center">
-	      <ul>
-	      	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
-          <li><a href="OfficeUIRibbon/index.html">OfficeUI Ribbon</a></li>
-	      </ul>
+  	    <ul>
+  	    	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
+  	    </ul>
       </div>
     </div>
+    <!-- End Of Section: Top Navigation. -->
 
+    <!-- Section: Contents. -->
     <div class="contents center">
       <div class="navigation_holder">
+
+        <!-- Section: Left Menu. -->
         <div id="left_nav">
           <ul>
             <li>
-              <a href="index.html" class="active">OfficeUI Framework</a>     
-              <ul>
-              	<li>
-              		<a href="OfficeUIFrameworkOverview/index.html">OfficeUI Framework Overview</a> 
-              	</li>
-              </ul>   
+              <a href="index.html" class="active">Introduction</a>     
+              <ul>  
+                <li>
+                  <a href="downloading.html">Downloading the framework</a>     
+                </li>
+                <li>
+                  <a href="local.html">Running on your computer</a>     
+                </li>
+                <li>
+                  <a href="contents.html">Contents of the package</a>     
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="Installation/index.html">Installation</a>
             </li>
           </ul>
-        </div>  
+        </div>
+        <!-- End Of section: Left Menu. -->  
       </div>
+
+      <!-- Section Article. -->
       <div class="article">
-        <h1>OfficeUI Framework</h1>
+        <h1>Introduction</h1>
         <p>
-        	The OfficeUI Framework is a rich command presentation system that provides a modern alternative to the classic HTML controls of traditional web applications.
-        	Similar in functionality and appearance to the Microsoft Office 2013 Fluent UI, the framework is composed out of various elements.
+          The OfficeUI framework is a rich command presentation system that provides a modern alternative to the classic HTML controls of traditional web applications.
+          Similar in functionality and appearance to the Microsoft Office 2013 Fluent UI, the framework is composed out of various elements.
         </p>
         <h2>In this section</h2>
         <table>
@@ -44,26 +61,55 @@
               <th>Description</th>
             </tr>
             <tr>
-              <td><a href="OfficeUIFrameworkOverview/index.html">OfficeUI Framework Overview</a></td>
-              <td>The topics contained in this section explore the fundamentals of the OfficeUI Framework.</td>
+              <td><a href="downloading.html">Downloading & running the framework</a></td>
+              <td>The topics contained in this section explore the various release packages and how to run them on your local computer.</td>
             </tr>
           </tbody>
         </table>
-        <h2>System Requirements</h2>
+        
+        <h2>Intented Audience</h2>
         <p>
-        	The OfficeUI suite has been developed for use with the following browsers:
+          The OfficeUI Ribbon Framework is designed for use by web developers.
         </p>
-        <ul>
-          <li>Microsoft Internet Explorer</li>
-          <li>Google Chrome</li>
-          <li>Mozilla Firefox</li>
-        </ul>
 
-        <p class="note">
-        	<strong>Note:</strong>&nbsp;&nbsp;It is recommended to always use the latest browsers of the supported ones which are listed above.
-        	It does not mean that the OfficeUI suite does not work with olders versions of the browsers but it is not guaranteed by the development team.
+        <p>
+          Recommended foundational knowledge:
+          <ul>
+            <li>HTML Programming</li>
+            <li>CSS Programming</li>
+            <li>jQuery Development</li>
+          </ul>
+        </p>
+
+        <h2>Minimum requirements</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td style="width: 400px;"><strong>Minimum supported browser(s)</strong><strong></td>
+              <td>
+                Microsoft Internet Explorer 11<br/>
+                Google Chrome 36<br/>
+                Mozilla Firefox 31
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Minimum supported Dependencies</strong><strong></td>
+              <td>
+                Font Awesome 4.0.3<br/>
+                jQuery 2.1.1<br/>
+                jQuery UI 1.11.0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <strong>Note:</strong> Not all those dependencies are required for the core functionality of the OfficeUI framework. In every section you will find the dependencies that you need to install for the plugin to work.
         </p>
       </div>
+      <!-- End Of Section: Article. -->
+
     </div>
+    <!-- End Of Section: Contents. -->
   </body>
 </html>

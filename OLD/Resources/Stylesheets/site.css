@@ -50,9 +50,3 @@ table tr > td:last-child { width: 571px; }
 td, th { border-bottom: 1px solid #dbdbdb; margin: 10px; padding: 10px 8px; }
 th { color: #636363; text-align: left; }
 
-/* List styling. */
-ol { padding-left: 30px; margin: 0px; }
-ol ol { list-style: square; padding-top: 5px; }
-ol ol > li { padding-top: 2px; padding-bottom: 2px; }
-ol h3 { font-weight: normal; }
-

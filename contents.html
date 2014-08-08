@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>OfficeUI Framework - Contents</title>
+    <link rel="stylesheet" href="Resources/Stylesheets/site.css" />
+  </head>
+  <body>
+    <div class="title">OfficeUI - Development Center</div>
+    
+    <!-- Section: Top Navigation. -->
+    <div class="nav_bar">
+      <div class="contents center">
+  	    <ul>
+  	    	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
+  	    </ul>
+      </div>
+    </div>
+    <!-- End Of Section: Top Navigation. -->
+
+    <!-- Section: Contents. -->
+    <div class="contents center">
+      <div class="navigation_holder">
+
+        <!-- Section: Left Menu. -->
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="index.html">Introduction</a>     
+              <ul>  
+                <li>
+                  <a href="downloading.html">Downloading the framework</a>     
+                </li>
+                <li>
+                  <a href="local.html">Running on your computer</a>     
+                </li>
+                <li>
+                  <a href="contents.html" class="active">Contents of the package</a>     
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="Installation/index.html">Installation</a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Of section: Left Menu. -->  
+      </div>
+
+      <!-- Section Article. -->
+      <div class="article">
+        <h1>Contents of the package</h1>
+        <p>
+          This topic gives a brief introduction about the contents of the package, not the files but rather the various components which are in the package.
+        </p>
+        <h2>Components</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Component</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <!-- ToDo: Add links. -->
+              <td><a href="#">OfficeUI Templating engine</a></td>
+              <td>The topics contained in this section explore the functionalities of the templating engine.</td>
+            </tr>
+            <tr>
+              <!-- ToDo: Add links. -->
+              <td><a href="#">OfficeUI Controls</a></td>
+              <td>The topics contained in this section explore the various controls.</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h2>OfficeUI Templating Engine</h2>
+        <p>
+          The templating engine is the <strong>core</strong> of the OfficeUI functionality. It enables us to render complex HTML element without needing to write difficult jQuery or JavaScript functions that append some HTML to already existing elements. The templating engine allows us to create HTML files from special templating files (.tmpl) in order to generate complex HTML elements.
+        </p>
+
+        <p>
+          The following steps represents the logic flow of the templating engine.
+          <ol>
+            <li>The templating engine consumes templating files.</li>
+            <li>The output of that is then passed to any defined plugins.</li>
+            <li>Plugins are executing their logic. (A plugin can call the templating engine in order to render complex HTML themselves).</li>
+            <li>The output if then passed to the page where it's injected by the framework.</li>
+          </ol> 
+        </p>
+        <p>
+        <img src="Resources/Images/templatingEngineFlow.png" width="780px"/>
+          <p>
+            The image above gives a visual representation of the OfficeUI templating engine.
+          </p>
+        </p>
+
+        <h2>OfficeUI Controls</h2>
+        <p>
+          Another component of the OfficeUI framework are the components which comes with the OfficeUI framework.<br/>
+          The following components come packed with the OfficeUI framework by default.
+        </p>
+        <table>
+          <tbody>
+            <tr>
+              <th>Component</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <!-- ToDo: Add Links. -->
+              <td><a href="#">Ribbon</a></td>
+              <td>The ribbon exposes a command bar at the top of your page which exposes the most common features.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End Of Section: Article. -->
+
+    </div>
+    <!-- End Of Section: Contents. -->
+  </body>
+</html>

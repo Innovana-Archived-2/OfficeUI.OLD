@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>OfficeUI Framework - Managing the package dependencies</title>
+    <link rel="stylesheet" href="../Resources/Stylesheets/site.css" />
+  </head>
+  <body>
+    <div class="title">OfficeUI - Development Center</div>
+    
+    <!-- Section: Top Navigation. -->
+    <div class="nav_bar">
+      <div class="contents center">
+  	    <ul>
+  	    	<li><a href="../index.html" class="active">OfficeUI Framework</a></li>
+  	    </ul>
+      </div>
+    </div>
+    <!-- End Of Section: Top Navigation. -->
+
+    <!-- Section: Contents. -->
+    <div class="contents center">
+      <div class="navigation_holder">
+
+        <!-- Section: Left Menu. -->
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="../index.html">Introduction</a>     
+            </li>
+            <li>
+              <a href="index.html">Installation</a>
+              <ul>
+                <li>
+                  <a href="manage.html" class="active">Managing the package dependencies</a>   
+                </li>
+                <li>
+                  <a href="copy.html">Copy the package</a>   
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- End Of section: Left Menu. -->  
+      </div>
+
+      <!-- Section Article. -->
+      <div class="article">
+        <h1>Managing the package dependencies</h1>
+        <p>
+          As mentioned in the <a href="../index.html">introduction</a> there are a couple of dependencies on which the project does rely. <br/>
+          When you download the package, thoses dependencies comes packages with the download itself, but it's not necessary to use those dependencies, you can choose to update the dependencies to a newer version or to older versions if you want to try to use it on older versions that the recommended ones.
+        </p>
+
+        <p>The table below gives an overview about the dependencies and where there are used.</p>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Dependency</th>
+              <th>Optional</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td><strong>jQuery</strong></td>
+              <td>No</td>
+              <td>The OfficeUI framework needs this file to be present at all times.</td>
+            </tr>
+            <tr>
+              <td><strong>jQuery UI</strong></td>
+              <td>Yes</td>
+              <td>This file is used to render components using animations and is not needed when you don't use menu items.</td>
+            </tr>
+            <tr>
+              <td><strong>Font awesome</strong></td>
+              <td>Yes</td>
+              <td>This file is used to render components using animations and is not needed when you don't use menu items.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Dependency location</h2>
+        <p>
+          Every dependency is present in a special folder. It's not mandatory to use this folders, but when you change them, make sure to change the path where the files are being called, this usually is your HTML file.
+        </p>
+        <p>
+          The table below gives an overview of the defautl locationo of the dependencies.
+        </p>
+
+        <table>
+          <tr>
+            <th>Dependency</th>
+            <th>Folder</th>
+          </tr>
+          <tr>
+            <td><strong>jQuery</strong></td>
+            <td>~/Resources/Scripts</td>
+          </tr>
+          <tr>
+            <td><strong>jQuery UI</strong></td>
+            <td>~/Resources/Scripts</td>
+          </tr>
+          <tr>
+            <td><strong>Font awesome</strong></td>
+            <td>~/Resources/Stylesheets<br/>~/Resources/Stylesheets/Fonts</td>
+          </tr>
+        </table>
+      </div>
+      <!-- End Of Section: Article. -->
+
+    </div>
+    <!-- End Of Section: Contents. -->
+  </body>
+</html>

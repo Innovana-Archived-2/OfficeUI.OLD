@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>OfficeUI Framework - Running on your local computer</title>
+    <link rel="stylesheet" href="Resources/Stylesheets/site.css" />
+  </head>
+  <body>
+    <div class="title">OfficeUI - Development Center</div>
+    
+    <!-- Section: Top Navigation. -->
+    <div class="nav_bar">
+      <div class="contents center">
+  	    <ul>
+  	    	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
+  	    </ul>
+      </div>
+    </div>
+    <!-- End Of Section: Top Navigation. -->
+
+    <!-- Section: Contents. -->
+    <div class="contents center">
+      <div class="navigation_holder">
+
+        <!-- Section: Left Menu. -->
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="index.html">Introduction</a>     
+              <ul>  
+                <li>
+                  <a href="downloading.html">Downloading the framework</a>     
+                </li>
+                <li>
+                  <a href="local.html" class="active">Running on your computer</a>     
+                </li>
+                <li>
+                  <a href="contents.html">Contents of the package</a>     
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="Installation/index.html">Installation</a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Of section: Left Menu. -->  
+      </div>
+
+      <!-- Section Article. -->
+      <div class="article">
+        <h1>Running the package on your local computer</h1>
+        <p>
+          This section gives additional information on how to run the OfficeUI framework on your local computer.
+        </p>
+
+        <p>
+          When you've downloaded your package from the server, in the root of the package, you'll find a file named <i>index.html</i><br/>
+          You might want to run the file at once, but unfortunately, this won't work.
+        </p>
+        <p>
+          The OfficeUI framework uses Json files in combination with templating files (*.tmpl) to render the complex HTML elements.
+          By default, webbrowsers doesn't allow ajax calls (which are used to load the data) on a local filesystem, that's why you need to setup your own environment.
+        </p>
+
+        <h2>Setting up a local webserver</h2>
+
+        <p>
+          This tutorial will use Microsoft IIS as webserver to setup an environment in which the OfficeUI framework will be able to operate. You're free to choose whatever webserver you like.
+        </p>
+
+        <p>
+          <strong>Note:</strong> The screenshots in this example are taken from an IIS instance on a Windows 8.1 Pro machine. The interface might be different on other versions.
+        </p>
+
+        <ol>
+          <li>Create a new website in IIS:</h3>
+
+          <p>Create a new wbsite in IIS with the following parameters:
+            <ol>
+              <li>Site Name: Choose your desired sitename here.</li>
+              <li>Application pool: Free to choose.</li>
+              <li>Physical path: Select the root of the OfficeUI framework folder here.</li>
+              <li>Host Name: Any hostname you like (for example: www.officeui.com)</li>
+            </ol>
+          </p>
+          <img src="Resources/Images/IIS/newWebsite.png" />
+          </li>
+
+          <li>Defining MIME Types:</li>
+          <p>
+            Open your created website in Internet Explorer and inside the Features view, navigate to "MIME Types".<br/>
+            In here you need to define 2 MIME Types:
+            <p>
+              <strong>.tmpl</strong>: text/plain<br/>
+              <strong>.json</strong>: application/json
+            </p>
+          </p>
+
+          <li>Changing your host file</li>
+          <p>
+            Open the file <em>C:\Windows\System32\Drivers\etc\hosts</em> and add the following line:
+            <ol>
+              <li>127.0.0.1 www.officeui.com</li>
+            </ol>
+          </p>
+        </ol>
+
+        <p>
+        You should now be able to access the website using the url 'http://www.officeui.com'
+        </p>
+
+      </div>
+      <!-- End Of Section: Article. -->
+
+    </div>
+    <!-- End Of Section: Contents. -->
+  </body>
+</html>

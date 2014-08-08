@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<title>OfficeUI Framework - Downloading</title>
+    <link rel="stylesheet" href="Resources/Stylesheets/site.css" />
+  </head>
+  <body>
+    <div class="title">OfficeUI - Development Center</div>
+    
+    <!-- Section: Top Navigation. -->
+    <div class="nav_bar">
+      <div class="contents center">
+  	    <ul>
+  	    	<li><a href="index.html" class="active">OfficeUI Framework</a></li>
+  	    </ul>
+      </div>
+    </div>
+    <!-- End Of Section: Top Navigation. -->
+
+    <!-- Section: Contents. -->
+    <div class="contents center">
+      <div class="navigation_holder">
+
+        <!-- Section: Left Menu. -->
+        <div id="left_nav">
+          <ul>
+            <li>
+              <a href="index.html">Introduction</a>     
+              <ul>  
+                <li>
+                  <a href="downloading.html" class="active">Downloading the framework</a>     
+                </li>
+                <li>
+                  <a href="local.html">Running on your computer</a>     
+                </li>
+                <li>
+                  <a href="contents.html">Contents of the package</a>     
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="Installation/index.html">Installation</a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Of section: Left Menu. -->  
+      </div>
+
+      <!-- Section Article. -->
+      <div class="article">
+        <h1>Downloading the package</h1>
+        <p>
+          The topics contained in this section explore the various release packages.
+        </p>
+
+        <p>
+          When you want to use the OfficeUI framework, it's recommended to download it from our official <a href="https://github.com/Kevin-De-Coninck/OfficeUI/releases">Github account</a>.<br/>
+          For every release version there are 2 packages avaialble:
+          <ul>
+            <li>Development package</li>
+            <li>Release package</li>
+          </ul>
+        </p>
+
+        <h2>Development package</h2>
+        <p>
+          The development package is a fully working package but it isn't minified and contains various elements that enables the user of this package to track down bugs in this application.
+        </p>
+        <p>
+          It's recommended to always start with this package. Since the development package and the release package is guaranteed to have the same code-base, just with some optimazations, there's no need to worry that your application will not be working anymore when moving from a development package to a release package in the future (as long as you keep the same version).
+        </p>
+
+        <h2>Production pacakge</h2>
+        <p>
+          The production package is a fully optimized package which has been created from the development package. By fully optimized, we mean that logging has been removed from this package and it's also minified to keep the file size as low as possible.
+        </p>
+        
+        <p>
+          In an ideal word, your development environment (for example: Visual Studio) should always include a development package. When your application is released, on the server, just make sure to place a production version of the package with the same package version.
+        </p>
+
+        <p>Continue reading: <a href="local.html">Running the package on your local computer.</a>
+
+      </div>
+      <!-- End Of Section: Article. -->
+
+    </div>
+    <!-- End Of Section: Contents. -->
+  </body>
+</html>
