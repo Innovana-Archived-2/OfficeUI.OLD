@@ -10,6 +10,7 @@
 
 /* General styling for error messages. */
 #OfficeUI .input-validation-error { border: 1px solid red; }
+#OfficeUI .validation-summary-errors ul { padding: 0px;color: red;list-style-type: none;font-weight: bold;}
 
 /* Styling for buttons. */
 #OfficeUI input[type="submit"] {font-size: 12px; margin-left: 5px;min-width: 75px;color: #444444;background-color: #FFFFFF;font-family: 'Segoe UI'; border: 1px solid #bec1c4;}
