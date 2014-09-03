@@ -62,22 +62,21 @@
                                             "Text": "E-Mail message using",
                                             "MenuItems": [
                                                 {
-                                                    "Id": "menuEmailMessage",
-                                                    "Image": "Resources/Icons/EmailMessage.png",
-                                                    "ImageAlt": "E-Mail Message",
-                                                    "Text": "E-mail Message"
+                                                    "Id": "menuMoreStationary",
+                                                    "Text": "More Stationary...",
+                                                    "Seperator": "Line"
                                                 },
                                                 {
-                                                    "Id": "menuEmailMessage",
-                                                    "Image": "Resources/Icons/EmailMessage.png",
-                                                    "ImageAlt": "E-Mail Message",
-                                                    "Text": "E-mail Message"
+                                                    "Id": "menuPlainText",
+                                                    "Text": "Plain Text"
                                                 },
                                                 {
-                                                    "Id": "menuEmailMessage",
-                                                    "Image": "Resources/Icons/EmailMessage.png",
-                                                    "ImageAlt": "E-Mail Message",
-                                                    "Text": "E-mail Message"
+                                                    "Id": "menuRichText",
+                                                    "Text": "Rich Text"
+                                                },
+                                                {
+                                                    "Id": "menuHtml",
+                                                    "Text": "HTML"
                                                 }
                                             ]
                                         },
@@ -85,7 +84,40 @@
                                             "Id": "menuMoreItems",
                                             "Image": "",
                                             "ImageAlt": "",
-                                            "Text": "More Items"
+                                            "Text": "More Items",
+                                            "MenuItems": [
+                                                {
+                                                    "Id": "menuPostInThisFolder",
+                                                    "Text": "Post in This Folder"
+                                                },
+                                                {
+                                                    "Id": "menuContactGroup",
+                                                    "Text": "Contact Group"
+                                                },
+                                                {
+                                                    "Id": "menuTaskRequest",
+                                                    "Text": "Task Request"
+                                                },
+                                                {
+                                                    "Id": "menuInternetFax",
+                                                    "Text": "Internet Fax",
+                                                    "Seperator": "Line"
+                                                },
+                                                {
+                                                    "Id": "menuChooseForm",
+                                                    "Text": "Choose Form..."
+                                                }
+                                                ,
+                                                {
+                                                    "Id": "menuInfoPathForm",
+                                                    "Text": "Choose InfoPath Form...",
+                                                    "Seperator": "Line"
+                                                },
+                                                {
+                                                    "Id": "menuOutlookDataFile",
+                                                    "Text": "Outlook Data File..."
+                                                }
+                                            ]
                                         },
                                         {
                                             "Id": "menuMailLync",
@@ -133,7 +165,35 @@
                                 {
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/JunkMenu.png",
-                                    "Legend": "Junk"
+                                    "Legend": "Junk",
+                                    "MenuItems": [
+                                        {
+                                            "Id": "menuBlockSender",
+                                            "Text": "Block Sender"
+                                        },
+                                        {
+                                            "Id": "menuNeverBlockSender",
+                                            "Text": "Never Block Sender"
+                                        },
+                                        {
+                                            "Id": "menuNeverBlockSenderDomain",
+                                            "Text": "Never Block Sender's Domain (@example.com)"
+                                        },
+                                        {
+                                            "Id": "menuNeverBlockGroupOrMailingList",
+                                            "Text": "Never Block this Group or Mailing List",
+                                            "Seperator": "Line"
+                                        },
+                                        {
+                                            "Id": "menuNotJunk",
+                                            "Text": "Not Junk"
+                                        }
+                                        ,
+                                        {
+                                            "Id": "menuJunkEmailOptions",
+                                            "Text": "Junk E-Mail Options"
+                                        }
+                                    ]
                                 }
                             ]
                         },

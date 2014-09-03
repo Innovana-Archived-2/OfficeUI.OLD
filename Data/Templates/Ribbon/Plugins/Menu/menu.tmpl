@@ -3,7 +3,14 @@
   <div class="menucontents">
     <ul>
       {{BOS:Sequence}}
-        <li id="{{Required:Id}}" class="menuEntry">
+        {{If "{{Seperator}}" != ""}}
+          <li id="{{Required:Id}}" class="menuEntry line">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" == ""}}
+          <li id="{{Required:Id}}" class="menuEntry">
+        {{EndIf}}
+
           {{If "{{MenuItems}}" != ""}}
             <div class="subMenuHolder">
               <div>
