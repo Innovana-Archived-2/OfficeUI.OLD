@@ -48,7 +48,11 @@ var OfficeUITemplating = {
 	// Parameters:
 	//		template: 				The contents that define the template.
 	//		data: 					The data which the template will be using to render it.
-	LoadTemplate: function(template, data) {
+	//		name: 					The name of the template which is being loaded.
+	LoadTemplate: function(name, template, data) {
+
+		console.log("[OfficeUI Templating]: The template with name '" + name + "' is being executed.");	
+
 		// Load the template in a variable.
 		var loadedTemplate = template;
 
@@ -56,6 +60,8 @@ var OfficeUITemplating = {
 		loadedTemplate = OfficeUITemplating.RemoveComments(loadedTemplate);
 
 		var renderedTemplate = OfficeUITemplating.Process(loadedTemplate, data);
+
+		console.log("[OfficeUI Templating]: The template with name '" + name + "' has been executed.");	
 
 		// Return the loaded template object.
 		return renderedTemplate;
@@ -89,10 +95,14 @@ var OfficeUITemplating = {
 		// Check if we have sequences specified in our template.
 		// It's important to render the sequences first.
 		if (sequenceStatements != null) {
+			console.log("[OfficeUI Templating]: One or more sequences have been found in the template. Executing the sequences.");
+
 			var renderedDataForSequence = "";
 
 			// Loop over all the sequences.
 			$(sequenceStatements).each(function(index, sequence) {
+				console.log("[OfficeUI Templating]: Sequence processing have been started.");
+
 				var sequenceDataTemplate = sequence.replace(/({{BOS:Sequence}})/g, "").replace(/({{EOS:Sequence}})/g, ""); // Defines the template of the sequence.
 				var renderedSequenceData = ""; // Defines the fully rendered sequence.
 
@@ -106,37 +116,13 @@ var OfficeUITemplating = {
 					var tempRenderedData = sequenceDataTemplate; // Create a temporary object that is a copy of the sequence template. This way a new section can be created.
 
 					// Replace all the parameters that can be replaced.
+					console.log("[OfficeUI Templating]: Replace the placeholders with data from objects.");
 					$(replacesStatements).each(function(index, replace) {
 						tempRenderedData = OfficeUITemplating.ReplacePlaceholdersWithObject(replace, sequenceData, tempRenderedData);
 					});
 
-					// Experimental section: Execution of the IF statements.
-
-						// Get the code which is stored between the If statements.
-						var ifStatementRegex = /({{If ).*(}})/g; // Defines the regex that can get the conditional expression out of a template.
-						var completeConditionRegex = /({{If)[.]*?[\s\S]*?({{EndIf}})/g; // Defines the regex that can get a complete regular expression out of a template.
-
-						var allTemplateConditions = tempRenderedData.match(completeConditionRegex);
-
-						$(allTemplateConditions).each(function(index, completeCondition) {
-							// Get the condition itself.
-							var ifStatementCondition = completeCondition.match(ifStatementRegex)[0];
-							var condition = ifStatementCondition.replace(/({{If )/g, "").replace(/(}})/g, "");
-
-							// If the condition does not match, remove the entire section about the condition.
-							if (!eval(condition)) {
-								console.log("[OfficeUI Templating]: The if statement '" + condition + "' does not match. Skipping this.");
-
-								// Remove the first occurence, since we're capturing this.
-								tempRenderedData = tempRenderedData.replace(/({{If)[.]*?[\s\S]*?({{EndIf}})/ ,"");
-							} else {
-								console.log("[OfficeUI Templating]: The condition '" + condition + "' did match. Rendering the condition.");
-
-								tempRenderedData = tempRenderedData.replace(/({{If ).*(}})/, "").replace(/({{EndIf}})/, "");
-							}
-						})
-
-					// End of experimental section: Execution of the IF statements.
+					// Process the if statements.
+					OfficeUITemplating.ProcessIfStatements(tempRenderedData);
 
 					// Here we need to render the render actions for the sequence.
 					$(renderStatements).each(function(index, render) {
@@ -158,7 +144,11 @@ var OfficeUITemplating = {
 				});
 
 				data = data.replace(sequence, renderedSequenceData);
+
+				console.log("[OfficeUI Templating]: Sequence processing has been finished..");
 			});
+
+			console.log("[OfficeUI Templating]: All the sequences has been processed.");
 		}
 
 		renderStatements = data.match(renderRegex); // Get all the renders for this template.
@@ -170,7 +160,11 @@ var OfficeUITemplating = {
 			OfficeUITemplating.ValidateRenderSections(importedTemplates, render);
 		});
 
+		// Processing the if statements which are in a template.
+		data = OfficeUITemplating.ProcessIfStatements(data);
+
 		// Replace all the parameters that can be replaced.
+		console.log("[OfficeUI Templating]: Replace the placeholders with data from objects.");
 		$(replacesStatements).each(function(index, replace) {
 			data = OfficeUITemplating.ReplacePlaceholdersWithObject(replace, templateData, data);
 		});
@@ -183,10 +177,64 @@ var OfficeUITemplating = {
 		return data;
 	},
 
+	// Process all the if statements that are placed in a template.
+	// Parameters:
+	//		renderedData: 				The current html which is rendered.
+	ProcessIfStatements: function(renderedData) {
+		// Get the code which is stored between the If statements.
+		var ifStatementRegex = /({{If ).*(}})/g; // Defines the regex that can get the conditional expression out of a template.
+		var completeConditionRegexBAK = /({{If)[.]*?[\s\S]*?({{EndIf}})/g; // Defines the regex that can get a complete regular expression out of a template.
+		var completeConditionRegex = /({{If).*[\s\S]*({{EndIf}})/g;
+
+		var allTemplateConditions = renderedData.match(completeConditionRegex);
+
+		if (renderedData.match(completeConditionRegex) != null) {
+			console.log("[OfficeUI Templating]: Processing if statements.");
+		}
+
+		$(allTemplateConditions).each(function(index, completeCondition) {
+
+			// Get the condition itself.
+			var ifStatementCondition = completeCondition.match(ifStatementRegex)[0];
+			var condition = ifStatementCondition.replace(/({{If )/g, "").replace(/(}})/g, "");
+
+			// If the condition does not match, remove the entire section about the condition.
+			if (!eval(condition)) {
+				console.log("[OfficeUI Templating]: The if statement '" + condition + "' does not match. Skipping this.");
+
+				// Remove the first occurence, since we're capturing this.
+				renderedData = renderedData.replace(/({{If)[.]*?[\s\S]*?({{EndIf}})/ ,"");
+			} else {
+				console.log("[OfficeUI Templating]: The condition '" + condition + "' did match. Rendering the condition.");
+
+				renderedData = renderedData.replace(/({{If ).*(}})/, "").replace(/({{EndIf}})/, "");
+			}
+		});
+
+		// Check if there is a match for another if statement in this template.
+		// If this is not the case, the rendered data is returned.
+		if (renderedData.match(ifStatementRegex) == null) {
+			return renderedData;
+		}
+
+		// If there are still unprocessed if statements, process them.
+		if (renderedData.match(ifStatementRegex).length > 0) {
+			renderedData = OfficeUITemplating.ProcessIfStatements(renderedData);
+		}
+
+		if (renderedData.match(completeConditionRegex) != null) {
+			console.log("[OfficeUI Templating]: All the if statements for this template have been processed.");
+		}
+
+		return renderedData;
+	},
+
 	// Get all the imports that are defined on a template.
 	// Parameters:
 	// 		importStatemenets: 	The statement in which the import is defined.
 	GetAllImports: function(importStatements) {
+		console.log("[OfficeUI Templating]: Retrieving the import statements.");
+
 		var importedTemplates = []; // Defines all the templates that are required.
 
 		$(importStatements).each(function(index, template) {
@@ -206,6 +254,8 @@ var OfficeUITemplating = {
 	// 		renderStatements: 	The statement in which the render is defined.
 	GetAllRenderers: function(renderStatements)
 	{
+		console.log("[OfficeUI Templating]: Get all the render sections in the template.");
+
 		var requiredRenders = []; // Defines all the render sections that are required.
 
 				// Loop over all the defined renders in the template.
@@ -227,6 +277,8 @@ var OfficeUITemplating = {
 	//		importedTemplates: 	All the templates which are imported.
 	//		rendered: 			The renderer that is going to be validated.
 	ValidateRenderSections: function(importedTemplates, renderer) {
+		console.log("[OfficeUI Templating]: Validating the render statement.");
+
 		var foundTemplate = jQuery.grep(importedTemplates, function(template) {
 			return template.Name == renderer.RenderName
 		});
@@ -245,6 +297,8 @@ var OfficeUITemplating = {
 	//		templateData: 		The data which is passed to the template.
 	//		data: 				The current output.
 	ReplaceRenderSectionWithData: function(importedTemplates, renderer, templateData, data) {
+		console.log("[OfficeUI Templating]: Replacing the render section with data.");
+
 		var matchingTemplate = ""; // Define the template that needs to be used for the renderer.
 
 		jQuery.grep(importedTemplates, function(template) {
@@ -254,7 +308,7 @@ var OfficeUITemplating = {
 		});
 
 		var requiredTemplateData = templateData[renderer.RenderObject]; // Creates the data that is required for the template.
-		var rendered = OfficeUITemplating.LoadChildTemplate(matchingTemplate.TemplateName, requiredTemplateData); // Get the rendered data of the template.
+		var rendered = OfficeUITemplating.LoadChildTemplate(renderer.RenderName, matchingTemplate.TemplateName, requiredTemplateData); // Get the rendered data of the template.
 
 		// Now we need to replace the render section with the contents retrieved.
 		return data.replace(/({{Render:).*(}})/g, rendered);
@@ -278,6 +332,8 @@ var OfficeUITemplating = {
 		// Only try to do a replace when the object is defined, in all the other cases, write a warning to the log console and 
 		// strip outs the replace from the data.
 		if (templateData[replaceAttribute] != null	) {
+			console.log("[OfficeUI Templating]: The placeholder '" + replaceAttribute + "' will be replaced by: '" + templateData[replaceAttribute] + "'.");
+
 			return data.replace(replace, templateData[replaceAttribute]);
 		} else {
 			// If the attribute was required, write an entry in the log and return the function.
@@ -305,7 +361,8 @@ var OfficeUITemplating = {
 	// Parameters:
 	//		template: 			The location where to load the template from.
 	//		data: 				The data to render in the template.
-	LoadChildTemplate: function(template, data) {
+	//		name: 				The name of the template.
+	LoadChildTemplate: function(name, template, data) {
 		var matchingTemplate = "";
 
 		// First check if the template we need to load is in the list that contains all the loaded templates.
@@ -319,7 +376,7 @@ var OfficeUITemplating = {
 
 		// When the template has been found, render the template, otherwise do an ajax call first to get the template and then render it.
 		if (matchingTemplate != "") { 
-			renderedTemplate = OfficeUITemplating.LoadTemplate(matchingTemplate, data);
+			renderedTemplate = OfficeUITemplating.LoadTemplate(name, matchingTemplate, data);
 		} else {
 			// Get the template to build the ribbon.
 	        $.ajax({
@@ -335,7 +392,7 @@ var OfficeUITemplating = {
 	            	loadedTemplates.push(tempLoadedTemplate);
 
 	                // I need to pass this data to the templating engine at first.
-	                renderedTemplate = OfficeUITemplating.LoadTemplate(loadedTemplate, data);
+	                renderedTemplate = OfficeUITemplating.LoadTemplate(name, loadedTemplate, data);
 	            },
 
 	            // When there's an error while consuming the Json, render it here.
@@ -348,4 +405,3 @@ var OfficeUITemplating = {
         return renderedTemplate; // Return the data which has been templated.
 	}
 }
-

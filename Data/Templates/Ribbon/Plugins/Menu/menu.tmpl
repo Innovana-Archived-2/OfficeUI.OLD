@@ -1,0 +1,35 @@
+{{TMPL:Import=../../../../Data/Templates/Ribbon/Plugins/Menu/menu.tmpl; Name=SubMenu}}
+<div class="menu">
+  <div class="menucontents">
+    <ul>
+      {{BOS:Sequence}}
+        <li id="{{Required:Id}}" class="menuEntry">
+          {{If "{{MenuItems}}" != ""}}
+            <div class="subMenuHolder">
+              <div>
+          {{EndIf}}
+
+          {{If "{{MenuItems}}" == ""}}
+            <div>
+          {{EndIf}}
+            <div class="imageHolder">
+              {{If "{{Image}}" != ""}}
+                <img alt="{{ImageAlt}}" src="{{Image}}" />
+              {{EndIf}}
+            </div>
+            <div class="menuItem">{{Required:Text}}</div>
+            {{If "{{MenuItems}}" != ""}}
+              </div>
+              <div class="subMenuArrow">
+                <i class="fa fa-caret-right"></i>
+
+                <!-- Render the SubMenu items if there are any. -->
+                {{Render:SubMenu; Value="MenuItems"}} 
+              </div>
+            {{EndIf}}
+          </div>
+        </li>
+      {{EOS:Sequence}}
+    </ul>
+  </div>
+</div>

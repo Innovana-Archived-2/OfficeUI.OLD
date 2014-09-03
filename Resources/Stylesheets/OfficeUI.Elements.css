@@ -1,16 +1,9 @@
-/* Styling for the placeholders for input elements. */
-#OfficeUI .element { height: 30px; }
-#OfficeUI .element .label { float: left; height: 25px; width: 100px; line-height: 25px; }
-#OfficeUI .element span { display: block; overflow: hidden; }
-
 /* General styling for the input elements. */
-#OfficeUI input { padding: 2px;padding-left: 5px;padding-right: 5px;font-family: 'Segoe UI';color: #444444;}
+#OfficeUI input { padding: 2px;margin-left: 10px;padding-left: 5px;padding-right: 5px; }
 #OfficeUI input:hover, #OfficeUI input:focus { padding-left: 5px;padding-right: 5px; }
-#OfficeUI .element span > input { width: 96%; }
 
 /* General styling for error messages. */
 #OfficeUI .input-validation-error { border: 1px solid red; }
-#OfficeUI .validation-summary-errors ul { padding: 0px;color: red;list-style-type: none;font-weight: bold;}
 
 /* Styling for buttons. */
 #OfficeUI input[type="submit"] {font-size: 12px; margin-left: 5px;min-width: 75px;color: #444444;background-color: #FFFFFF;font-family: 'Segoe UI'; border: 1px solid #bec1c4;}
@@ -22,4 +15,3 @@
 #OfficeUI .fs_legend { display: table-cell; min-width: 200px; }
 #OfficeUI .field { display: table-cell; width: 100%; }
 #OfficeUI .field input { width: 100%; font-family: 'Segoe UI'; font-size: 12px; color: #444; }
-

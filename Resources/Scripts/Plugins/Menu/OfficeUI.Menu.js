@@ -37,6 +37,30 @@ $.fn.Menu = function(options) {
 
         var waitHandle; // An object that is used to specify a delay. 
 
+        // Executed when you click on a menu entry.
+        $("LI.menuEntry:not(.OfficeUI_disabled)").on("click", function(e) {
+            e.stopPropagation();
+            
+            // Make sure to clear the timeout on the waithandle, otherwise, the menuitem might be showed twice.
+            clearTimeout(waitHandle);
+
+            // Check if the menuitem holds a submenu.
+            if ($(".subMenuHolder", this).length > 0) {
+                var element = $(this);
+
+                transitionDirection = options.AnimateDirectionSubMenu;
+
+                // Hide all the other open submenus.
+                $(".menu", $(element).parent()).each(function() {
+                    $(this).hide().parent().Deactivate();
+                });
+
+                // When the menu should be animated (specified in the options, animate it, otherwise just show it.)
+                if (options.Animate) { $(".menu", element).first().show("slide", { direction: transitionDirection }, options.TransitionTime).Activate(); 
+                } else { $(".menu", element).first().show(); }
+            }
+        });
+
         // Shows the submenu of a menuitem that's not disabled when hovering over it.
         $("LI.menuEntry:not(.OfficeUI_disabled)").on("mouseenter", function(e) {
             // Prevents the page from further execution.

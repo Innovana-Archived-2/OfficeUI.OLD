@@ -1,70 +1,78 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>OfficeUI - Demo</title>
+	<head>
+		<title>OfficeUI</title>
   		
-<!-- Required stylesheets for the OfficeUI. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
+		<!-- Required stylesheets for the OfficeUI. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Core.css" /> <!-- Provides the core styling elements. -->
 
-<!-- Required stylesheets for the input elements. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Elements.css" />
+		<!-- Required stylesheets for the input elements. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Elements.css" />
 
-<!-- Required stylesheets for the menu plugin. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
+		<!-- Required stylesheets for the menu plugin. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/OfficeUI.Menu.css" />
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Menu/Styles/OfficeUI.Menu.Blue.css" />
 
-<!-- Required stylesheets for the menu ribbon plugin. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" />
+		<!-- Required stylesheets for the menu ribbon plugin. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/OfficeUI.Ribbon.css" />
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Ribbon/Styles/OfficeUI.Ribbon.Blue.css" />
 
-<!-- Required stylesheets for the grid plugin. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/OfficeUI.Grid.css" />
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/Styles/OfficeUI.Grid.Blue.css" />
+		<!-- Required stylesheets for the grid plugin. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/OfficeUI.Grid.css" />
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Grid/Styles/OfficeUI.Grid.Blue.css" />
 
-<!-- Required stylesheets for the modal plugin. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/OfficeUI.Modal.css" />
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/Styles/OfficeUI.Modal.Blue.css" />
+		<!-- Required stylesheets for the modal plugin. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/OfficeUI.Modal.css" />
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Plugins/Modal/Styles/OfficeUI.Modal.Blue.css" />
 
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
-<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
-</head>
-<body class="OfficeUI_nopadding OfficeUI_nomargin">
-<div id="OfficeUI">
-<div class="title">
-<span>OfficeUI Demo (Version 3.0 - Pre-Release)</span>
-</div>
-<div id="ribbonHolder">
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/font-awesome.min.css" /> <!-- Provides the css which is needed for font-awesome. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/OfficeUI.Breadcrumb.css" /> <!-- Provides the styling of the breadcrumb. -->
+		<link rel="stylesheet" type="text/css" href="Resources/Stylesheets/Styles/OfficeUI.Styles.Blue.css" /> <!-- Provides the styling for all the elements. -->
+	</head>
+	<body class="OfficeUI_nopadding OfficeUI_nomargin">
+		<div id="OfficeUI">
+			<div class="title">
+				<span>OfficeUI Demo (Version 2013 - Pre-Release)</span>
+			</div>
+			<div id="ribbonHolder">
+				<!-- In this area, the ribbon will be rendered by using a Json file. -->
+			</div>
+		</div>
+	
+		<!-- Required scripts for the OfficeUI. -->
+		<script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
+		<script src="Resources/Scripts/jquery-ui.min.js"></script>
 
-</div>
-</div>
-<!-- Required scripts for the OfficeUI. -->
-<script src="Resources/Scripts/jquery-2.1.1.min.js"></script>
-<script src="Resources/Scripts/jquery-ui.min.js"></script>
+		<!-- Core script comes here # This should be transferred into the Ribbon js later. -->
+		<script src="Resources/Scripts/OfficeUI.Core.js"></script>
 
-<!-- Core script comes here # This should be transferred into the Ribbon js later. -->
-<script src="Resources/Scripts/OfficeUI.Core.js"></script>
+		<!-- Required scripts for templating the ribbon. -->
+		<script src="Resources/Scripts/Plugins/Templating/OfficeUI.Templating.js"></script>
 
-<!-- Required scripts for templating the ribbon. -->
-<script src="Resources/Scripts/Plugins/Templating/OfficeUI.Templating.js"></script>
+		<!-- Required scripts file for the menu. -->
+		<script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
 
-<!-- Required scripts file for the menu. -->
-<script src="Resources/Scripts/Plugins/Menu/OfficeUI.Menu.js"></script>
+		<!-- Required scripts for the ribbon. -->
+		<script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"></script>
 
-<!-- Required scripts for the ribbon. -->
-<script src="Resources/Scripts/Plugins/Ribbon/OfficeUI.Ribbon.js"></script>
+		<!-- Defines all the plugins of the ribbon. -->
+			<script src="Resources/Scripts/Plugins/Ribbon/Plugins/Menu/OfficeUI.Menu.js"></script>
 
-<!-- Required scripts for the grid. -->
-<script src="Resources/Scripts/Plugins/Grid/OfficeUI.Grid.js"></script>
+		<!-- Required scripts for the grid. -->
+		<script src="Resources/Scripts/Plugins/Grid/OfficeUI.Grid.js"></script>
 
-<!-- Required scripts for the modal. -->
-<script src="Resources/Scripts/Plugins/Modal/OfficeUI.Modal.js"></script>
+		<!-- Required scripts for the modal. -->
+		<script src="Resources/Scripts/Plugins/Modal/OfficeUI.Modal.js"></script>
 
-<script type="text/javascript">
+		<script type="text/javascript">
 
-	var ribbon = $("#ribbonHolder").RibbonFromJson("Data/Ribbon/mainRibbon.json", {
-		//AutoGenerateTabId: true,
-		RibbonTemplateFile: "Data/Templates/Ribbon/ribbon.tmpl"
-	});
+			var ribbon = $("#ribbonHolder").RibbonFromJson("Data/Ribbon/mainRibbon.json", {
+				AutoGenerateTabId: true,
+				RibbonTemplateFile: "Data/Templates/Ribbon/ribbon.tmpl",
+				MenuArrowTemplateFile: "Data/Templates/Ribbon/Plugins/Menu/menuarrow.tmpl",
+				MenuTemplateFile: "Data/Templates/Ribbon/Plugins/Menu/menu.tmpl"
+			});
+
+			ribbon.EnableTab("tabSendReceive");
 </script>
 </body>

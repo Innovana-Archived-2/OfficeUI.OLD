@@ -3,15 +3,15 @@
 	<ul role="tablist">
 		{{BOS:Sequence}}
 			{{If "{{Id}}" == ""}}
-				<li role="tab" class="{{TabType}}">
+				<li class="{{Required:TabType}}">
 			{{EndIf}}
 
 			{{If "{{Id}}" != ""}}
-				<li role="tab" class="{{TabType}}" id="{{Id}}">
+				<li class="{{Required:TabType}}" id="{{Required:Id}}">
 			{{EndIf}}
 
 
-					<span>{{Name}}</span>
+					<span>{{Required:Name}}</span>
 
 					<!-- All the different groups are being rendered here. -->
 					{{Render:Groups; Value="Groups"}}

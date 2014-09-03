@@ -24,7 +24,75 @@
                                 {
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/MailNewItemMenu.png",
-                                    "Legend": "New<br/>Items"
+                                    "Legend": "New<br/>Items",
+                                    "MenuItems": [
+                                        {
+                                            "Id": "menuEmailMessage",
+                                            "Image": "Resources/Icons/EmailMessage.png",
+                                            "ImageAlt": "E-Mail Message",
+                                            "Text": "E-mail Message"
+                                        },
+                                        {
+                                            "Id": "menuAppointment",
+                                            "Image": "Resources/Icons/Appointment.png",
+                                            "ImageAlt": "Appointment",
+                                            "Text": "Appointment"
+                                        },
+                                        {
+                                            "Id": "menuMeeting",
+                                            "Image": "Resources/Icons/Meeting.png",
+                                            "ImageAlt": "Meeting",
+                                            "Text": "Meeting"
+                                        },
+                                        {
+                                            "Id": "menuContact",
+                                            "Image": "Resources/Icons/Contact.png",
+                                            "ImageAlt": "Contact",
+                                            "Text": "Contact"
+                                        },
+                                        {
+                                            "Id": "menuTask",
+                                            "Image": "Resources/Icons/Task.png",
+                                            "ImageAlt": "Task",
+                                            "Text": "Task"
+                                        },
+                                        {
+                                            "Id": "menuEmailMessageUsing",
+                                            "Text": "E-Mail message using",
+                                            "MenuItems": [
+                                                {
+                                                    "Id": "menuEmailMessage",
+                                                    "Image": "Resources/Icons/EmailMessage.png",
+                                                    "ImageAlt": "E-Mail Message",
+                                                    "Text": "E-mail Message"
+                                                },
+                                                {
+                                                    "Id": "menuEmailMessage",
+                                                    "Image": "Resources/Icons/EmailMessage.png",
+                                                    "ImageAlt": "E-Mail Message",
+                                                    "Text": "E-mail Message"
+                                                },
+                                                {
+                                                    "Id": "menuEmailMessage",
+                                                    "Image": "Resources/Icons/EmailMessage.png",
+                                                    "ImageAlt": "E-Mail Message",
+                                                    "Text": "E-mail Message"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "Id": "menuMoreItems",
+                                            "Image": "",
+                                            "ImageAlt": "",
+                                            "Text": "More Items"
+                                        },
+                                        {
+                                            "Id": "menuMailLync",
+                                            "Image": "Resources/Icons/Lync.png",
+                                            "ImageAlt": "Lync meeting",
+                                            "Text": "Lync Meeting"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -43,7 +111,23 @@
                                 {
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/CleanUpMenu.png",
-                                    "Legend": "Clean Up"
+                                    "Legend": "Clean Up",
+                                    "MenuItems": [
+                                        {
+                                            "Id": "menuCleanUpConversation",
+                                            "Image": "Resources/Icons/CleanUpMenu.png",
+                                            "ImageAlt": "Clan up conversation",
+                                            "Text": "Clean Up Conversation"
+                                        },
+                                        {
+                                            "Id": "menuCleanUpFolder",
+                                            "Text": "Clean Up Folder"
+                                        },
+                                        {
+                                            "Id": "menuCleanUpFolderAndSubfolders",
+                                            "Text": "Clean Up Folders & Subfolders"
+                                        }
+                                    ]
                                 },
                                 {
                                     "Type" : "Small",
