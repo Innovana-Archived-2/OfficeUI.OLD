@@ -41,6 +41,7 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     $.ajax({
         dataType: "json",
         url: jsonUrl,
+        async: false,
         success: function(ribbon) {
 
             // Loop over all the defined plugins, and for every plugin, extend the options by adding "JsonData" field.
@@ -295,20 +296,6 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         });
     }
 
-    // Enables a given tab, based on the id of the tab.
-    // Parameters: 
-    //    tabId:    The id of the tab that should be showed.
-    function EnableTab(tabId) {
-        // Chech if the tab with the id can be found and if not, write a message to the log.
-        if ($("#" + tabId).LogWhenNotFound("[OfficeUI Ribbon]: Tab with id '" + tabId + "' not found.")) {
-            // Start by deactiving every tab element on the page.
-            OfficeUICoreHelpers.DeactivateAllTabs();
-
-            // Marks the tab as the active one and display the contents for the tab.
-            OfficeUICoreHelpers.ActivateTab(tabId);
-        } 
-    }
-
     // Enables the next tab if there is any.
     function EnableNextTab() {
         // If there's a next tab (if the tab has an id, select it, otherwise, do nothing).
@@ -366,7 +353,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     function CreateRibbonAPI() {
         return {
             ActivateAction: ActivateAction,
-            DeactivateAction: DeactivateAction
+            DeactivateAction: DeactivateAction,
+            EnableTab: EnableTab
         }
     }
 
@@ -384,6 +372,20 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     function DeactivateAction(actionId) {
         var element = $("#" + actionId);
         element.addClass("OfficeUI_disabled");
+    }
+
+    // Enables a given tab, based on the id of the tab.
+    // Parameters: 
+    //    tabId:    The id of the tab that should be showed.
+    function EnableTab(tabId) {
+        // Chech if the tab with the id can be found and if not, write a message to the log.
+        if ($("#" + tabId).LogWhenNotFound("[OfficeUI Ribbon]: Tab with id '" + tabId + "' not found.")) {
+            // Start by deactiving every tab element on the page.
+            OfficeUICoreHelpers.DeactivateAllTabs();
+
+            // Marks the tab as the active one and display the contents for the tab.
+            OfficeUICoreHelpers.ActivateTab(tabId);
+        } 
     }
 },
 
