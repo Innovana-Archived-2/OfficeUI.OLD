@@ -54,7 +54,8 @@
                                             "Id": "menuTask",
                                             "Image": "Resources/Icons/Task.png",
                                             "ImageAlt": "Task",
-                                            "Text": "Task"
+                                            "Text": "Task",
+                                            "Seperator": "Line"
                                         },
                                         {
                                             "Id": "menuEmailMessageUsing",
