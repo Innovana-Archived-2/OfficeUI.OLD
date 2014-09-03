@@ -67,7 +67,7 @@ $.fn.RibbonFromJson = function(jsonUrl, options) {
 
             // Add the menu plugin, but we want to add it as the first plugin. This way we're sure that third pary plugins can extend the menu if they want, because the menu would already
             // have been rendered.
-            settings.Plugins.unshift(menuPlugin);
+            //settings.Plugins.unshift(menuPlugin);
 
             // Start the entire validation of the ribbon before rendering it.
 
@@ -220,7 +220,7 @@ $.fn.RibbonFromJson = function(jsonUrl, options) {
             success: function(template) {
 
                 // I need to pass this data to the templating engine at first.
-                var templated = OfficeUITemplating.LoadTemplate("Ribbon template", template, ribbon);
+                var templated = OfficeUITemplating.LoadTemplate(template, ribbon);
 
                 $(ribbonHolder).append(templated);
 
