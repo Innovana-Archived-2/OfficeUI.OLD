@@ -1,5 +1,10 @@
 {{BOS:Sequence}}
-	<a href="#">
+	{{If "{{Enabled}}" != "false"}}
+		<a href="#" id="{{Required:Id}}">
+	{{EndIf}}
+	{{If "{{Enabled}}" == "false"}}
+		<a href="#" id="{{Required:Id}}" class="OfficeUI_disabled">
+	{{EndIf}}
 		<div class="{{Required:IconType}}">
 			<img src="{{Required:Image}}" />
 			<div class="iconlegend">

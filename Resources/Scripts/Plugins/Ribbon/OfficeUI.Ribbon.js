@@ -359,6 +359,32 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
         // Update the state.
         $(element).data("state", 0);
     }
+
+    return CreateRibbonAPI();
+
+    // Creates the ribbon API.
+    function CreateRibbonAPI() {
+        return {
+            ActivateAction: ActivateAction,
+            DeactivateAction: DeactivateAction
+        }
+    }
+
+    // Actviate an action based on the ic.
+    // Parameters:
+    //  actionId:   The id of the action that should be enabled.
+    function ActivateAction(actionId) {
+        var element = $("#" + actionId);
+        element.removeClass("OfficeUI_disabled");
+    }
+
+    // Deactivate an action based on the ic.
+    // Parameters:
+    //  actionId:   The id of the action that should be enabled.
+    function DeactivateAction(actionId) {
+        var element = $("#" + actionId);
+        element.addClass("OfficeUI_disabled");
+    }
 },
 
 

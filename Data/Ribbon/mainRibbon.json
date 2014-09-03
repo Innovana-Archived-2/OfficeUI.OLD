@@ -17,11 +17,13 @@
                         {
                             "Icons": [
                                 {
+                                    "Id": "icoNewEmail",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/NewMailMessage.png",
                                     "Legend": "New<br/>Email"
                                 },
                                 {
+                                    "Id": "icoNewItems",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/MailNewItemMenu.png",
                                     "Legend": "New<br/>Items",
@@ -137,11 +139,13 @@
                         {
                             "Icons": [
                                 {
+                                    "Id": "icoIgnore",
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/IgnoreConversation.png",
                                     "Legend": "Ignore"
                                 },
                                 {
+                                    "Id": "icoCleanUpMenu",
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/CleanUpMenu.png",
                                     "Legend": "Clean Up",
@@ -163,6 +167,7 @@
                                     ]
                                 },
                                 {
+                                    "Id": "icoJunk",
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/JunkMenu.png",
                                     "Legend": "Junk",
@@ -200,6 +205,7 @@
                         {
                             "Icons": [
                                 {
+                                    "Id": "icoDelete",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Delete.png",
                                     "Legend": "Delete"
@@ -214,17 +220,19 @@
                         {
                             "Icons": [
                                 {
+                                    "Id": "icoReply",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Reply.png",
                                     "Legend": "Reply"
                                 },
                                 {
+                                    "Id": "icoReplyAll",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/ReplyAll.png",
                                     "Legend": "Reply<br/>All"
-                                }
-                                ,
+                                },
                                 {
+                                    "Id": "icoForward",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Forward.png",
                                     "Legend": "Forward"
