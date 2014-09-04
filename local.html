@@ -95,14 +95,20 @@
               <strong>.tmpl</strong>: text/plain<br/>
               <strong>.json</strong>: application/json
             </p>
+            <p>
+              <strong>Note:</strong> When you're running the application as a ASP.NET application a web.config is included which sets the MIME-Type already, so in that case, it's not needed to setup the mime types in your webserver.
+            </p>
           </p>
 
           <li>Changing your host file</li>
           <p>
-            Open the file <em>C:\Windows\System32\Drivers\etc\hosts</em> and add the following line:
+            Open the file <em>C:\Windows\System32\Drivers\etc\hosts</em> if you're running on Windows and add the following line:
             <ol>
               <li>127.0.0.1 www.officeui.com</li>
             </ol>
+          </p>
+          <p>
+            <strong>Note:</strong> When you're not running Windows, you should add this line to the equivalent file for the Operating System on which you're working.
           </p>
         </ol>
 
