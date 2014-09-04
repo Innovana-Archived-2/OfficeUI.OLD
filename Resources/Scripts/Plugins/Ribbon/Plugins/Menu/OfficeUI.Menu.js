@@ -1,7 +1,7 @@
 // Section: Variables needed for this menu.
 
-var menuArrowTemplateFile = "";
-var menuTemplateFile = "";
+	var menuArrowTemplateFile = "";
+	var menuTemplateFile = "";
 
 // End of section: Variables needed for this menu.
 
@@ -44,7 +44,7 @@ var OfficeUIMenuPlugin = {
 							var iconGroupElement = $(".icongroup:eq(" + iconGroupIndex +")", groupElement);
 							var iconElement = $(".icon:eq(" + iconIndex + ")", iconGroupElement);
 
-							var iconArrowArea = $(".iconlegend", iconElement); // Defines the area where the down image should be showed.
+							var iconArrowArea = $(".iconlegend", iconElement); // Defines the area where the down arrow should be showed.
 
 							OfficeUIMenuPlugin.ConstructMenuArrow(null, iconArrowArea);
 							OfficeUIMenuPlugin.ConstructMenu(icon.MenuItems, iconElement);
@@ -59,7 +59,7 @@ var OfficeUIMenuPlugin = {
 
 		});
 		
-		// The logic of the menu is not execute in the ribbon anymore but in this menu plugin, thus it's inside this menu plugin that all the required elements on the items should be placed.
+		// Adds all the required clasess to construct the menu.
 		$(".menuItem, .imageHolder").addClass("OfficeUI_inline");
 		$('.menucontents ul li.line').after('<li style="height: 1px; background-color: #D4D4D4; margin-left: 25px; "></li>');
 		$(".menucontents UL").addClass("OfficeUI_nowrap OfficeUI_nopadding OfficeUI_nomargin");

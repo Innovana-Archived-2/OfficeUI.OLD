@@ -22,22 +22,22 @@
 
 // Section: Common Regex variables. 
 
-var emptyLinesRegex = /(<!--)(.)*(-->)/g; // Defines a regex that is used to remove the comments from a template.
+	var emptyLinesRegex = /(<!--)(.)*(-->)/g; // Defines a regex that is used to remove the comments from a template.
 
-var importsRegex = /({{TMPL:Import=).*;( Name=).*}}/g; // Defines a regex that is used to get the imports in a template.
-var importTemplateRegex = /(Import=).*;/g // Provides a way to find the template of a template import.
-var nameTemplateRegex = /(Name=).*(}})/g // Provides a way to find the name of an included template.
+	var importsRegex = /({{TMPL:Import=).*;( Name=).*}}/g; // Defines a regex that is used to get the imports in a template.
+	var importTemplateRegex = /(Import=).*;/g // Provides a way to find the template of a template import.
+	var nameTemplateRegex = /(Name=).*(}})/g // Provides a way to find the name of an included template.
 
-var renderRegex = /({{Render:).*(}})/g // Provides a way to find the sections that needs to be rendered.
-var renderNameRegex = /(:).*(;)/g // Provides a way to find the section that needs to be rendered.
-var renderObjectRegex = /(=).*(}})/g // Provides a way to find the object to pass to this renderer.
+	var renderRegex = /({{Render:).*(}})/g // Provides a way to find the sections that needs to be rendered.
+	var renderNameRegex = /(:).*(;)/g // Provides a way to find the section that needs to be rendered.
+	var renderObjectRegex = /(=).*(}})/g // Provides a way to find the object to pass to this renderer.
 
-var sequenceRegex = /({{BOS:Sequence}})[.]*?[\s\S]*?({{EOS:Sequence}})/g // Provides a way to detect sequences within a template.
+	var sequenceRegex = /({{BOS:Sequence}})[.]*?[\s\S]*?({{EOS:Sequence}})/g // Provides a way to detect sequences within a template.
 
-var replaceWithObjectRegex = /({{)(?!TMPL|If|EndIf|[BE]OS|Render).*?(}})/g // Provides a way to find an area where a replacement should be done.
+	var replaceWithObjectRegex = /({{)(?!TMPL|If|EndIf|[BE]OS|Render).*?(}})/g // Provides a way to find an area where a replacement should be done.
 
-var loadedTemplates = []; // A variables that holds all the templates which has been loaded by the template engine.
-						  // That way, we can load templates out of this variable, instead of doing posts all the time to render it.
+	var loadedTemplates = []; // A variables that holds all the templates which has been loaded by the template engine.
+							  // That way, we can load templates out of this variable, instead of doing posts all the time to render it.
 
 // End of section: Common regex variables.
 
