@@ -318,7 +318,6 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
     function EnableMenu(time, element) {
         // Check if the menu is closed. If that's the case, we should show it.
         if (!$(element).data("state") || $(element).data("state") == 0) {
-
             // Hide every menutitem which is visible for the moment.
             $(".menu").each(function () {
                 $(this).hide().parent().Deactivate();
@@ -333,7 +332,11 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
 
             // Menu is visible, so let's close it.
         } else if ($(element).data("state") == 1) {
-            DisableMenu($(element));
+            // Hide every menutitem which is visible for the moment.
+            $(".menu").each(function () {
+                $(this).hide().parent().Deactivate();
+                $(this).data("state", 0);
+            });
         }
     }
 
