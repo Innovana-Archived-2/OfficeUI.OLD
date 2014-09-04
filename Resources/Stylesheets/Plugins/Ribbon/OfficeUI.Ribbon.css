@@ -16,14 +16,15 @@
 #OfficeUI .contents { left: 0px; color: #444444; height: 93px; width: 100%; display: none; }
 #OfficeUI .contents.active { display: block; }
 #OfficeUI .group { height: 91px; margin-top: 3px; vertical-align: top; }
+#OfficeUI .group:first-child { margin-left: 5px; }
 #OfficeUI .group .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
-#OfficeUI .icongroup { height: 75px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
+#OfficeUI .icongroup { height: 89px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
 #OfficeUI .arrow { bottom: 2px; left: 2px; }
 #OfficeUI .seperator { background-color: #D4D4D4; height: 84px; margin-left: 5px; margin-right: 5px; margin-top: 4px; width: 1px; }
 
 /* Styling for the Tooltips. */
 #OfficeUI .icongroup a { position: relative; }
-#OfficeUI .tooltip { white-space: normal; box-shadow: 3px 3px 3px #E0E0E0; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; display: none; background-color: #ffffff; position: absolute; border: 1px solid #d4d4d4; top: 86px; left: 0px; padding: 10px; padding-top: 5px; padding-bottom: 5px; text-align: left; width: 180px; }
+#OfficeUI .tooltip { top: 89px; white-space: normal; box-shadow: 3px 3px 3px #E0E0E0; background-image: linear-gradient(#C6C6C6, #C6C6C6), linear-gradient(#C6C6C6, #C6C6C6); background-position: 0 0px, 100% 0; background-repeat: no-repeat; background-size: 1px 100%; display: none; background-color: #ffffff; position: absolute; border: 1px solid #d4d4d4; left: 0px; padding: 10px; padding-top: 5px; padding-bottom: 5px; text-align: left; width: 180px; }
 #OfficeUI .tooltip p { line-height: 14px; }
 
 /* Styling for the icons in the tabs.

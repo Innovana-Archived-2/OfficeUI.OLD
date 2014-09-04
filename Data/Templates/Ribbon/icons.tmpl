@@ -10,6 +10,11 @@
 			<div class="iconlegend">
 				{{Legend}}
 			</div>
+			{{If "{{Tooltip}}" != ""}}
+				<div class="tooltip">
+					{{Tooltip}}
+				</div>
+			{{EndIf}}
 		</div>
 	</a>
 {{EOS:Sequence}}

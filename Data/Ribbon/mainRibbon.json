@@ -20,13 +20,15 @@
                                     "Id": "icoNewEmail",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/NewMailMessage.png",
-                                    "Legend": "New<br/>Email"
+                                    "Legend": "New<br/>Email",
+                                    "Tooltip": "<strong>New Item (Ctrl+N)</strong><p>Create a new item.</p>"
                                 },
                                 {
                                     "Id": "icoNewItems",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/MailNewItemMenu.png",
                                     "Legend": "New<br/>Items",
+                                    "Tooltip": "<strong>New Items</strong><p>Create a new item, such as a new Meeting or Contact.</p>",
                                     "MenuItems": [
                                         {
                                             "Id": "menuEmailMessage",
@@ -142,13 +144,15 @@
                                     "Id": "icoIgnore",
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/IgnoreConversation.png",
-                                    "Legend": "Ignore"
+                                    "Legend": "Ignore",
+                                    "Tooltip": "<strong>Ignore Conversation (Ctrl+Del)</strong><p>Move current and future messages in the selected conversation to the Deleted Items folder.</p>"
                                 },
                                 {
                                     "Id": "icoCleanUpMenu",
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/CleanUpMenu.png",
                                     "Legend": "Clean Up",
+                                    "Tooltip": "<strong>Clean Up</strong><p>Remove redundant messages in the selected conversation.</p>",
                                     "MenuItems": [
                                         {
                                             "Id": "menuCleanUpConversation",
@@ -171,6 +175,7 @@
                                     "Type" : "Small",
                                     "Image": "../../Resources/Icons/JunkMenu.png",
                                     "Legend": "Junk",
+                                    "Tooltip": "<strong>Junk</strong><p>Mark the selected items as junk or prevent items sent by this sender, this sender's domain, or this group or mailing list from being marked as junk.</p>",
                                     "MenuItems": [
                                         {
                                             "Id": "menuBlockSender",
@@ -191,7 +196,8 @@
                                         },
                                         {
                                             "Id": "menuNotJunk",
-                                            "Text": "Not Junk"
+                                            "Text": "Not Junk",
+                                            "Enabled": "false"
                                         }
                                         ,
                                         {
@@ -208,7 +214,8 @@
                                     "Id": "icoDelete",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Delete.png",
-                                    "Legend": "Delete"
+                                    "Legend": "Delete",
+                                    "Tooltip": "<strong>Delete (Ctrl+D)</strong><p>Delete this item.</p>"
                                 }
                             ]
                         }
@@ -223,19 +230,22 @@
                                     "Id": "icoReply",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Reply.png",
-                                    "Legend": "Reply"
+                                    "Legend": "Reply",
+                                    "Tooltip": "<strong>Reply (Ctrl+R)</strong><p>Reply to the sender of this message.</p>"
                                 },
                                 {
                                     "Id": "icoReplyAll",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/ReplyAll.png",
-                                    "Legend": "Reply<br/>All"
+                                    "Legend": "Reply All",
+                                    "Tooltip": "<strong>Reply All (Ctrl+Shift+R)</strong><p>Reply to the sender and all other recipients of this message.</p>"
                                 },
                                 {
                                     "Id": "icoForward",
                                     "Type" : "Big",
                                     "Image": "../../Resources/Icons/Forward.png",
-                                    "Legend": "Forward"
+                                    "Legend": "Forward",
+                                    "Tooltip": "<strong>Forward (Ctrl+F)</strong><p>Forward this item to somebody else.</p>"
                                 }
                             ]
                         }

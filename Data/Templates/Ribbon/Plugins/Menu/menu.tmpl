@@ -3,12 +3,36 @@
   <div class="menucontents">
     <ul>
       {{BOS:Sequence}}
-        {{If "{{Seperator}}" != ""}}
+        {{If "{{Seperator}}" != "" && "{{Enabled}}" != "false" && "{{MenuItems}}" != ""}}
+          <li id="{{Required:Id}}" class="menuEntry line submenu">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" != "" && "{{Enabled}}" != "false" && "{{MenuItems}}" == ""}}
           <li id="{{Required:Id}}" class="menuEntry line">
         {{EndIf}}
 
-        {{If "{{Seperator}}" == ""}}
+        {{If "{{Seperator}}" != "" && "{{Enabled}}" == "false" && "{{MenuItems}}" != ""}}
+          <li id="{{Required:Id}}" class="menuEntry line OfficeUI_disabled submenu">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" != "" && "{{Enabled}}" == "false" && "{{MenuItems}}" == ""}}
+          <li id="{{Required:Id}}" class="menuEntry line OfficeUI_disabled">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" == "" && "{{Enabled}}" != "false" && "{{MenuItems}}" != ""}}
+          <li id="{{Required:Id}}" class="menuEntry submenu">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" == "" && "{{Enabled}}" != "false" && "{{MenuItems}}" == ""}}
           <li id="{{Required:Id}}" class="menuEntry">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" == "" && "{{Enabled}}" == "false" && "{{MenuItems}}" != ""}}
+          <li id="{{Required:Id}}" class="menuEntry OfficeUI_disabled submenu">
+        {{EndIf}}
+
+        {{If "{{Seperator}}" == "" && "{{Enabled}}" == "false" && "{{MenuItems}}" == ""}}
+          <li id="{{Required:Id}}" class="menuEntry OfficeUI_disabled">
         {{EndIf}}
 
           {{If "{{MenuItems}}" != ""}}
