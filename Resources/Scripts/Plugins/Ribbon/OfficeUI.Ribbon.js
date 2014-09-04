@@ -290,11 +290,18 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
             });
 
             var waitHandleShowing; // An object that is used to specify a delay. 
+            var waitHandleHiding; // An object that is used to specify a delay.
 
             // Executed when you click on any icon which is not disabled.
             $(".icon").on("click", function (e) {
+
                 // Make sure that tooltips will not be showed anymore by clearing the showing timeout.
                 clearTimeout(waitHandleShowing);
+
+                // Hide all the tooltip's.
+                $('.tooltip', $(this)).each(function(index) {
+                    $(this).hide();
+                });
                 
                 if (!$(this).hasClass("OfficeUI_disabled")) { // Check if the icon is not disabled. This is needed because items can be disabled on the fly.
                     if ($(this).HoldsMenu()) { // Check if it's a menu.
@@ -302,6 +309,52 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
                         EnableMenu(OfficeUIConstants.menuTransition, $(".menu", this).first());
                     }
                 }
+            });
+
+            // When we enter the area of an icon, check if there is a tooltip defined.
+            // If that's the case, start the function to show it.
+            $('.icon').on("mouseenter", function(e) {
+                var tooltipElement;
+
+                // Make sure that the timing for hiding or displaying is disabled.
+                clearTimeout(waitHandleShowing);
+                clearTimeout(waitHandleHiding);
+
+                // If the icon has a defined tooltip, show it when the mouse is hovering on it for 1 second.
+                $('.tooltip', $(this)).each(function(index) {
+                    tooltipElement = $(this);
+                });
+
+                // When the tooltip needs to be showed for a small icon, we need to manually calculate the top position.
+                // Since 3 small icons can be placed under eachother, it's important to know which element is being displayed.
+                if ($(tooltipElement).parent().hasClass("smallicon")) {
+                    var currentElement = $(tooltipElement).parent();
+                    var iconGroup = $(currentElement).parent().parents(".icongroup");
+
+                    $(".smallicon", iconGroup).each(function(i, element) {
+                        if (element == currentElement.get(0)) {
+                            if (i == 1) {
+                                $(tooltipElement).css('top', '65px');
+                            } else if (i == 2) {
+                                $(tooltipElement).css('top', '41px');
+                            } 
+                        }
+                    });
+                }
+
+                waitHandleShowing = setTimeout(function() {
+                    $(tooltipElement).show();
+                }, 1000);
+
+                // When we leave the icon, hide all the visibile tooltips.
+                $(this).on("mouseout", function(e) {
+                    
+                    waitHandleHiding = setTimeout(function() { 
+                       $('.tooltip').each(function(index) {
+                        $(this).hide();
+                        });
+                    }, 500);
+                });
             });
         }
 
