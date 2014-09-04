@@ -16,7 +16,6 @@
 #OfficeUI .contents { left: 0px; color: #444444; height: 93px; width: 100%; display: none; }
 #OfficeUI .contents.active { display: block; }
 #OfficeUI .group { height: 91px; margin-top: 3px; vertical-align: top; }
-#OfficeUI .group:first-child { margin-left: 5px; }
 #OfficeUI .group .legend { bottom: 0px; text-align: center; height: 20px; line-height: 20px; width: 100%; }
 #OfficeUI .icongroup { height: 89px; padding-top: 2px; margin-left: 4px; vertical-align: top; }
 #OfficeUI .arrow { bottom: 2px; left: 2px; }
