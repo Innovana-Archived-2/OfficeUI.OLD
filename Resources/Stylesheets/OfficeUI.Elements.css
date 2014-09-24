@@ -10,8 +10,6 @@
 
 /* Styling for creating a form. */
 #OfficeUI .form { width: 100%; }
-#OfficeUI .form .row { display: table; margin-left: 10px; margin-right: 10px; }
-#OfficeUI .fs_legend, .field { padding: 5px; }
-#OfficeUI .fs_legend { display: table-cell; min-width: 200px; }
-#OfficeUI .field { display: table-cell; width: 100%; }
-#OfficeUI .field input { width: 100%; font-family: 'Segoe UI'; font-size: 12px; color: #444; }
+#OfficeUI .form .row { display: table;width: 98%;height: 30px;}
+#OfficeUI .form .row label { display: table-cell;width: 250px; }
+#OfficeUI .form .row input { width: 100%; font-family: 'Segoe UI'; font-size: 12px; color: #444;display: table-cell;}

@@ -48,29 +48,18 @@ jQuery.fn.extend({
     }
 });
 
-// Provides the core functions for the workings of the OfficeWebControls.
-var OfficeUICoreInternal = {
-
-    // Add's all the events handlers for the application.
-    AddGlobalHandlers: function () {
-
-        // Events handlers are placed here.
-
-        // Experimental section: Contextmenu handling. 
-
-        // When you're in an area that can hold a contextmenu, add an event for a right click.
-        $(".contextMenu").on("contextmenu", function (e) {
-
-            return false;
-        });
-
-        // End - Experimental section: Contextmenu handling.
-    }
-}
-
 var OfficeUICore = {
 
     Init: function () {
-        OfficeUICoreInternal.AddGlobalHandlers();
+        var windowHeight = $(window).height();
+        $("#main_contents_area").height(windowHeight - 189);
     }
 }
+
+// Initialize the application.
+OfficeUICore.Init();
+
+// Make sure that some re-initialization is done everytime the window is resized.
+$(window).resize(function() {
+    OfficeUICore.Init();
+});

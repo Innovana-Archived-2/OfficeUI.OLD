@@ -1,5 +1,5 @@
 /* Provides specific style theming for the navigation. */
-.nav_inner ul li a.active { color: #80397b !important; }
+.nav_inner ul a.active { color: #80397b !important; }
 
 /* Provides specific style theming for the footer. */
 .footer { background-color: #80397b; }

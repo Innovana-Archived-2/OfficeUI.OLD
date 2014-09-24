@@ -349,6 +349,8 @@ $.fn.RibbonFromJson = function (jsonUrl, options) {
                 // When we leave the icon, hide all the visibile tooltips.
                 $(this).on("mouseout", function(e) {
                     
+                    clearTimeout(waitHandleShowing);
+
                     waitHandleHiding = setTimeout(function() { 
                        $('.tooltip').each(function(index) {
                         $(this).hide();
